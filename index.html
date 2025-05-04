@@ -1,10 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Your Name - Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arjun Yeravdekar | Mechanical Engineer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      color: #333;
+    }
+    header {
+      background-color: #0d1b2a;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    nav {
+      background-color: #1b263b;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #0d1b2a;
+    }
+    .project {
+      background: #e0e1dd;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    footer {
+      background: #0d1b2a;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, I'm Arjun Yeravdekar</h1>
-  <p>Welcome to my portfolio site!</p>
+  <header>
+    <h1>Arjun Yeravdekar</h1>
+    <p>Mechanical Engineer | CAD | FEA | Product Design</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate Mechanical Engineer with experience in CAD modeling, finite element analysis,
+      and product design. I enjoy solving real-world problems using engineering principles and tools like
+      SolidWorks, ANSYS, and MATLAB.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Suspension System Design</h3>
+      <p>Designed and simulated a suspension system for an ATV using SolidWorks and performed stress analysis in ANSYS.</p>
+    </div>
+    <div class="project">
+      <h3>Thermal Analysis of Heat Sink</h3>
+      <p>Performed steady-state thermal simulations on aluminum heat sinks with forced convection using ANSYS Workbench.</p>
+    </div>
+    <!-- Add more projects as needed -->
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: yeravdekararjun@gmail.com</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/arjunyeravdekar" target="_blank">arjunyeravdekar</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Arjun Yeravdekar</p>
+  </footer>
 </body>
 </html>
