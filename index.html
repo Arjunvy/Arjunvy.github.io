@@ -1,105 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arjun Yeravdekar | Mechanical Engineer</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      color: #333;
-    }
-    header {
-      background-color: #0d1b2a;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    nav {
-      background-color: #1b263b;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
-      color: #0d1b2a;
-    }
-    .project {
-      background: #e0e1dd;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    footer {
-      background: #0d1b2a;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arjun Yeravdekar | Mechanical Engineer Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        section {
+            padding: 20px;
+        }
+        .project {
+            margin-bottom: 20px;
+        }
+        .project img {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+        .contact-info {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Arjun Yeravdekar</h1>
-    <p>Mechanical Engineer | CAD | FEA | Product Design</p>
-  </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header>
+    <h1>Arjun Yeravdekar - Mechanical Design Engineer</h1>
+    <p>Expert in IMU packaging, thermal solutions, and FEA for mechanical systems</p>
+</header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a passionate Mechanical Engineer with experience in CAD modeling, finite element analysis,
-      and product design. I enjoy solving real-world problems using engineering principles and tools like
-      SolidWorks, ANSYS, and MATLAB.
-    </p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
+<section>
+    <h2>Key Projects</h2>
     <div class="project">
-      <h3>Suspension System Design</h3>
-      <p>Designed and simulated a suspension system for an ATV using SolidWorks and performed stress analysis in ANSYS.</p>
+        <h3>IMU Packaging Design</h3>
+        <img src="cad_model.png" alt="IMU Packaging CAD Model">
+        <p>Led the packaging design for next-gen IMU, optimizing thermal and modal performance using FEA simulations. Streamlined prototyping and development to achieve a 50% shorter cycle.</p>
     </div>
     <div class="project">
-      <h3>Thermal Analysis of Heat Sink</h3>
-      <p>Performed steady-state thermal simulations on aluminum heat sinks with forced convection using ANSYS Workbench.</p>
+        <h3>Thermal Solution for RF Signal Processing Platform</h3>
+        <img src="thermal_solution.png" alt="Thermal Solution Design">
+        <p>Developed a dual-path thermal strategy, improving heat dissipation by 90%. Optimized fan-sink integration for high-power RF signal processing systems.</p>
     </div>
-    <!-- Add more projects as needed -->
-  </section>
+</section>
 
-  <section id="contact">
+<section>
+    <h2>Case Studies</h2>
+    <div>
+        <h3>IMU Thermal Performance Improvement</h3>
+        <p>Used FEA to model thermal strain from CTE mismatch and improved thermal performance by 30%. Reduced hysteresis in IMUs over temperature variations.</p>
+    </div>
+</section>
+
+<section>
+    <h2>Resume</h2>
+    <p>View my <a href="Resume.pdf" download="Arjun_Yeravdekar_Resume">resume</a> for a detailed overview of my experience and skills.</p>
+</section>
+
+<section class="contact-info">
     <h2>Contact</h2>
-    <p>Email: yeravdekararjun@gmail.com</p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/arjunyeravdekar" target="_blank">arjunyeravdekar</a></p>
-  </section>
+    <p>Email: <a href="mailto:yeravdekararjun@gmail.com">yeravdekararjun@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/arjunyeravdekar" target="_blank">Visit my LinkedIn</a></p>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Arjun Yeravdekar</p>
-  </footer>
+<footer>
+    <p>© 2025 Arjun Yeravdekar</p>
+</footer>
+
 </body>
 </html>
