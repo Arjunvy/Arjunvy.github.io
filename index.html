@@ -1,93 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Arjun Yeravdekar | Mechanical Engineer Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        section {
-            padding: 20px;
-        }
-        .project {
-            margin-bottom: 20px;
-        }
-        .project img {
-            width: 100%;
-            max-width: 600px;
-            margin-top: 10px;
-            border-radius: 8px;
-        }
-        .contact-info {
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arjun Yeravdekar | Mechanical Engineer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    section {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    .project img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h1>Arjun Yeravdekar - Mechanical Design Engineer</h1>
-    <p>Expert in IMU packaging, thermal solutions, and FEA for mechanical systems</p>
+  <h1>Arjun Yeravdekar</h1>
+  <p>Senior Mechanical Design Engineer | Expert in IMU Packaging & Thermal Design</p>
 </header>
 
-<section>
-    <h2>Key Projects</h2>
-    <div class="project">
-        <h3>IMU Packaging Design</h3>
-        <img src="cad_model.png" alt="IMU Packaging CAD Model">
-        <p>Led the packaging design for next-gen IMU, optimizing thermal and modal performance using FEA simulations. Streamlined prototyping and development to achieve a 50% shorter cycle.</p>
-    </div>
-    <div class="project">
-        <h3>Thermal Solution for RF Signal Processing Platform</h3>
-        <img src="thermal_solution.png" alt="Thermal Solution Design">
-        <p>Developed a dual-path thermal strategy, improving heat dissipation by 90%. Optimized fan-sink integration for high-power RF signal processing systems.</p>
-    </div>
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am a mechanical engineer with a strong foundation in packaging, thermal design, and FEA simulations. With hands-on experience in aerospace and defense projects, I specialize in solving high-complexity thermal and structural challenges in IMUs and high-speed electronics. I focus on creating reliable, production-ready solutions that perform under demanding conditions.
+  </p>
 </section>
 
-<section>
-    <h2>Case Studies</h2>
-    <div>
-        <h3>IMU Thermal Performance Improvement</h3>
-        <p>Used FEA to model thermal strain from CTE mismatch and improved thermal performance by 30%. Reduced hysteresis in IMUs over temperature variations.</p>
-    </div>
+<section id="project">
+  <h2>Thermal Project – High-Speed RF Signal Processing Platform</h2>
+  <p>
+    I led the thermal architecture design for a high-power, RF-based phased array evaluation system. The challenge was to manage high component-level heat loads while maintaining compact form factors and quiet operation.
+  </p>
+  <ul>
+    <li>Created a full power tree and thermal model using 1D hand calculations.</li>
+    <li>Ran CFD and FEA simulations in ANSYS to identify hotspots and airflow bottlenecks.</li>
+    <li>Developed a dual-path cooling strategy based on IC packaging (direct sink vs forced air).</li>
+    <li>Integrated custom fan-sinks, thermal interface materials, and aluminum heat plates.</li>
+    <li>Reduced max component temperatures by 90% through iterative design-validation cycles.</li>
+    <li>Final design validated with thermocouple instrumentation and field testing.</li>
+  </ul>
+  <img src="thermal_solution.png" alt="Thermal Design Diagram">
 </section>
-
-<section>
-    <h2>Resume</h2>
-    <p>View my <a href="Resume.pdf" download="Arjun_Yeravdekar_Resume">resume</a> for a detailed overview of my experience and skills.</p>
-</section>
-
-<section class="contact-info">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:yeravdekararjun@gmail.com">yeravdekararjun@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/arjunyeravdekar" target="_blank">Visit my LinkedIn</a></p>
-</section>
-
-<footer>
-    <p>© 2025 Arjun Yeravdekar</p>
-</footer>
 
 </body>
 </html>
