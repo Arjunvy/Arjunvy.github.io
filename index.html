@@ -48,50 +48,58 @@
 
 <section id="project">
   <h2>Thermal Project – High-Speed RF Signal Processing Platform</h2>
-  
-  <!-- Summary on Top -->
+
+  <!-- Summary -->
   <p>
     I led the thermal architecture design for a high-power, RF-based phased array evaluation system. 
     The challenge was to manage high component-level heat loads while maintaining compact form factors and quiet operation.
   </p>
 
   <!-- Point 1 -->
-  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
     <div style="flex: 1; min-width: 300px;">
-      <p><strong>Thermal Model & Power Tree:</strong> Created a full power tree and thermal model using 1D hand calculations to size heatsinks and fans.</p>
+      <p><strong>Thermal Model & Power Tree:</strong><br>
+      Created a full power tree and thermal model using 1D hand calculations to size heatsinks and fans.</p>
     </div>
-    <div style="flex: 1; min-width: 300px;">
-      <img src="final assembly exploded views.png" alt="Thermal model diagram" style="width: 100%; border-radius: 10px;" />
+    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 10px;">
+      <img src="final assembly.png" alt="Power Tree Diagram" style="width: 100%; border-radius: 10px;">
+      <img src="final assembly exploded views.png" alt="Thermal Model" style="width: 100%; border-radius: 10px;">
     </div>
   </div>
 
   <!-- Point 2 -->
-  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
     <div style="flex: 1; min-width: 300px;">
-      <p><strong>Simulation & Bottleneck Identification:</strong> Ran CFD and FEA simulations in ANSYS to detect hotspots and airflow bottlenecks.</p>
+      <p><strong>Simulation & Bottleneck Identification:</strong><br>
+      Ran CFD and FEA simulations in ANSYS to detect hotspots and airflow bottlenecks.</p>
     </div>
-    <div style="flex: 1; min-width: 300px;">
-      <img src="fea_simulation.png" alt="FEA Thermal Simulation" style="width: 100%; border-radius: 10px;" />
+    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 10px;">
+      <img src="fea_simulation.png" alt="Thermal Simulation Result" style="width: 100%; border-radius: 10px;">
+      <img src="airflow_simulation.png" alt="Airflow Analysis" style="width: 100%; border-radius: 10px;">
     </div>
   </div>
 
   <!-- Point 3 -->
-  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
     <div style="flex: 1; min-width: 300px;">
-      <p><strong>Cooling Strategy:</strong> Developed a dual-path cooling approach using direct heatsinks for high-load parts and forced-air cooling for peripheral components.</p>
+      <p><strong>Cooling Strategy:</strong><br>
+      Developed a dual-path cooling approach using direct heatsinks for high-load parts and forced-air cooling for peripheral components.</p>
     </div>
-    <div style="flex: 1; min-width: 300px;">
-      <img src="cooling_strategy.png" alt="Cooling Strategy" style="width: 100%; border-radius: 10px;" />
+    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 10px;">
+      <img src="cooling_strategy_1.png" alt="Cooling Design 1" style="width: 100%; border-radius: 10px;">
+      <img src="cooling_strategy_2.png" alt="Cooling Design 2" style="width: 100%; border-radius: 10px;">
     </div>
   </div>
 
   <!-- Point 4 -->
-  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
     <div style="flex: 1; min-width: 300px;">
-      <p><strong>Prototype Testing:</strong> Used thermocouple measurements on prototype builds to validate design improvements and tune fan speed and sink sizing.</p>
+      <p><strong>Prototype Testing:</strong><br>
+      Used thermocouple measurements on prototype builds to validate design improvements and tune fan speed and sink sizing.</p>
     </div>
-    <div style="flex: 1; min-width: 300px;">
-      <img src="testing_setup.png" alt="Thermocouple Testing" style="width: 100%; border-radius: 10px;" />
+    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 10px;">
+      <img src="thermocouple_1.png" alt="Testing Setup" style="width: 100%; border-radius: 10px;">
+      <img src="thermocouple_2.png" alt="Temperature Readings" style="width: 100%; border-radius: 10px;">
     </div>
   </div>
 </section>
