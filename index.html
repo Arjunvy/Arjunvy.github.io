@@ -103,16 +103,19 @@
 
 
   <!-- Point 4 -->
-  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
-    <div style="flex: 1; min-width: 300px;">
-      <p><strong>Prototype Testing:</strong><br>
-      Used thermocouple measurements on prototype builds to validate design improvements and tune fan speed and sink sizing.</p>
-    </div>
-    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 10px;">
-      <img src="thermocouple_1.png" alt="Testing Setup" style="width: 100%; border-radius: 10px;">
-      <img src="thermocouple_2.png" alt="Temperature Readings" style="width: 100%; border-radius: 10px;">
-    </div>
+<div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
+  <!-- Text column -->
+  <div style="flex: 1; min-width: 300px;">
+    <p><strong>Prototype Testing:</strong><br>
+    Used thermocouple measurements on prototype builds to validate design improvements and tune fan speed and sink sizing.</p>
   </div>
-</section>
-</body>
-</html>
+
+  <!-- Image grid column -->
+  <div style="flex: 1; min-width: 300px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <img src="sims boundary conditions.png" alt="Testing Setup 1" style="width: 100%; border-radius: 10px;">
+    <img src="sims without thermal management.png" alt="Testing Setup 2" style="width: 100%; border-radius: 10px;">
+    <img src="sims top view with heatsink.png" alt="Testing Setup 3" style="width: 100%; border-radius: 10px;">
+    <img src="sims top view.png" alt="Testing Setup 4" style="width: 100%; border-radius: 10px;">
+  </div>
+</div>
+
