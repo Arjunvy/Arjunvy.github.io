@@ -48,26 +48,50 @@
 
 <section id="project">
   <h2>Thermal Project – High-Speed RF Signal Processing Platform</h2>
-  <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px;">
-    
-    <!-- Left: Text -->
-    <div style="flex: 1; min-width: 300px;">
-      <p>
-        I led the thermal architecture design for a high-power, RF-based phased array evaluation system. The challenge was to manage high component-level heat loads while maintaining compact form factors and quiet operation.
-      </p>
-      <ul>
-        <li>Created a full power tree and thermal model using 1D hand calculations.</li>
-        <li>Ran CFD and FEA simulations in ANSYS to identify hotspots and airflow bottlenecks.</li>
-        <li>Developed a dual-path cooling strategy based on IC packaging (direct sink vs forced air).</li>
-        <li>Integrated custom fan-sinks, thermal interface materials, and aluminum heat plates.</li>
-        <li>Reduced max component temperatures by 90% through iterative design-validation cycles.</li>
-        <li>Final design validated with thermocouple instrumentation and field testing.</li>
-      </ul>
-    </div>
+  
+  <!-- Summary on Top -->
+  <p>
+    I led the thermal architecture design for a high-power, RF-based phased array evaluation system. 
+    The challenge was to manage high component-level heat loads while maintaining compact form factors and quiet operation.
+  </p>
 
-    <!-- Right: Image -->
+  <!-- Point 1 -->
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
     <div style="flex: 1; min-width: 300px;">
-      <img src="thermal_solution.png" alt="Thermal Design Diagram" style="width: 100%; border-radius: 10px;" />
+      <p><strong>Thermal Model & Power Tree:</strong> Created a full power tree and thermal model using 1D hand calculations to size heatsinks and fans.</p>
+    </div>
+    <div style="flex: 1; min-width: 300px;">
+      <img src="power_tree.png" alt="Thermal model diagram" style="width: 100%; border-radius: 10px;" />
+    </div>
+  </div>
+
+  <!-- Point 2 -->
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
+    <div style="flex: 1; min-width: 300px;">
+      <p><strong>Simulation & Bottleneck Identification:</strong> Ran CFD and FEA simulations in ANSYS to detect hotspots and airflow bottlenecks.</p>
+    </div>
+    <div style="flex: 1; min-width: 300px;">
+      <img src="fea_simulation.png" alt="FEA Thermal Simulation" style="width: 100%; border-radius: 10px;" />
+    </div>
+  </div>
+
+  <!-- Point 3 -->
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
+    <div style="flex: 1; min-width: 300px;">
+      <p><strong>Cooling Strategy:</strong> Developed a dual-path cooling approach using direct heatsinks for high-load parts and forced-air cooling for peripheral components.</p>
+    </div>
+    <div style="flex: 1; min-width: 300px;">
+      <img src="cooling_strategy.png" alt="Cooling Strategy" style="width: 100%; border-radius: 10px;" />
+    </div>
+  </div>
+
+  <!-- Point 4 -->
+  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; align-items: center; gap: 20px;">
+    <div style="flex: 1; min-width: 300px;">
+      <p><strong>Prototype Testing:</strong> Used thermocouple measurements on prototype builds to validate design improvements and tune fan speed and sink sizing.</p>
+    </div>
+    <div style="flex: 1; min-width: 300px;">
+      <img src="testing_setup.png" alt="Thermocouple Testing" style="width: 100%; border-radius: 10px;" />
     </div>
   </div>
 </section>
