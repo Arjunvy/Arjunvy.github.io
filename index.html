@@ -47,12 +47,17 @@
 </section>
 
 <section id="project">
-  <h2>Thermal Project – High-Speed RF Signal Processing Platform</h2>
+  <h2>Thermal Architecture for High-Power Phased-Array/RADAR/EW/SATCOM Development Platform</h2>
 
   <!-- Summary -->
   <p>
-    I led the thermal architecture design for a high-power, RF-based phased array evaluation system. 
-    The challenge was to manage high component-level heat loads while maintaining compact form factors and quiet operation.
+    Designed the thermal management system for a densely populated 16-layer board dissipating 340W of power. Of this, 200W was concentrated in four critical components, while the remaining heat was spread across numerous devices placed throughout the board.
+
+Due to non-standard package geometries, direct mounting of FanSinks onto the components wasn’t feasible. I developed a board-wide thermal solution involving a large custom heatspreader plate with FanSinks mounted on top. The plate was supported by strategically placed standoffs that made thermal contact with high-power zones on the PCB.
+
+To enable efficient conduction, thermal interfaces were created between the heatspreader plate and the critical components. For components with low junction-to-board thermal resistance, the PCB itself acted as the primary path for heat transfer, conducting heat to the heatspreader touchdowns. This hybrid cooling approach combined direct conduction and forced-air methods to effectively manage heat across the board.
+
+The solution brought junction temperatures of all critical parts well below their maximum rated limits while maintaining form factor and acoustic targets — enabling stable, high-performance operation for phased-array, RADAR, EW, and SATCOM applications.
   </p>
 
   <!-- Point 1 -->
