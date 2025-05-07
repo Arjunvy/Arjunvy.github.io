@@ -120,7 +120,9 @@ The solution brought junction temperatures of all critical parts well below thei
   <!-- Text column -->
   <div style="flex: 0.3; min-width: 250px;">
     <p><strong>Design Simplification for Simulation:</strong><br>
-    Developed a dual-path cooling approach using direct heatsinks for high-load parts and forced-air cooling for peripheral components.</p>
+    To enable efficient simulation, key design simplifications were implemented to reduce computational cost, improve meshing robustness, and streamline parametric and optimization studies. As demonstrated in earlier sections, all components with a primary junction-to-case thermal path were modeled using simplified slab geometries that preserve the critical heat transfer characteristics. In contrast, components with junction-to-board thermal paths were represented as surface outlines on the PCB to capture boundary heat flux without introducing unnecessary model complexity. These simplifications ensured the simulation remained focused on the key thermal physics while maintaining accuracy and scalability.
+
+</p>
   </div>
 
   <!-- Image layout column -->
