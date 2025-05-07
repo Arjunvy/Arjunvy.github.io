@@ -60,17 +60,39 @@ To enable efficient conduction, thermal interfaces were created between the heat
 The solution brought junction temperatures of all critical parts well below their maximum rated limits while maintaining form factor and acoustic targets — enabling stable, high-performance operation for phased-array, RADAR, EW, and SATCOM applications.
   </p>
 
-  <!-- Point 1 -->
-  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
-    <div style="flex: 0.15; min-width: 100px;">
-      <p><strong>System Architecture & Mechanical Integration:</strong><br>
-      The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics. Components with a primary junction–case–ambient thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate. Conversely, components with a junction–board thermal path were placed on the bottom side in thermally active zones. These hotspot regions were strategically arranged to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.</p>
+  <!-- System Architecture & Mechanical Integration -->
+<div style="font-family: Arial, sans-serif; max-width: 1000px; margin: auto; padding: 20px;">
+
+  <!-- Top Row: Text + Image -->
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+
+    <!-- Text Column -->
+    <div style="flex: 1 1 350px; min-width: 300px;">
+      <h3 style="margin-top: 0;">System Architecture & Mechanical Integration</h3>
+      <p style="line-height: 1.6;">
+        The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics. Components with a primary <strong>junction–case–ambient</strong> thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate.
+      </p>
     </div>
-    <div style="flex: 0.85; min-width: 0px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px;">
-      <img src="final assembly.png" alt="Power Tree Diagram" style="width: 48%; border-radius: 10px;">
-      <img src="final assembly exploded views.png" alt="Thermal Model" style="width: 48%; border-radius: 10px;">
+
+    <!-- Image Column -->
+    <div style="flex: 1 1 350px; text-align: center;">
+      <img src="final assembly.png" alt="Final Assembly" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     </div>
   </div>
+
+  <!-- Second Image and Continued Text -->
+  <div style="margin-top: 30px; text-align: center;">
+    <img src="final assembly exploded views.png" alt="Exploded View" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p style="line-height: 1.6;">
+      Conversely, components with a <strong>junction–board</strong> thermal path were placed on the bottom side in thermally active zones. These hotspot regions were <strong>strategically arranged</strong> to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.
+    </p>
+  </div>
+
+</div>
+
 
   <!-- Point 2 -->
   <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
