@@ -60,31 +60,31 @@ To enable efficient conduction, thermal interfaces were created between the heat
 The solution brought junction temperatures of all critical parts well below their maximum rated limits while maintaining form factor and acoustic targets — enabling stable, high-performance operation for phased-array, RADAR, EW, and SATCOM applications.
   </p>
 
-  <!-- System Architecture & Mechanical Integration -->
-<div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
+  <!-- System Architecture & Mechanical Integration Section -->
+<div style="display: flex; align-items: flex-start; gap: 40px; font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
 
-  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+  <!-- Text Column (Left) -->
+  <div style="flex: 1 1 45%;">
+    <h3 style="margin-top: 0;">System Architecture & Mechanical Integration</h3>
+    <p style="line-height: 1.6;">
+      The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics.
+    </p>
+    <p style="line-height: 1.6;">
+      Components with a primary <strong>junction–case–ambient</strong> thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate. Conversely, components with a <strong>junction–board</strong> thermal path were placed on the bottom side in thermally active zones.
+    </p>
+    <p style="line-height: 1.6;">
+      These hotspot regions were <strong>strategically arranged</strong> to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.
+    </p>
+  </div>
 
-    <!-- Text Column -->
-    <div style="flex: 1 1 500px; min-width: 300px;">
-      <h3 style="margin-top: 0;">System Architecture & Mechanical Integration</h3>
-      <p style="line-height: 1.6;">
-        The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics. Components with a primary <strong>junction–case–ambient</strong> thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate.
-      </p>
-      <p style="line-height: 1.6;">
-        Conversely, components with a <strong>junction–board</strong> thermal path were placed on the bottom side in thermally active zones. These hotspot regions were <strong>strategically arranged</strong> to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.
-      </p>
-    </div>
-
-    <!-- Image Column -->
-    <div style="flex: 1 1 500px; min-width: 300px; display: flex; flex-direction: column; gap: 20px;">
-      <img src="final assembly.png" alt="Final Assembly" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <img src="final assembly exploded views.png" alt="Exploded View" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    </div>
-
+  <!-- Image Column (Right) -->
+  <div style="flex: 1 1 50%; display: flex; flex-direction: column; gap: 20px;">
+    <img src="final assembly.png" alt="Final Assembly" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <img src="final assembly exploded views.png" alt="Exploded View" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
   </div>
 
 </div>
+
 
 
   <!-- Point 2 -->
