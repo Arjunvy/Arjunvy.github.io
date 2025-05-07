@@ -91,12 +91,20 @@ The solution brought junction temperatures of all critical parts well below thei
   <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
     <div style="flex: 0.35; min-width: 300px;">
       <p><strong>Thermal Management Strategy:</strong><br>
-      Ran CFD and FEA simulations in ANSYS to detect hotspots and airflow bottlenecks.</p>
+      The first stage of thermal management focused on designing the heatspreader plate and selecting an appropriate FanSink. A 1D thermal resistance network was developed to model the primary thermal path—junction to case—of the critical components. This path was segmented into three slabs:
+The top slab represented the junction-to-case thermal resistance,
+The middle slab represented the heat source, and copper was selected here due to its low thermal resistance, ensuring efficient heat spreading,
+The bottom slab accounted for the thermal resistance from junction to board.
+This thermal resistance network was instrumental in calculating the required thermal resistance for the FanSink. Four critical components, collectively dissipating 200W of heat, drove the thermal design. The FanSink was selected based on its thermal performance, footprint compatibility, and fan voltage specifications.
+For components where the primary thermal path is junction-to-board, the thermal power was applied as a boundary condition on the corresponding board surface, represented as an outline in the thermal model.
+
+.</p>
     </div>
     <div style="flex: 0.65; min-width: 300px; display: flex; flex-direction: column; gap: 10px;">
       <img src="Cross section thermal resistance network.png" alt="Thermal Simulation Result" style="width: 100%; border-radius: 10px;">
     </div>
   </div>
+
 
   <!-- Point 3 -->
 <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px; align-items: flex-start;">
