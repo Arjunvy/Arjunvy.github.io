@@ -117,25 +117,43 @@ The solution brought junction temperatures of all critical parts well below thei
 
   <!-- Point 3 -->
 <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px; align-items: flex-start;">
-  <!-- Text column -->
-  <div style="flex: 0.3; min-width: 250px;">
-    <p><strong>Design Simplification for Simulation:</strong><br>
-    To enable efficient simulation, key design simplifications were implemented to reduce computational cost, improve meshing robustness, and streamline parametric and optimization studies. As demonstrated in earlier sections, all components with a primary junction-to-case thermal path were modeled using simplified slab geometries that preserve the critical heat transfer characteristics. In contrast, components with junction-to-board thermal paths were represented as surface outlines on the PCB to capture boundary heat flux without introducing unnecessary model complexity. These simplifications ensured the simulation remained focused on the key thermal physics while maintaining accuracy and scalability.
-
-</p>
+  <!-- Top row with 2 images -->
+  <div style="flex: 1 1 100%; display: flex; gap: 20px;">
+    <div style="flex: 1;">
+      <img src="simplified final assembly.png" alt="Simplified final assembly showing slab representations for junction-to-case components." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
+        Simplified final assembly showing slab representations for junction-to-case components.
+      </p>
+    </div>
+    <div style="flex: 1;">
+      <img src="simplified final assembly back view.png" alt="Back view of the simplified assembly highlighting the geometry reduction approach." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
+        Back view of the simplified assembly highlighting the geometry reduction approach.
+      </p>
+    </div>
   </div>
 
-  <!-- Image layout column -->
-  <div style="flex: 0.7; display: flex; flex-direction: column; gap: 10px;">
-    <!-- Top row with 2 images -->
-    <div style="display: flex; gap: 10px;">
-      <img src="simplified final assembly.png" alt="Thermal Image 1" style="width: 50%; border-radius: 10px;">
-      <img src="simplified final assembly back view.png" alt="Thermal Image 2" style="width: 50%; border-radius: 10px;">
+  <!-- Text column -->
+  <div style="flex: 1 1 100%; margin-top: 20px;">
+    <p><strong>Design Simplification for Simulation:</strong><br>
+      To enable efficient simulation, key design simplifications were implemented to reduce computational cost, improve meshing robustness, and streamline parametric and optimization studies. As demonstrated in earlier sections, all components with a primary junction-to-case thermal path were modeled using simplified slab geometries that preserve the critical heat transfer characteristics. In contrast, components with junction-to-board thermal paths were represented as surface outlines on the PCB to capture boundary heat flux without introducing unnecessary model complexity. These simplifications ensured the simulation remained focused on the key thermal physics while maintaining accuracy and scalability.
+    </p>
+  </div>
+
+  <!-- Bottom images in column -->
+  <div style="flex: 1 1 100%; display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+    <div>
+      <img src="simplified final assembly front view.png" alt="Front view of the slab-based thermal model representing key heat paths." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
+        Front view of the slab-based thermal model representing key heat paths.
+      </p>
     </div>
-    <!-- Image 3 -->
-    <img src="simplified final assembly front view.png" alt="Thermal Image 3" style="width: 100%; border-radius: 10px;">
-    <!-- Image 4 -->
-    <img src="sims showing simplified geometry.png" alt="Thermal Image 4" style="width: 100%; border-radius: 10px;">
+    <div>
+      <img src="sims showing simplified geometry.png" alt="Simulation view illustrating simplified geometries and applied thermal boundaries." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
+        Simulation view illustrating simplified geometries and applied thermal boundaries.
+      </p>
+    </div>
   </div>
 </div>
 
