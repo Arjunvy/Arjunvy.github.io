@@ -86,24 +86,33 @@ The solution brought junction temperatures of all critical parts well below thei
 </div>
 
 
-
-  <!-- Point 2 -->
-  <div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
-    <div style="flex: 0.35; min-width: 300px;">
-      <p><strong>Thermal Management Strategy:</strong><br>
+<!-- Thermal Management Section -->
+<div style="display: flex; flex-wrap: wrap; margin-top: 30px; gap: 20px;">
+  <!-- Text Column (Left) -->
+  <div style="flex: 1 1 45%; min-width: 300px;">
+    <p><strong>Thermal Management Strategy:</strong><br>
       The first stage of thermal management focused on designing the heatspreader plate and selecting an appropriate FanSink. A 1D thermal resistance network was developed to model the primary thermal path—junction to case—of the critical components. This path was segmented into three slabs:
-The top slab represented the junction-to-case thermal resistance,
-The middle slab represented the heat source, and copper was selected here due to its low thermal resistance, ensuring efficient heat spreading,
-The bottom slab accounted for the thermal resistance from junction to board.
-This thermal resistance network was instrumental in calculating the required thermal resistance for the FanSink. Four critical components, collectively dissipating 200W of heat, drove the thermal design. The FanSink was selected based on its thermal performance, footprint compatibility, and fan voltage specifications.
-For components where the primary thermal path is junction-to-board, the thermal power was applied as a boundary condition on the corresponding board surface, represented as an outline in the thermal model.
-
-.</p>
-    </div>
-    <div style="flex: 0.65; min-width: 300px; display: flex; flex-direction: column; gap: 10px;">
-      <img src="Cross section thermal resistance network.png" alt="Thermal Simulation Result" style="width: 100%; border-radius: 10px;">
-    </div>
+      <br><br>
+      • The <strong>top slab</strong> represented the <em>junction-to-case thermal resistance</em>. <br>
+      • The <strong>middle slab</strong> represented the <em>heat source</em>, and copper was selected here due to its low thermal resistance, ensuring efficient heat spreading. <br>
+      • The <strong>bottom slab</strong> accounted for the <em>thermal resistance from junction to board</em>.
+      <br><br>
+      This thermal resistance network was instrumental in calculating the required thermal resistance for the FanSink. Four critical components, collectively dissipating 200W of heat, drove the thermal design. The FanSink was selected based on its thermal performance, footprint compatibility, and fan voltage specifications.
+    </p>
   </div>
+
+  <!-- Image Column (Right) -->
+  <div style="flex: 1 1 50%; display: flex; flex-direction: column; gap: 20px;">
+    <img src="eac4ea20-0c44-42d1-8112-e3dfcfc0c78e.png" alt="Thermal Resistance Network" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+  </div>
+</div>
+
+<!-- Full-width text continuation -->
+<div style="margin-top: 30px;">
+  <p>
+    For components where the primary thermal path is junction-to-board, the thermal power was applied as a boundary condition on the corresponding board surface, represented as an outline in the thermal model. This approach ensured accurate representation of heat flow paths in the simulation, contributing to reliable temperature predictions and robust thermal solution design.
+  </p>
+</div>
 
 
   <!-- Point 3 -->
