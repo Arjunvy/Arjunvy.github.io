@@ -61,36 +61,43 @@ The solution brought junction temperatures of all critical parts well below thei
   </p>
 <!-- Main Wrapper -->
 <!-- System Architecture & Mechanical Integration Section -->
-<div style="display: flex; align-items: flex-start; gap: 40px; font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
+<div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
 
-  <!-- Text Column (Left) -->
-  <div style="flex: 1 1 45%;">
-    <h3 style="margin-top: 0;">System Architecture & Mechanical Integration</h3>
-    <p style="line-height: 1.6;">
-      The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics.
-    </p>
-    <p style="line-height: 1.6;">
-      Components with a primary <strong>junction–case–ambient</strong> thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate. Conversely, components with a <strong>junction–board</strong> thermal path were placed on the bottom side in thermally active zones.
-    </p>
-    <p style="line-height: 1.6;">
-      These hotspot regions were <strong>strategically arranged</strong> to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.
+  <!-- Section Title -->
+  <h3 style="margin-top: 0;">System Architecture & Mechanical Integration</h3>
+
+  <!-- First Image (Full Width) -->
+  <div>
+    <img src="final assembly.png" alt="Final Assembly" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
+      Final mechanical assembly showing thermal integration with component zones.
     </p>
   </div>
 
-  <!-- Image Column (Right) -->
-  <div style="flex: 1 1 50%; display: flex; flex-direction: column; gap: 20px;">
-    <div>
-      <img src="final assembly.png" alt="Final Assembly" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-        Final mechanical assembly showing thermal integration with component zones.
+  <!-- Two Column Layout -->
+  <div style="display: flex; align-items: flex-start; gap: 40px; margin-top: 20px;">
+
+    <!-- Text Column (Left) -->
+    <div style="flex: 1 1 50%;">
+      <p style="line-height: 1.6;">
+        The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics.
+      </p>
+      <p style="line-height: 1.6;">
+        Components with a primary <strong>junction–case–ambient</strong> thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate. Conversely, components with a <strong>junction–board</strong> thermal path were placed on the bottom side in thermally active zones.
+      </p>
+      <p style="line-height: 1.6;">
+        These hotspot regions were <strong>strategically arranged</strong> to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.
       </p>
     </div>
-    <div>
+
+    <!-- Second Image (Right) -->
+    <div style="flex: 1 1 50%;">
       <img src="final assembly exploded views.png" alt="Exploded View" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
         Exploded view highlighting stacked assembly with thermal paths and contacts.
       </p>
     </div>
+
   </div>
 </div>
 
