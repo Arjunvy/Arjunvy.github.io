@@ -5,30 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arjun Yeravdekar | Mechanical Engineer</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
     body {
       margin: 0;
       padding: 0;
-      background-color: #1e1f26; /* dark slate */
+      background-color: #1e1f26;
       color: #f0f0f0;
       font-family: 'Orbitron', sans-serif;
       line-height: 1.6;
     }
 
-    header {
-      background-color: #111;
+    .hero {
+      background: radial-gradient(ellipse at bottom, #1e1f26 0%, #0f0f13 100%);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 40px 20px;
-      border-bottom: 2px solid #3a3f47;
+      animation: fadeIn 2s ease-in;
     }
 
-    header h1 {
+    .hero h1 {
+      font-size: 3em;
       margin: 0;
-      font-size: 2.5em;
     }
 
-    header p {
-      font-size: 1.1em;
+    .hero p {
+      font-size: 1.2em;
       color: #aab;
+      margin-top: 10px;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid #4fc3f7;
+      white-space: nowrap;
+      animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+      font-size: 1.3em;
+      margin-top: 20px;
+      color: #4fc3f7;
+      max-width: 90%;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #4fc3f7; }
     }
 
     nav {
@@ -103,14 +131,20 @@
     .icon {
       margin-right: 8px;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
   </style>
 </head>
 <body>
 
-<header>
+<div class="hero">
   <h1>Arjun Yeravdekar</h1>
-  <p>Senior Mechanical Design Engineer | Expert in Module Packaging and Thermal Solutions</p>
-</header>
+  <p>Senior Mechanical Design Engineer</p>
+  <div class="typewriter">Expert in Thermal, Structural & IMU Packaging Solutions</div>
+</div>
 
 <nav>
   <button onclick="scrollToSection('about')">About</button>
