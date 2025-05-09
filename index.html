@@ -71,10 +71,27 @@
 
     .experience-entry {
       margin-bottom: 15px;
-      padding: 12px;
       border: 1px solid #1E88E5;
       background-color: #101B36;
       border-radius: 5px;
+    }
+
+    .experience-title {
+      cursor: pointer;
+      padding: 12px 16px;
+      font-weight: bold;
+      color: #E1F5FE;
+    }
+
+    .experience-title:hover {
+      background-color: #1A237E;
+    }
+
+    .experience-details {
+      display: none;
+      padding: 0 16px 16px 16px;
+      color: #BBDEFB;
+      border-top: 1px solid #1E88E5;
     }
 
     .skills-container {
@@ -125,13 +142,29 @@
   <h2>Experience</h2>
 
   <div class="experience-entry">
-    <strong>Analog Devices</strong> – Senior Mechanical Design Engineer<br>
-    Led IMU thermal packaging, vibration isolation, and structural design for defense-grade sensors.
+    <div class="experience-title" onclick="toggleDetails('exp1')">
+      Analog Devices – Senior Mechanical Design Engineer
+    </div>
+    <div class="experience-details" id="exp1">
+      <ul>
+        <li>Designed thermal architecture for aerospace-grade IMU modules.</li>
+        <li>Developed custom vibration isolators and package stress simulations using ANSYS.</li>
+        <li>Collaborated with PCB, electrical, and assembly teams to deliver robust mechanical designs.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="experience-entry">
-    <strong>Electrolux</strong> – CAE Analyst<br>
-    Simulated thermal behavior and vibration performance of consumer appliances using FEA tools.
+    <div class="experience-title" onclick="toggleDetails('exp2')">
+      Electrolux – CAE Analyst
+    </div>
+    <div class="experience-details" id="exp2">
+      <ul>
+        <li>Performed FEA simulations for thermal and structural integrity of kitchen appliances.</li>
+        <li>Optimized materials and design to reduce warpage and improve product reliability.</li>
+        <li>Worked closely with design teams to implement simulation-based design improvements.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -148,6 +181,13 @@
     <div class="skill-tag">Materials Selection</div>
   </div>
 </section>
+
+<script>
+  function toggleDetails(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "block" ? "none" : "block";
+  }
+</script>
 
 </body>
 </html>
