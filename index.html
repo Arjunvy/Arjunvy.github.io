@@ -183,6 +183,58 @@ The solution brought junction temperatures of all critical parts well below thei
 
 </div>
 
+<!-- Point 4: Thermal Simulation and Analysis -->
+<div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px; margin-top: 40px;">
+
+  <h3 style="font-size: 1.5em; margin-bottom: 20px;">Thermal Simulation and Analysis</h3>
+
+  <!-- Top Image Row -->
+  <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <div style="flex: 1 1 48%;">
+      <img src="sims boundary conditions.png" alt="Simulation showing boundary condition assignment" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Simulation showing boundary condition assignment</em></p>
+    </div>
+    <div style="flex: 1 1 48%;">
+      <img src="sims without thermal management.png" alt="Initial simulation without thermal management" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Initial simulation without thermal management</em></p>
+    </div>
+  </div>
+
+  <!-- Text Section -->
+  <div style="margin-top: 30px;">
+    <p style="line-height: 1.6; font-size: 16px;">
+      <strong>Thermal Simulation Approach and Validation:</strong>
+    </p>
+    <p style="line-height: 1.6; font-size: 16px;">
+      Thermal flux for components with a junction-to-case path was applied directly to the middle slab in the simplified model, ensuring accurate heat input at the source. For components with a junction-to-board path, thermal flux was assigned to corresponding surface outlines on the PCB. A dedicated surface was also created on the heatspreader plate to represent the FanSink interface, where thermal flux boundary conditions were applied.
+    </p>
+    <p style="line-height: 1.6; font-size: 16px;">
+      To simulate natural heat dissipation, a standard convective heat transfer coefficient was assigned to all exposed surfaces of the heatspreader and PCB. The simulation workflow was executed in three key stages:
+    </p>
+    <ul style="line-height: 1.6; font-size: 16px; padding-left: 20px;">
+      <li><strong>Stage 1:</strong> A baseline simulation was run without any thermal management to assess natural heat spreading and initial performance.</li>
+      <li><strong>Stage 2:</strong> A heatspreader with an attached FanSink was introduced, thermally coupled to key heat sources. This revealed hot spots caused by components with board-dominant thermal paths. Additional thermal contacts ("touchdowns") were added to these areas to improve heat distribution.</li>
+      <li><strong>Final Stage:</strong> With complete thermal management in place, simulation results showed a drastic temperature drop—from ~800°C to ~80°C—for high-power components.</li>
+    </ul>
+    <p style="line-height: 1.6; font-size: 16px;">
+      These simulation results were validated using thermocouple measurements at multiple board locations, confirming both the accuracy of the simulation and the effectiveness of the thermal solution.
+    </p>
+  </div>
+
+  <!-- Bottom Image Column -->
+  <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 30px;">
+    <div>
+      <img src="sims top view with heatsink.png" alt="Top view of thermal simulation with FanSink" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Top view of thermal simulation with FanSink</em></p>
+    </div>
+    <div>
+      <img src="sims top view.png" alt="Final top view showing reduced hot spots" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Final top view showing reduced hot spots</em></p>
+    </div>
+  </div>
+
+</div>
+
 
 <!-- Point 4: Thermal Simulation and Analysis -->
 <div style="margin-top: 40px;">
