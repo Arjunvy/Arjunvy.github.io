@@ -6,115 +6,102 @@
   <title>Arjun Yeravdekar | Mechanical Engineer</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #0A0F24;
-      color: #E1F5FE;
+      background-color: #1e1f26; /* dark slate */
+      color: #f0f0f0;
+      font-family: 'Orbitron', sans-serif;
       line-height: 1.6;
     }
 
     header {
-      background-color: #0D132A;
-      color: #E1F5FE;
+      background-color: #111;
       text-align: center;
       padding: 40px 20px;
-      border-bottom: 2px solid #1E88E5;
+      border-bottom: 2px solid #3a3f47;
     }
 
     header h1 {
-      font-size: 2.5em;
       margin: 0;
+      font-size: 2.5em;
     }
 
     header p {
-      margin-top: 10px;
       font-size: 1.1em;
-      color: #90CAF9;
+      color: #aab;
     }
 
     nav {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      border-bottom: 2px solid #3a3f47;
       padding: 20px;
-      background-color: #0D132A;
+      background-color: #111;
     }
 
     nav button {
-      background-color: transparent;
-      border: 1px solid #64B5F6;
-      color: #E1F5FE;
-      padding: 10px 18px;
-      margin: 0 8px;
-      font-size: 0.95em;
+      background-color: #1e1f26;
+      color: #f0f0f0;
+      border: 2px solid #4fc3f7;
+      padding: 10px 20px;
       cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.3s ease;
+      font-size: 1em;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav button:hover {
-      background-color: #1565C0;
-      border-color: #90CAF9;
+      background-color: #4fc3f7;
+      color: #1e1f26;
     }
 
     section {
-      padding: 30px 20px;
       max-width: 900px;
-      margin: auto;
+      margin: 40px auto;
+      padding: 20px;
+      border-left: 2px solid #4fc3f7;
+      border-right: 2px solid #4fc3f7;
+      border-radius: 8px;
     }
 
     h2 {
-      border-bottom: 2px solid #42A5F5;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      color: #BBDEFB;
+      color: #4fc3f7;
+      border-bottom: 1px dashed #4fc3f7;
+      padding-bottom: 5px;
     }
 
-    .experience-entry {
-      margin-bottom: 15px;
-      border: 1px solid #1E88E5;
-      background-color: #101B36;
-      border-radius: 5px;
-    }
-
-    .experience-title {
+    .exp-entry {
+      margin-top: 10px;
+      border: 1px solid #4fc3f7;
+      border-radius: 6px;
+      padding: 10px;
       cursor: pointer;
-      padding: 12px 16px;
-      font-weight: bold;
-      color: #E1F5FE;
+      background-color: #2c2f38;
     }
 
-    .experience-title:hover {
-      background-color: #1A237E;
+    .exp-entry:hover {
+      background-color: #34414d;
     }
 
-    .experience-details {
+    .exp-details {
       display: none;
-      padding: 0 16px 16px 16px;
-      color: #BBDEFB;
-      border-top: 1px solid #1E88E5;
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #ccc;
     }
 
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill-tag {
-      background-color: #1565C0;
-      color: #E3F2FD;
+    .skills span {
+      display: inline-block;
+      border: 1px solid #4fc3f7;
+      border-radius: 15px;
       padding: 8px 14px;
-      border-radius: 20px;
+      margin: 5px;
+      background-color: #2c2f38;
       font-size: 0.9em;
     }
 
-    a {
-      color: #64B5F6;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+    .icon {
+      margin-right: 8px;
     }
   </style>
 </head>
@@ -126,9 +113,9 @@
 </header>
 
 <nav>
-  <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">About</button>
-  <button onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'});">Experience</button>
-  <button onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth'});">Skills</button>
+  <button onclick="scrollToSection('about')">About</button>
+  <button onclick="scrollToSection('experience')">Experience</button>
+  <button onclick="scrollToSection('skills')">Skills</button>
 </nav>
 
 <section id="about">
@@ -141,51 +128,44 @@
 <section id="experience">
   <h2>Experience</h2>
 
-  <div class="experience-entry">
-    <div class="experience-title" onclick="toggleDetails('exp1')">
-      Analog Devices – Senior Mechanical Design Engineer
-    </div>
-    <div class="experience-details" id="exp1">
-      <ul>
-        <li>Designed thermal architecture for aerospace-grade IMU modules.</li>
-        <li>Developed custom vibration isolators and package stress simulations using ANSYS.</li>
-        <li>Collaborated with PCB, electrical, and assembly teams to deliver robust mechanical designs.</li>
-      </ul>
+  <div class="exp-entry" onclick="toggleDetails('exp1')">
+    <strong><span class="icon">🛰️</span>Analog Devices – Senior Mechanical Design Engineer</strong>
+    <div class="exp-details" id="exp1">
+      Led IMU packaging design for defense applications. Developed robust thermal solutions using ANSYS. Collaborated with electronics and manufacturing teams to optimize for performance, vibration resistance, and thermal reliability.
     </div>
   </div>
 
-  <div class="experience-entry">
-    <div class="experience-title" onclick="toggleDetails('exp2')">
-      Electrolux – CAE Analyst
-    </div>
-    <div class="experience-details" id="exp2">
-      <ul>
-        <li>Performed FEA simulations for thermal and structural integrity of kitchen appliances.</li>
-        <li>Optimized materials and design to reduce warpage and improve product reliability.</li>
-        <li>Worked closely with design teams to implement simulation-based design improvements.</li>
-      </ul>
+  <div class="exp-entry" onclick="toggleDetails('exp2')">
+    <strong><span class="icon">📐</span>Electrolux – CAE Analyst</strong>
+    <div class="exp-details" id="exp2">
+      Conducted structural and thermal FEA simulations. Supported new product development teams in evaluating plastic and metal part performance. Validated simulation models with experimental data and improved testing protocols.
     </div>
   </div>
+
 </section>
 
 <section id="skills">
   <h2>Skills</h2>
-  <div class="skills-container">
-    <div class="skill-tag">Thermal Simulation</div>
-    <div class="skill-tag">FEA</div>
-    <div class="skill-tag">IMU Packaging</div>
-    <div class="skill-tag">ANSYS</div>
-    <div class="skill-tag">Thermal Architecture</div>
-    <div class="skill-tag">SolidWorks</div>
-    <div class="skill-tag">Mechanical Design</div>
-    <div class="skill-tag">Materials Selection</div>
+  <div class="skills">
+    <span><span class="icon">🌡️</span>Thermal Simulation</span>
+    <span><span class="icon">📊</span>FEA</span>
+    <span><span class="icon">📦</span>IMU Packaging</span>
+    <span><span class="icon">⚙️</span>ANSYS</span>
+    <span><span class="icon">🧠</span>Thermal Architecture</span>
+    <span><span class="icon">🖥️</span>SolidWorks</span>
+    <span><span class="icon">🛠️</span>Mechanical Design</span>
+    <span><span class="icon">🔬</span>Materials Selection</span>
   </div>
 </section>
 
 <script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  }
+
   function toggleDetails(id) {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === "block" ? "none" : "block";
+    const section = document.getElementById(id);
+    section.style.display = section.style.display === 'block' ? 'none' : 'block';
   }
 </script>
 
