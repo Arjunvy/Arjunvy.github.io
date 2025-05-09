@@ -8,27 +8,85 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      background-color: #0a0f0d;
+      color: #e0e0e0;
       line-height: 1.6;
     }
     header {
-      background-color: #1a1a1a;
-      color: white;
-      text-align: center;
+      background: #0a0f0d;
+      border-bottom: 3px solid #33ff77;
       padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2em;
+      color: #33ff77;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: #88ffcc;
+      font-size: 1.1em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #001f1a;
+      padding: 15px 0;
+      border-top: 2px solid #33ff77;
+      border-bottom: 2px solid #33ff77;
+    }
+    nav button {
+      background-color: #003322;
+      border: 2px solid #33ff77;
+      border-radius: 8px;
+      padding: 10px 20px;
+      color: #33ff77;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav button:hover {
+      background-color: #004d33;
     }
     section {
-      padding: 30px 20px;
       max-width: 900px;
       margin: auto;
+      padding: 30px 20px;
+      background-color: #0a0f0d;
+      border-left: 2px dashed #33ff77;
+      border-right: 2px dashed #33ff77;
+      margin-top: 30px;
+      border-radius: 12px;
     }
-    h1, h2 {
-      margin-top: 0;
+    h2 {
+      color: #33ff77;
     }
-    .project img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 15px;
+    .experience-item {
+      background-color: #001f1a;
+      border: 1px solid #33ff77;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .experience-details {
+      display: none;
+      padding-top: 10px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+    }
+    .skill-chip {
+      background-color: #003322;
+      color: #33ff77;
+      padding: 10px;
+      border: 1px solid #33ff77;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -36,8 +94,15 @@
 
 <header>
   <h1>Arjun Yeravdekar</h1>
-  <p>Senior Mechanical Design Engineer | Expert in IMU Packaging & Thermal Design</p>
+  <p>Senior Mechanical Design Engineer</p>
+  <p>Expert in Module Packaging and Thermal Solutions</p>
 </header>
+
+<nav>
+  <button onclick="scrollToSection('about')">About</button>
+  <button onclick="scrollToSection('experience')">Experience</button>
+  <button onclick="scrollToSection('skills')">Skills</button>
+</nav>
 
 <section id="about">
   <h2>About Me</h2>
@@ -46,192 +111,48 @@
   </p>
 </section>
 
-<section id="project">
-  <h2>Thermal Architecture for High-Power Phased-Array/RADAR/EW/SATCOM Development Platform</h2>
+<section id="experience">
+  <h2>Experience</h2>
 
-  <!-- Summary -->
-  <p>
-    Designed the thermal management system for a densely populated 16-layer board dissipating 340W of power. Of this, 200W was concentrated in four critical components, while the remaining heat was spread across numerous devices placed throughout the board.
-
-Due to non-standard package geometries, direct mounting of FanSinks onto the components wasn’t feasible. I developed a board-wide thermal solution involving a large custom heatspreader plate with FanSinks mounted on top. The plate was supported by strategically placed standoffs that made thermal contact with high-power zones on the PCB.
-
-To enable efficient conduction, thermal interfaces were created between the heatspreader plate and the critical components. For components with low junction-to-board thermal resistance, the PCB itself acted as the primary path for heat transfer, conducting heat to the heatspreader touchdowns. This hybrid cooling approach combined direct conduction and forced-air methods to effectively manage heat across the board.
-
-The solution brought junction temperatures of all critical parts well below their maximum rated limits while maintaining form factor and acoustic targets — enabling stable, high-performance operation for phased-array, RADAR, EW, and SATCOM applications.
-  </p>
-<!-- Main Wrapper -->
-<!-- System Architecture & Mechanical Integration Section -->
-<div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
-
-  <!-- Section Title -->
-  <h3 style="margin-top: 0;">System Architecture & Mechanical Integration</h3>
-
-  <!-- First Image (Full Width) -->
-  <div>
-    <img src="final assembly.png" alt="Final Assembly" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-      Final mechanical assembly showing thermal integration with component zones.
-    </p>
-  </div>
-
-  <!-- Two Column Layout -->
-  <div style="display: flex; align-items: flex-start; gap: 40px; margin-top: 20px;">
-
-    <!-- Text Column (Left) -->
-    <div style="flex: 1 1 50%;">
-      <p style="line-height: 1.6;">
-        The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics.
-      </p>
-      <p style="line-height: 1.6;">
-        Components with a primary <strong>junction–case–ambient</strong> thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate. Conversely, components with a <strong>junction–board</strong> thermal path were placed on the bottom side in thermally active zones.
-      </p>
-      <p style="line-height: 1.6;">
-        These hotspot regions were <strong>strategically arranged</strong> to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.
-      </p>
-    </div>
-
-    <!-- Second Image (Right) -->
-    <div style="flex: 1 1 50%;">
-      <img src="final assembly exploded views.png" alt="Exploded View" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-        Exploded view highlighting stacked assembly.
-      </p>
-    </div>
-
-  </div>
-</div>
-
-
-
-<!-- Thermal Management Section -->
-<div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
-
-  <h3 style="margin-top: 40px;">Thermal Management Strategy</h3>
-
-  <p style="line-height: 1.6; font-size: 16px;">
-    The first stage of thermal management focused on designing the heatspreader plate and selecting an appropriate FanSink. A 1D thermal resistance network was developed to model the primary thermal path—junction to case—of the critical components. This path was segmented into three slabs:
-  </p>
-
-  <div style="text-align: center; margin: 20px 0;">
-    <img src="Cross section thermal resistance network.png" alt="Thermal Resistance Network" style="width: 100%; max-width: 700px; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-      Cross-sectional schematic representing the 1D thermal resistance network.
-    </p>
-  </div>
-
-  <ul style="line-height: 1.6; font-size: 16px; padding-left: 20px;">
-    <li><strong>The top slab</strong> represented the <em>junction-to-case thermal resistance</em>.</li>
-    <li><strong>The middle slab</strong> represented the <em>heat source</em>, and copper was selected here due to its low thermal resistance, ensuring efficient heat spreading.</li>
-    <li><strong>The bottom slab</strong> accounted for the <em>thermal resistance from junction to board</em>.</li>
-  </ul>
-
-  <p style="line-height: 1.6; font-size: 16px;">
-    This thermal resistance network was instrumental in calculating the required thermal resistance for the FanSink. Four critical components, collectively dissipating 200W of heat, drove the thermal design. The FanSink was selected based on its thermal performance, footprint compatibility, and fan voltage specifications.
-  </p>
-
-  <p style="line-height: 1.6; font-size: 16px;">
-    For components where the primary thermal path is junction-to-board, the thermal power was applied as a boundary condition on the corresponding board surface, represented as an outline in the thermal model. This approach ensured accurate representation of heat flow paths in the simulation, contributing to reliable temperature predictions and robust thermal solution design.
-  </p>
-
-</div>
-
-
-
-<!-- Point 3: Design Simplification for Simulation -->
-<div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
-
-  <h3 style="margin-top: 30px;">Design Simplification for Simulation</h3>
-
-  <!-- Top row with 2 images -->
-  <div style="display: flex; gap: 20px; margin-top: 10px;">
-    <div style="flex: 1;">
-      <img src="simplified final assembly.png" alt="Simplified final assembly showing slab representations for junction-to-case components." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-        Simplified final assembly showing slab representations for junction-to-case components.
-      </p>
-    </div>
-    <div style="flex: 1;">
-      <img src="simplified final assembly back view.png" alt="Back view of the simplified assembly highlighting the geometry reduction approach." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-        Back view of the simplified assembly highlighting the geometry reduction approach.
-      </p>
+  <div class="experience-item" onclick="toggleDetails(this)">
+    Analog Devices – Senior Mechanical Design Engineer
+    <div class="experience-details">
+      <p>Led design and packaging for high-performance IMUs. Specialized in vibration isolation and thermal modeling for defense and aerospace-grade modules.</p>
     </div>
   </div>
 
-  <!-- Text content -->
-  <div style="margin-top: 20px;">
-    <p style="line-height: 1.6; font-size: 16px;">
-      To enable efficient simulation, key design simplifications were implemented to reduce computational cost, improve meshing robustness, and streamline parametric and optimization studies. As demonstrated in earlier sections, all components with a primary junction-to-case thermal path were modeled using simplified slab geometries that preserve the critical heat transfer characteristics. In contrast, components with junction-to-board thermal paths were represented as surface outlines on the PCB to capture boundary heat flux without introducing unnecessary model complexity. These simplifications ensured the simulation remained focused on the key thermal physics while maintaining accuracy and scalability.
-    </p>
-  </div>
-
-  <!-- Bottom images in column -->
-  <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
-    <div>
-      <img src="simplified final assembly front view.png" alt="Front view of the slab-based thermal model representing key heat paths." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-        Front view of the slab-based thermal model representing key heat paths.
-      </p>
-    </div>
-    <div>
-      <img src="sims showing simplified geometry.png" alt="Simulation view illustrating simplified slab-based thermal model representing key heat paths." style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
-        Simulation view illustrating simplified slab-based thermal model representing key heat paths.
-      </p>
+  <div class="experience-item" onclick="toggleDetails(this)">
+    Electrolux – CAE Engineer
+    <div class="experience-details">
+      <p>Executed thermal and structural simulations for white goods. Focused on CFD and structural robustness in product design cycles.</p>
     </div>
   </div>
+</section>
 
-</div>
-
-<!-- Point 4: Thermal Simulation and Analysis -->
-<div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px; margin-top: 40px;">
-
-  <h3 style="margin-top: 30px;">Thermal Simulation and Analysis</h3>
-
-  <!-- Top Image Row -->
-  <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-    <div style="flex: 1 1 48%;">
-      <img src="sims boundary conditions.png" alt="Simulation showing boundary condition assignment" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Simulation showing boundary condition assignment</em></p>
-    </div>
-    <div style="flex: 1 1 48%;">
-      <img src="sims without thermal management.png" alt="Initial simulation without thermal management" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Initial simulation without thermal management</em></p>
-    </div>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-chip">Thermal Simulation</div>
+    <div class="skill-chip">FEA (ANSYS)</div>
+    <div class="skill-chip">IMU Packaging</div>
+    <div class="skill-chip">CAD (SolidWorks)</div>
+    <div class="skill-chip">DFM & DFA</div>
+    <div class="skill-chip">Vibration Isolation</div>
+    <div class="skill-chip">Material Selection</div>
+    <div class="skill-chip">MIL-STD Testing</div>
   </div>
+</section>
 
-  <!-- Text Section -->
-  <div style="margin-top: 30px;">
-    <p style="line-height: 1.6; font-size: 16px;">
-    </p>
-    <p style="line-height: 1.6; font-size: 16px;">
-      Thermal flux for components with a junction-to-case path was applied directly to the middle slab in the simplified model, ensuring accurate heat input at the source. For components with a junction-to-board path, thermal flux was assigned to corresponding surface outlines on the PCB. A dedicated surface was also created on the heatspreader plate to represent the FanSink interface, where thermal flux boundary conditions were applied.
-    </p>
-    <p style="line-height: 1.6; font-size: 16px;">
-      To simulate natural heat dissipation, a standard convective heat transfer coefficient was assigned to all exposed surfaces of the heatspreader and PCB. The simulation workflow was executed in three key stages:
-    </p>
-    <ul style="line-height: 1.6; font-size: 16px; padding-left: 20px;">
-      <li><strong>Stage 1:</strong> A baseline simulation was run without any thermal management to assess natural heat spreading and initial performance.</li>
-      <li><strong>Stage 2:</strong> A heatspreader with an attached FanSink was introduced, thermally coupled to key heat sources. This revealed hot spots caused by components with board-dominant thermal paths. Additional thermal contacts ("touchdowns") were added to these areas to improve heat distribution.</li>
-      <li><strong>Final Stage:</strong> With complete thermal management in place, simulation results showed a drastic temperature drop—from ~800°C to ~80°C—for high-power components.</li>
-    </ul>
-    <p style="line-height: 1.6; font-size: 16px;">
-      These simulation results were validated using thermocouple measurements at multiple board locations, confirming both the accuracy of the simulation and the effectiveness of the thermal solution.
-    </p>
-  </div>
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
 
-  <!-- Bottom Image Column -->
-  <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 30px;">
-    <div>
-      <img src="sims top view with heatsink.png" alt="Top view of thermal simulation with FanSink" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Top view of thermal simulation with FanSink</em></p>
-    </div>
-    <div>
-      <img src="sims top view.png" alt="Final top view showing reduced hot spots" style="width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-      <p style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;"><em>Final top view showing reduced hot spots</em></p>
-    </div>
-  </div>
+  function toggleDetails(element) {
+    const details = element.querySelector('.experience-details');
+    details.style.display = details.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
 
-</div>
-
-
+</body>
+</html>
