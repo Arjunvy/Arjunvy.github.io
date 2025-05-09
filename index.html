@@ -8,15 +8,19 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #0a0f0d;
-      color: #e0e0e0;
+      background-color: #043927;
+      background-image: radial-gradient(#025e35 1px, transparent 1px),
+                        radial-gradient(#025e35 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      color: #e0ffe0;
       line-height: 1.6;
     }
     header {
-      background: #0a0f0d;
-      border-bottom: 3px solid #33ff77;
-      padding: 40px 20px;
       text-align: center;
+      padding: 40px 20px;
+      background-color: #021f12;
+      border-bottom: 3px solid #33ff77;
     }
     header h1 {
       font-size: 2em;
@@ -24,36 +28,40 @@
       margin-bottom: 10px;
     }
     header p {
-      color: #88ffcc;
+      color: #b2ffb2;
       font-size: 1.1em;
     }
+
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
-      background-color: #001f1a;
+      background-color: #021f12;
       padding: 15px 0;
       border-top: 2px solid #33ff77;
       border-bottom: 2px solid #33ff77;
     }
     nav button {
-      background-color: #003322;
+      background-color: #000;
       border: 2px solid #33ff77;
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 10px 20px;
       color: #33ff77;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
+      box-shadow: 2px 2px 6px #000;
+      transition: background 0.3s, transform 0.2s;
     }
     nav button:hover {
-      background-color: #004d33;
+      background-color: #111;
+      transform: translateY(-2px);
     }
+
     section {
       max-width: 900px;
       margin: auto;
       padding: 30px 20px;
-      background-color: #0a0f0d;
+      background-color: rgba(0, 0, 0, 0.7);
       border-left: 2px dashed #33ff77;
       border-right: 2px dashed #33ff77;
       margin-top: 30px;
@@ -62,97 +70,10 @@
     h2 {
       color: #33ff77;
     }
+
     .experience-item {
       background-color: #001f1a;
       border: 1px solid #33ff77;
       padding: 15px;
       border-radius: 8px;
       margin-top: 10px;
-      cursor: pointer;
-    }
-    .experience-details {
-      display: none;
-      padding-top: 10px;
-    }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-    }
-    .skill-chip {
-      background-color: #003322;
-      color: #33ff77;
-      padding: 10px;
-      border: 1px solid #33ff77;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Arjun Yeravdekar</h1>
-  <p>Senior Mechanical Design Engineer</p>
-  <p>Expert in Module Packaging and Thermal Solutions</p>
-</header>
-
-<nav>
-  <button onclick="scrollToSection('about')">About</button>
-  <button onclick="scrollToSection('experience')">Experience</button>
-  <button onclick="scrollToSection('skills')">Skills</button>
-</nav>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am a mechanical engineer with a strong foundation in packaging, thermal design, and FEA simulations. With hands-on experience in aerospace and defense projects, I specialize in solving high-complexity thermal and structural challenges in IMUs and high-speed electronics. I focus on creating reliable, production-ready solutions that perform under demanding conditions.
-  </p>
-</section>
-
-<section id="experience">
-  <h2>Experience</h2>
-
-  <div class="experience-item" onclick="toggleDetails(this)">
-    Analog Devices – Senior Mechanical Design Engineer
-    <div class="experience-details">
-      <p>Led design and packaging for high-performance IMUs. Specialized in vibration isolation and thermal modeling for defense and aerospace-grade modules.</p>
-    </div>
-  </div>
-
-  <div class="experience-item" onclick="toggleDetails(this)">
-    Electrolux – CAE Engineer
-    <div class="experience-details">
-      <p>Executed thermal and structural simulations for white goods. Focused on CFD and structural robustness in product design cycles.</p>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-chip">Thermal Simulation</div>
-    <div class="skill-chip">FEA (ANSYS)</div>
-    <div class="skill-chip">IMU Packaging</div>
-    <div class="skill-chip">CAD (SolidWorks)</div>
-    <div class="skill-chip">DFM & DFA</div>
-    <div class="skill-chip">Vibration Isolation</div>
-    <div class="skill-chip">Material Selection</div>
-    <div class="skill-chip">MIL-STD Testing</div>
-  </div>
-</section>
-
-<script>
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function toggleDetails(element) {
-    const details = element.querySelector('.experience-details');
-    details.style.display = details.style.display === 'block' ? 'none' : 'block';
-  }
-</script>
-
-</body>
-</html>
