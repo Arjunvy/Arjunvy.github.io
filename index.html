@@ -8,89 +8,96 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background-color: #121212;
-      color: #e0e0e0;
+      padding: 0;
+      background-color: #0A0F24;
+      color: #E1F5FE;
+      line-height: 1.6;
     }
+
     header {
-      background-color: #1a1a1a;
-      padding: 40px 20px;
+      background-color: #0D132A;
+      color: #E1F5FE;
       text-align: center;
-      border-bottom: 2px solid #00bfff;
+      padding: 40px 20px;
+      border-bottom: 2px solid #1E88E5;
     }
+
     header h1 {
       font-size: 2.5em;
       margin: 0;
-      color: #ffffff;
     }
+
     header p {
-      font-size: 1.1em;
       margin-top: 10px;
-      color: #bbbbbb;
+      font-size: 1.1em;
+      color: #90CAF9;
     }
+
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background-color: #1a1a1a;
-      padding: 15px 0;
-      border-bottom: 1px solid #00bfff;
+      text-align: center;
+      padding: 20px;
+      background-color: #0D132A;
     }
+
     nav button {
-      background-color: #000000;
-      color: #e0e0e0;
-      border: 1px solid #00bfff;
-      padding: 10px 20px;
-      border-radius: 5px;
+      background-color: transparent;
+      border: 1px solid #64B5F6;
+      color: #E1F5FE;
+      padding: 10px 18px;
+      margin: 0 8px;
+      font-size: 0.95em;
       cursor: pointer;
-      font-weight: bold;
+      border-radius: 6px;
       transition: all 0.3s ease;
     }
+
     nav button:hover {
-      background-color: #00bfff;
-      color: #000;
+      background-color: #1565C0;
+      border-color: #90CAF9;
     }
+
     section {
-      padding: 40px 20px;
+      padding: 30px 20px;
       max-width: 900px;
       margin: auto;
     }
+
     h2 {
-      color: #00bfff;
-      border-bottom: 1px solid #00bfff;
-      padding-bottom: 10px;
-    }
-    .experience-item {
+      border-bottom: 2px solid #42A5F5;
+      padding-bottom: 8px;
       margin-bottom: 20px;
+      color: #BBDEFB;
     }
-    .experience-title {
-      cursor: pointer;
-      font-weight: bold;
-      background-color: #0a0a0a;
-      color: #e0e0e0;
-      padding: 10px;
-      border: 1px solid #00bfff;
-      border-radius: 4px;
+
+    .experience-entry {
+      margin-bottom: 15px;
+      padding: 12px;
+      border: 1px solid #1E88E5;
+      background-color: #101B36;
+      border-radius: 5px;
     }
-    .experience-details {
-      display: none;
-      padding: 10px;
-      background-color: #1e1e1e;
-      border: 1px solid #00bfff;
-      margin-top: 10px;
-      border-radius: 4px;
-    }
+
     .skills-container {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
-    .skill-chip {
-      background-color: #000000;
-      border: 1px solid #00bfff;
-      padding: 10px 15px;
+
+    .skill-tag {
+      background-color: #1565C0;
+      color: #E3F2FD;
+      padding: 8px 14px;
       border-radius: 20px;
-      color: #e0e0e0;
       font-size: 0.9em;
+    }
+
+    a {
+      color: #64B5F6;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -102,9 +109,9 @@
 </header>
 
 <nav>
-  <button onclick="scrollToSection('about')">About</button>
-  <button onclick="scrollToSection('experience')">Experience</button>
-  <button onclick="scrollToSection('skills')">Skills</button>
+  <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">About</button>
+  <button onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'});">Experience</button>
+  <button onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth'});">Skills</button>
 </nav>
 
 <section id="about">
@@ -117,46 +124,30 @@
 <section id="experience">
   <h2>Experience</h2>
 
-  <div class="experience-item">
-    <div class="experience-title" onclick="toggleDetails('exp1')">Analog Devices – Senior Mechanical Design Engineer</div>
-    <div id="exp1" class="experience-details">
-      <p>Lead packaging and thermal design for advanced IMU modules. Delivered passive and active cooling solutions for aerospace and defense-grade systems. Collaborated cross-functionally with electrical, layout, and reliability teams.</p>
-    </div>
+  <div class="experience-entry">
+    <strong>Analog Devices</strong> – Senior Mechanical Design Engineer<br>
+    Led IMU thermal packaging, vibration isolation, and structural design for defense-grade sensors.
   </div>
 
-  <div class="experience-item">
-    <div class="experience-title" onclick="toggleDetails('exp2')">Electrolux – CAE Analyst</div>
-    <div id="exp2" class="experience-details">
-      <p>Conducted modal, vibration, and thermal simulations for white goods. Drove design improvements across compressor and evaporator systems using ANSYS and MATLAB-based tools.</p>
-    </div>
+  <div class="experience-entry">
+    <strong>Electrolux</strong> – CAE Analyst<br>
+    Simulated thermal behavior and vibration performance of consumer appliances using FEA tools.
   </div>
-
 </section>
 
 <section id="skills">
   <h2>Skills</h2>
   <div class="skills-container">
-    <div class="skill-chip">Thermal Simulation</div>
-    <div class="skill-chip">FEA</div>
-    <div class="skill-chip">IMU Packaging</div>
-    <div class="skill-chip">ANSYS</div>
-    <div class="skill-chip">Thermal Architecture</div>
-    <div class="skill-chip">SolidWorks</div>
-    <div class="skill-chip">Mechanical Design</div>
-    <div class="skill-chip">Materials Selection</div>
+    <div class="skill-tag">Thermal Simulation</div>
+    <div class="skill-tag">FEA</div>
+    <div class="skill-tag">IMU Packaging</div>
+    <div class="skill-tag">ANSYS</div>
+    <div class="skill-tag">Thermal Architecture</div>
+    <div class="skill-tag">SolidWorks</div>
+    <div class="skill-tag">Mechanical Design</div>
+    <div class="skill-tag">Materials Selection</div>
   </div>
 </section>
-
-<script>
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function toggleDetails(id) {
-    const section = document.getElementById(id);
-    section.style.display = section.style.display === 'block' ? 'none' : 'block';
-  }
-</script>
 
 </body>
 </html>
