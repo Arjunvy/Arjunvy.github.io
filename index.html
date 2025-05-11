@@ -10,46 +10,34 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background-color: #1a1a1a;
-      color: #ffffff;
     }
-
     header {
-      background-color: #111;
+      background-color: #1a1a1a;
+      color: white;
       text-align: center;
       padding: 40px 20px;
     }
-
     section {
       padding: 30px 20px;
       max-width: 900px;
       margin: auto;
     }
-
     h1, h2 {
       margin-top: 0;
-      color: #4fc3f7;
     }
-
-    .exp-entry {
-      background-color: #2b2b2b;
-      border: 1px solid #4fc3f7;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    .project img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
     }
-
-    .exp-entry:hover {
-      background-color: #333;
-    }
-
     .exp-details {
       display: none;
       margin-top: 10px;
-      font-size: 0.95em;
-      color: #dddddd;
+      color: #555;
+    }
+    .exp-entry {
+      cursor: pointer;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -73,32 +61,22 @@
   <div class="exp-entry" onclick="toggleDetails('exp1')">
     <strong>🛰️ Analog Devices – Sr. Mechanical Design Engineer</strong>
     <div class="exp-details" id="exp1">
-      <ul>
-        <li>Led packaging of IMUs for defense-grade performance.</li>
-        <li>Designed thermal solutions for space-constrained electronics.</li>
-        <li>Developed vibration-isolated designs using ANSYS and SolidWorks.</li>
-        <li>Collaborated with electrical and systems teams to deliver robust, manufacturable solutions.</li>
-      </ul>
+      Led packaging of IMUs for defense-grade performance. Delivered thermal and vibration-isolated designs using ANSYS and SolidWorks.
     </div>
   </div>
 
   <div class="exp-entry" onclick="toggleDetails('exp2')">
     <strong>📐 Electrolux – CAE Analyst</strong>
     <div class="exp-details" id="exp2">
-      <ul>
-        <li>Performed FEA for plastic and sheet metal parts across various appliances.</li>
-        <li>Ran thermal and structural simulations to validate early design concepts.</li>
-        <li>Worked with design and testing teams to reduce failure rates.</li>
-        <li>Documented best practices and built internal simulation libraries.</li>
-      </ul>
+      Handled FEA for plastic and sheet metal designs. Supported product development with simulation validation and mechanical testing.
     </div>
   </div>
 </section>
 
 <script>
   function toggleDetails(id) {
-    const details = document.getElementById(id);
-    details.style.display = (details.style.display === 'block') ? 'none' : 'block';
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
   }
 </script>
 
