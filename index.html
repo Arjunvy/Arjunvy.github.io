@@ -270,7 +270,26 @@ The solution brought junction temperatures of all critical parts well below thei
   <div class="exp-entry" onclick="toggleDetails('exp2')">
     <strong>📐 MECHANICAL LEAD: IMU Development (Aerospace and Defense) </strong>
     <div class="exp-details" id="exp2">
-      Handled FEA for plastic and sheet metal designs. Supported product development with simulation validation and mechanical testing.
+      Modal Performance & FEA-Based Design Strategy
+MEMS sensors are inherently sensitive to vibration due to the presence of an internal moving mass. When the resonant frequency of this moving mass overlaps with the natural frequencies (modal modes) of the sensor package or the PCB, it can result in undesirable interactions—leading to degraded sensor performance or erroneous outputs.
+
+To mitigate this, we adopt a frequency-aware design approach early in the development cycle:
+
+Frequency Planning During Architecture Phase: Modal analysis is performed during the concept stage using FEA to identify a design architecture that minimizes coupling between the MEMS resonances and the package or board modes. This includes optimizing the sensor placement, package geometry, and mounting method.
+
+Suspended Edge-Mounting: While suspending the PCB along its edges helps isolate the MEMS from package-level vibration modes, it introduces multiple PCB modes of its own. Therefore, we carefully evaluate how these board modes interact with the MEMS.
+
+Parameterization and Optimization: Key design parameters—such as PCB thickness, footprint, and mounting stiffness—are iteratively adjusted in simulation until we establish a “safe frequency band” that avoids any overlaps with the MEMS frequency range.
+
+Robustness Across Variations: Since MEMS resonant frequency can vary due to manufacturing tolerances, assembly stresses, and temperature changes, we ensure the modal isolation holds over the full expected variation range.
+
+Prototype Validation: We validate FEA results by building CNC-machined modules and conducting modal tests across temperature ranges to correlate simulations with empirical data.
+
+Legacy Module Improvement: For legacy modules experiencing modal issues, we’ve successfully diagnosed the root causes through in-house test setups and FEA, and implemented package design changes to eliminate the modal coupling—validated by physical testing.
+
+Modal design is a critical aspect of IMU packaging and is often a gatekeeper for product qualification. A robust modal design strategy ensures consistent sensor output across environmental conditions and directly contributes to field reliability.
+
+
     </div>
   </div>
 </section>
