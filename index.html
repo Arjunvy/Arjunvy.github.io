@@ -299,10 +299,13 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </script>
 
-<!-- Scene 1: Original MEMS Shaky -->
+<!-- Scene 1: Shaky MEMS -->
 <div id="scene1" class="scene visible">
   <h2>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</h2>
-  <div class="imu"></div>
+  <div class="imu labeled">
+    <span class="label mems-label">MEMS Mass</span>
+    <span class="label imu-label">IMU Package</span>
+  </div>
   <div class="nav-buttons">
     <button class="next-modal-btn" data-next="scene2">Next</button>
   </div>
@@ -312,8 +315,12 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 <div id="scene2" class="scene">
   <h2>Board Trampolining with MEMS</h2>
   <div class="board-container">
+    <div class="label board-label">PCB Board</div>
     <div class="board">
-      <div class="mems"></div>
+      <div class="label imu-label-board">IMU Package</div>
+      <div class="mems">
+        <span class="label mems-label-board">MEMS Mass</span>
+      </div>
     </div>
   </div>
   <div class="nav-buttons">
@@ -322,12 +329,31 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   </div>
 </div>
 
-<!-- Optional Scene 3 Placeholder -->
+<!-- Scene 3: Fixed Board, Isolated MEMS -->
 <div id="scene3" class="scene">
-  <h2>Scene 3 (Placeholder)</h2>
-  <p>Add more content here...</p>
+  <h2>Board is Fixed, MEMS is Isolated and Stable</h2>
+  <div class="board-container">
+    <div class="label board-label">PCB Board</div>
+    <div class="label fixed-label">Board Fixed</div>
+    <div class="board fixed-board">
+      <div class="label imu-label-board">IMU Package</div>
+      <div class="mems isolated-mems">
+        <span class="label mems-label-board">MEMS Mass</span>
+      </div>
+    </div>
+  </div>
   <div class="nav-buttons">
     <button class="back-modal-btn" data-back="scene2">Back</button>
+    <button class="next-modal-btn" data-next="scene4">Next</button>
+  </div>
+</div>
+
+<!-- Optional Scene 4 -->
+<div id="scene4" class="scene">
+  <h2>Scene 4 (Placeholder)</h2>
+  <p>Add more content here...</p>
+  <div class="nav-buttons">
+    <button class="back-modal-btn" data-back="scene3">Back</button>
   </div>
 </div>
 
@@ -357,11 +383,10 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     transform: translateY(0);
   }
 
-  /* Scene 1 - Shaky MEMS */
   .imu {
     width: 100px;
     height: 100px;
-    background: #1e88e5;
+    background: #ccc;
     border-radius: 20px;
     position: relative;
     animation: bounce 2s infinite;
@@ -375,7 +400,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     top: 20px;
     width: 20px;
     height: 20px;
-    background: white;
+    background: #1e88e5;
     border-radius: 50%;
   }
 
@@ -387,7 +412,6 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     50% { transform: translateY(-15px); }
   }
 
-  /* Scene 2 - Trampoline Board */
   .board-container {
     width: 300px;
     height: 300px;
@@ -407,10 +431,13 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     transform: translate(-50%, -50%);
     transform-origin: center;
     border: 2px solid #444;
+  }
+
+  .board:not(.fixed-board) {
     animation: trampoline 1.5s infinite ease-in-out;
   }
 
-  .board .mems {
+  .mems {
     width: 40px;
     height: 40px;
     background: #1e88e5;
@@ -418,7 +445,14 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     position: absolute;
     top: 80px;
     left: 80px;
+  }
+
+  .board:not(.fixed-board) .mems {
     animation: mems-bounce 1.5s infinite ease-in-out;
+  }
+
+  .fixed-board .isolated-mems {
+    animation: isolated-mems-bounce 1.5s infinite ease-in-out;
   }
 
   @keyframes trampoline {
@@ -439,6 +473,58 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     }
   }
 
+  @keyframes isolated-mems-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Labels */
+  .label {
+    position: absolute;
+    font-size: 12px;
+    background: rgba(255,255,255,0.8);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #000;
+    pointer-events: none;
+  }
+
+  .mems-label {
+    top: -10px;
+    left: 10px;
+  }
+
+  .imu-label {
+    bottom: -20px;
+    left: 10px;
+  }
+
+  .board-label {
+    top: 0;
+    left: 10px;
+  }
+
+  .fixed-label {
+    top: 0;
+    right: 10px;
+    color: green;
+  }
+
+  .mems-label-board {
+    top: -15px;
+    left: 0;
+  }
+
+  .imu-label-board {
+    top: -15px;
+    left: 60px;
+  }
+
   /* Nav Buttons */
   .nav-buttons {
     margin-top: 1rem;
@@ -454,11 +540,6 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     border: none;
     border-radius: 6px;
     cursor: pointer;
-  }
-
-  .next-modal-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
   }
 </style>
 
