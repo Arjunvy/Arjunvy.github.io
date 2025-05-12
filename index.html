@@ -288,9 +288,6 @@ Prototype Validation: We validate FEA results by building CNC-machined modules a
 Legacy Module Improvement: For legacy modules experiencing modal issues, we’ve successfully diagnosed the root causes through in-house test setups and FEA, and implemented package design changes to eliminate the modal coupling—validated by physical testing.
 
 Modal design is a critical aspect of IMU packaging and is often a gatekeeper for product qualification. A robust modal design strategy ensures consistent sensor output across environmental conditions and directly contributes to field reliability.
-
-
-
     </div>
   </div>
 </section>
@@ -301,6 +298,159 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     el.style.display = (el.style.display === 'block') ? 'none' : 'block';
   }
 </script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IMU Scroll Animation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e1116;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .scene {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .scene.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .imu {
+      width: 100px;
+      height: 100px;
+      background: #1e88e5;
+      border-radius: 20px;
+      position: relative;
+      animation: bounce 2s infinite;
+      margin: 1rem 0;
+    }
+
+    .imu::before, .imu::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .imu::before { left: 20px; }
+    .imu::after { right: 20px; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .shake {
+      animation: shake 0.3s infinite;
+      background-color: #e53935;
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(-4deg); }
+      50% { transform: rotate(4deg); }
+      100% { transform: rotate(-4deg); }
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #00e5ff;
+    }
+
+    .split-screen {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .box {
+      padding: 1.5rem;
+      border: 2px dashed #888;
+      width: 200px;
+    }
+
+    .good { border-color: #00e676; }
+    .bad { border-color: #ff1744; }
+  </style>
+</head>
+<body>
+
+  <div class="scene" id="scene1">
+    <div class="section-title">Meet the IMU</div>
+    <div class="imu"></div>
+    <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
+  </div>
+
+  <div class="scene" id="scene2">
+    <div class="section-title">The Problem</div>
+    <div class="imu shake"></div>
+    <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
+  </div>
+
+  <div class="scene" id="scene3">
+    <div class="section-title">Engineer to the Rescue!</div>
+    <p>You design a smart package that isolates the IMU from vibration.</p>
+    <div class="imu"></div>
+  </div>
+
+  <div class="scene" id="scene4">
+    <div class="section-title">Design Choices</div>
+    <div class="split-screen">
+      <div class="box bad">
+        <strong>Rigid Mount</strong><br>
+        ❌ More vibration, unstable output
+      </div>
+      <div class="box good">
+        <strong>Suspended Design</strong><br>
+        ✅ Isolated IMU, stable results
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="scene5">
+    <div class="section-title">Simulate, Validate, Release</div>
+    <p>FEA helps avoid resonance overlap. You simulate, test, and validate!</p>
+  </div>
+
+  <script>
+    const scenes = document.querySelectorAll('.scene');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    scenes.forEach(scene => observer.observe(scene));
+  </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
