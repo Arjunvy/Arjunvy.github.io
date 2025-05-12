@@ -302,114 +302,106 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>MEMS Gyro Animation</title>
+  <meta charset="UTF-8">
+  <title>Top View MEMS Trampoline</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      background: #f0f0f0;
+      font-family: sans-serif;
       text-align: center;
     }
 
-    .scene {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-      min-height: 300px;
-    }
-
-    .scene.visible {
-      display: flex;
-    }
-
-    .mems-package, .imu-package, .mems-mass, .board {
+    .container {
       position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 40px auto;
+      background-color: #999; /* Grey IMU package */
+      border-radius: 10px;
+    }
+
+    .green-board {
+      position: absolute;
+      top: 60px;
+      left: 40px;
+      width: 220px;
+      height: 20px;
+      background-color: green;
+      animation: trampoline 1s ease-in-out infinite alternate;
+      transform-origin: left center;
+      z-index: 1;
+    }
+
+    @keyframes trampoline {
+      0% { transform: scaleY(1) translateY(0); }
+      100% { transform: scaleY(1.2) translateY(5px); }
+    }
+
+    .fixed-end {
+      position: absolute;
+      top: 60px;
+      width: 20px;
+      height: 20px;
+      background-color: green;
+      z-index: 2;
+    }
+
+    .fixed-left {
+      left: 20px;
+    }
+
+    .fixed-right {
+      right: 20px;
     }
 
     .mems-package {
-      width: 100px;
-      height: 100px;
-      background: #a0522d; /* brown */
-      border-radius: 12px;
-      margin: 1rem auto;
+      position: absolute;
+      top: 40px;
+      left: 90px;
+      width: 120px;
+      height: 120px;
+      background-color: sienna;
+      z-index: 3;
     }
 
-    .mems-mass {
-      width: 30px;
-      height: 30px;
-      background: #1e88e5; /* blue */
+    .blue-mass {
       position: absolute;
-      top: 35px;
-      left: 35px;
-      border-radius: 5px;
-      animation: mass-move 1s infinite ease-in-out;
+      top: 40px;
+      left: 40px;
+      width: 40px;
+      height: 40px;
+      background-color: deepskyblue;
+      animation: mass-move 1s ease-in-out infinite alternate;
     }
 
     @keyframes mass-move {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(10px); }
     }
 
-    .imu-package {
-      width: 200px;
-      height: 200px;
-      background: #888; /* grey */
-      border-radius: 16px;
-      margin: 1rem auto;
-      position: relative;
-    }
-
-    .board {
-      width: 150px;
-      height: 20px;
-      background: #4caf50; /* green */
-      position: relative;
-      margin: 1rem auto;
-      animation: bounce-board 2s infinite;
-    }
-
-    @keyframes bounce-board {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .description {
+    .labels {
+      margin-top: 20px;
       font-size: 14px;
-      color: #333;
-      margin-top: 1rem;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
     }
   </style>
 </head>
 <body>
-
-  <!-- Scene 2: IMU fixed, board bounces, MEMS + mass inside -->
-  <div class="scene visible" id="scene2">
-    <div class="imu-package">
-      <div class="board">
-        <div class="mems-package">
-          <div class="mems-mass"></div>
-        </div>
-      </div>
-    </div>
-    <div class="description">
-      <strong>Scene 2:</strong> Grey block is the fixed IMU package. Green block is the bouncing PCB (trampoline effect). Brown block is the MEMS package mounted on the board, and inside it the blue square represents the moving MEMS mass.
+  <h2>Top View: MEMS on Trampolining Board</h2>
+  <div class="container">
+    <div class="fixed-end fixed-left"></div>
+    <div class="fixed-end fixed-right"></div>
+    <div class="green-board"></div>
+    <div class="mems-package">
+      <div class="blue-mass"></div>
     </div>
   </div>
 
-  <!-- Scene 3: Only MEMS mass moving -->
-  <div class="scene" id="scene3">
-    <div class="mems-package" style="margin-top: 100px;">
-      <div class="mems-mass"></div>
-    </div>
-    <div class="description">
-      <strong>Scene 3:</strong> Only the blue MEMS mass moves within the brown MEMS package. External housing and PCB are considered rigid or still.
-    </div>
+  <div class="labels">
+    <p><strong>Grey:</strong> IMU package (fixed)</p>
+    <p><strong>Green:</strong> PCB board (fixed at corners, trampolines in the middle)</p>
+    <p><strong>Brown:</strong> MEMS package (mounted on PCB)</p>
+    <p><strong>Blue:</strong> MEMS proof mass (vibrating)</p>
   </div>
-
 </body>
 </html>
 
