@@ -322,13 +322,13 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
     .green-board {
       position: absolute;
-      top: 130px;
+      top: 180px; /* Adjusted to align with brown box */
       left: 40px;
       width: 220px;
       height: 20px;
       background-color: green;
       animation: trampoline 1s ease-in-out infinite alternate;
-      transform-origin: left center;
+      transform-origin: center;
       z-index: 1;
     }
 
@@ -339,7 +339,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
     .fixed-end {
       position: absolute;
-      top: 130px;
+      top: 180px;
       width: 20px;
       height: 20px;
       background-color: green;
@@ -356,10 +356,10 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
     .mems-package {
       position: absolute;
-      top: 100px;
+      top: 100px; /* Top of MEMS package */
       left: 90px;
       width: 120px;
-      height: 120px;
+      height: 80px; /* Adjusted height so bottom aligns with green board */
       background-color: sienna;
       z-index: 3;
       pointer-events: none;
@@ -367,7 +367,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
     .blue-mass {
       position: absolute;
-      top: 40px;
+      top: 20px;
       left: 40px;
       width: 40px;
       height: 40px;
@@ -400,7 +400,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   <div class="labels">
     <p><strong>Grey:</strong> IMU package (fixed)</p>
     <p><strong>Green:</strong> PCB board (fixed at corners, trampolines in the middle)</p>
-    <p><strong>Brown:</strong> MEMS package (mounted on PCB)</p>
+    <p><strong>Brown:</strong> MEMS package (mounted on PCB, bottom edge touches green board)</p>
     <p><strong>Blue:</strong> MEMS proof mass (vibrating)</p>
   </div>
 </body>
