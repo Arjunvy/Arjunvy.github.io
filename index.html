@@ -304,63 +304,70 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   View IMU Packaging Story
 </button>
 
-<!-- Animation Section -->
+<!-- 2-Column Layout -->
 <div id="imuSection" style="display: none;">
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem;">
 
-  <div class="scene visible" id="scene1">
-    <div class="section-title">Meet the IMU</div>
-    <div class="imu"></div>
-    <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
-    <button class="next-btn" data-next="scene2">Next</button>
-  </div>
+    <!-- Left Column -->
+    <div style="flex: 1; min-width: 280px;">
+      <h2 style="color: #00e5ff;">Your Notes / Description</h2>
+      <p style="color: #ccc;">You can add explanatory text, technical notes, or diagrams here later. This section is for supporting content related to the animation.</p>
+    </div>
 
-  <div class="scene" id="scene2">
-    <div class="section-title">The Problem</div>
-    <div class="imu shake"></div>
-    <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
-    <button class="next-btn" data-next="scene3">Next</button>
-  </div>
+    <!-- Right Column -->
+    <div style="flex: 1; min-width: 320px;">
+      <h2 style="color: #00e5ff; text-align: center;">IMU Packaging Modal Issue</h2>
 
-  <div class="scene" id="scene3">
-    <div class="section-title">Engineer to the Rescue!</div>
-    <p>You design a smart package that isolates the IMU from vibration.</p>
-    <div class="imu"></div>
-    <button class="next-btn" data-next="scene4">Next</button>
-  </div>
-
-  <div class="scene" id="scene4">
-    <div class="section-title">Design Choices</div>
-    <div class="split-screen">
-      <div class="box bad">
-        <strong>Rigid Mount</strong><br>
-        ❌ More vibration, unstable output
+      <!-- Scenes -->
+      <div class="scene visible" id="scene1">
+        <div class="imu"></div>
+        <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
+        <button class="next-btn" data-next="scene2">Next</button>
       </div>
-      <div class="box good">
-        <strong>Suspended Design</strong><br>
-        ✅ Isolated IMU, stable results
+
+      <div class="scene" id="scene2">
+        <div class="imu shake"></div>
+        <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
+        <button class="next-btn" data-next="scene3">Next</button>
+      </div>
+
+      <div class="scene" id="scene3">
+        <p>You design a smart package that isolates the IMU from vibration.</p>
+        <div class="imu"></div>
+        <button class="next-btn" data-next="scene4">Next</button>
+      </div>
+
+      <div class="scene" id="scene4">
+        <div class="split-screen">
+          <div class="box bad">
+            <strong>Rigid Mount</strong><br>
+            ❌ More vibration, unstable output
+          </div>
+          <div class="box good">
+            <strong>Suspended Design</strong><br>
+            ✅ Isolated IMU, stable results
+          </div>
+        </div>
+        <button class="next-btn" data-next="scene5">Next</button>
+      </div>
+
+      <div class="scene" id="scene5">
+        <p>FEA helps avoid resonance overlap. You simulate, test, and validate!</p>
+        <button class="next-btn" disabled>Done</button>
       </div>
     </div>
-    <button class="next-btn" data-next="scene5">Next</button>
-  </div>
 
-  <div class="scene" id="scene5">
-    <div class="section-title">Simulate, Validate, Release</div>
-    <p>FEA helps avoid resonance overlap. You simulate, test, and validate!</p>
-    <button class="next-btn" disabled>Done</button>
   </div>
-
 </div>
 
 <!-- Styles -->
 <style>
   .scene {
-    min-height: 100vh;
     display: none;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem 0;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s ease, transform 1s ease;
@@ -382,7 +389,8 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     margin: 1rem 0;
   }
 
-  .imu::before, .imu::after {
+  .imu::before,
+  .imu::after {
     content: '';
     position: absolute;
     top: 20px;
@@ -392,12 +400,22 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     border-radius: 50%;
   }
 
-  .imu::before { left: 20px; }
-  .imu::after { right: 20px; }
+  .imu::before {
+    left: 20px;
+  }
+
+  .imu::after {
+    right: 20px;
+  }
 
   @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    0%, 100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
   }
 
   .shake {
@@ -406,36 +424,44 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 
   @keyframes shake {
-    0% { transform: rotate(-4deg); }
-    50% { transform: rotate(4deg); }
-    100% { transform: rotate(-4deg); }
-  }
+    0% {
+      transform: rotate(-4deg);
+    }
 
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #00e5ff;
+    50% {
+      transform: rotate(4deg);
+    }
+
+    100% {
+      transform: rotate(-4deg);
+    }
   }
 
   .split-screen {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 1rem 0;
   }
 
   .box {
-    padding: 1.5rem;
+    padding: 1rem;
     border: 2px dashed #888;
-    width: 200px;
+    width: 150px;
+    color: white;
   }
 
-  .good { border-color: #00e676; }
-  .bad { border-color: #ff1744; }
+  .good {
+    border-color: #00e676;
+  }
+
+  .bad {
+    border-color: #ff1744;
+  }
 
   .next-btn {
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 0.6rem 1.2rem;
     background: #00e5ff;
     color: black;
@@ -458,7 +484,9 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
   toggleBtn.addEventListener('click', () => {
     imuSection.style.display = imuSection.style.display === 'block' ? 'none' : 'block';
-    toggleBtn.textContent = imuSection.style.display === 'block' ? 'Hide IMU Packaging Story' : 'View IMU Packaging Story';
+    toggleBtn.textContent = imuSection.style.display === 'block'
+      ? 'Hide IMU Packaging Story'
+      : 'View IMU Packaging Story';
     window.scrollTo({ top: toggleBtn.offsetTop, behavior: 'smooth' });
   });
 
@@ -469,9 +497,8 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       const nextSceneId = btn.dataset.next;
       if (nextSceneId) {
         currentScene.classList.remove('visible');
-        const nextScene = document.getElementById(nextSceneId);
-        nextScene.classList.add('visible');
-        nextScene.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(nextSceneId).classList.add('visible');
+        document.getElementById(nextSceneId).scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
