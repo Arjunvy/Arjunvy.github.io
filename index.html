@@ -303,7 +303,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Top View MEMS Trampoline</title>
+  <title>MEMS on Trampolining Board</title>
   <style>
     body {
       background: #f0f0f0;
@@ -322,7 +322,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
     .green-board {
       position: absolute;
-      top: 180px; /* Adjusted to align with brown box */
+      top: 180px;
       left: 40px;
       width: 220px;
       height: 20px;
@@ -356,13 +356,13 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
     .mems-package {
       position: absolute;
-      top: 100px; /* Top of MEMS package */
+      top: 100px;
       left: 90px;
       width: 120px;
-      height: 80px; /* Adjusted height so bottom aligns with green board */
+      height: 80px;
       background-color: sienna;
       z-index: 3;
-      pointer-events: none;
+      animation: trampoline 1s ease-in-out infinite alternate;
     }
 
     .blue-mass {
@@ -372,12 +372,13 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       width: 40px;
       height: 40px;
       background-color: deepskyblue;
-      animation: mass-move 1s ease-in-out infinite alternate;
+      animation: mass-oppose 1s ease-in-out infinite alternate;
     }
 
-    @keyframes mass-move {
+    /* Blue mass moves in opposite direction of trampoline */
+    @keyframes mass-oppose {
       0% { transform: translateY(0); }
-      100% { transform: translateY(10px); }
+      100% { transform: translateY(-10px); }
     }
 
     .labels {
@@ -399,9 +400,9 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
   <div class="labels">
     <p><strong>Grey:</strong> IMU package (fixed)</p>
-    <p><strong>Green:</strong> PCB board (fixed at corners, trampolines in the middle)</p>
-    <p><strong>Brown:</strong> MEMS package (mounted on PCB, bottom edge touches green board)</p>
-    <p><strong>Blue:</strong> MEMS proof mass (vibrating)</p>
+    <p><strong>Green:</strong> PCB board (fixed at corners, trampolining in center)</p>
+    <p><strong>Brown:</strong> MEMS package (mounted on PCB, always in contact)</p>
+    <p><strong>Blue:</strong> MEMS proof mass (vibrates opposite to board motion)</p>
   </div>
 </body>
 </html>
