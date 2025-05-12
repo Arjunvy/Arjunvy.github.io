@@ -299,75 +299,47 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </script>
 
-<!-- IMU Modal Animation Section (Matches Main Page Style) -->
-<section style="padding: 2rem 1rem; display: flex; flex-wrap: wrap; gap: 2rem; background-color: white; color: black;">
-
-  <!-- Left Column: Add Notes -->
-  <div style="flex: 1; min-width: 280px;">
-    <h2 style="color: black;">Add Notes Here</h2>
-    <p>You can describe modal issues, mounting techniques, or add simulation insights here.</p>
+<!-- Scene 1: Original MEMS Shaky -->
+<div id="scene1" class="scene visible">
+  <h2>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</h2>
+  <div class="imu"></div>
+  <div class="nav-buttons">
+    <button class="next-modal-btn" data-next="scene2">Next</button>
   </div>
+</div>
 
-  <!-- Right Column: Animation -->
-  <div style="flex: 1; min-width: 300px;">
-    <h2 style="color: black; text-align: center;">IMU Packaging Modal Issue</h2>
-
-    <!-- Scenes -->
-    <div class="scene visible" id="modal-scene1">
-      <div class="imu"></div>
-      <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
-      <div class="nav-buttons">
-        <button class="next-modal-btn" data-next="modal-scene2">Next</button>
-      </div>
-    </div>
-
-    <div class="scene" id="modal-scene2">
-      <div class="imu shake"></div>
-      <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
-      <div class="nav-buttons">
-        <button class="back-modal-btn" data-back="modal-scene1">Back</button>
-        <button class="next-modal-btn" data-next="modal-scene3">Next</button>
-      </div>
-    </div>
-
-    <div class="scene" id="modal-scene3">
-      <p>You design a smart package that isolates the IMU from vibration.</p>
-      <div class="imu"></div>
-      <div class="nav-buttons">
-        <button class="back-modal-btn" data-back="modal-scene2">Back</button>
-        <button class="next-modal-btn" data-next="modal-scene4">Next</button>
-      </div>
-    </div>
-
-    <div class="scene" id="modal-scene4">
-      <div class="split-screen">
-        <div class="box bad">
-          <strong>Rigid Mount</strong><br>
-          ❌ More vibration, unstable output
-        </div>
-        <div class="box good">
-          <strong>Suspended Design</strong><br>
-          ✅ Isolated IMU, stable results
-        </div>
-      </div>
-      <div class="nav-buttons">
-        <button class="back-modal-btn" data-back="modal-scene3">Back</button>
-        <button class="next-modal-btn" data-next="modal-scene5">Next</button>
-      </div>
-    </div>
-
-    <div class="scene" id="modal-scene5">
-      <p>FEA helps avoid resonance overlap. You simulate, test, and validate!</p>
-      <div class="nav-buttons">
-        <button class="back-modal-btn" data-back="modal-scene4">Back</button>
-        <button class="next-modal-btn" disabled>Done</button>
-      </div>
+<!-- Scene 2: Vibrating Green Board with MEMS -->
+<div id="scene2" class="scene">
+  <h2>Board Trampolining with MEMS</h2>
+  <div class="board-container">
+    <div class="board">
+      <div class="mems"></div>
     </div>
   </div>
-</section>
+  <div class="nav-buttons">
+    <button class="back-modal-btn" data-back="scene1">Back</button>
+    <button class="next-modal-btn" data-next="scene3">Next</button>
+  </div>
+</div>
 
-<!-- Styles for Animation (Match Main Design) -->
+<!-- Optional Scene 3 Placeholder -->
+<div id="scene3" class="scene">
+  <h2>Scene 3 (Placeholder)</h2>
+  <p>Add more content here...</p>
+  <div class="nav-buttons">
+    <button class="back-modal-btn" data-back="scene2">Back</button>
+  </div>
+</div>
+
+<!-- Styles -->
 <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    color: black;
+    padding: 1rem;
+  }
+
   .scene {
     display: none;
     flex-direction: column;
@@ -385,6 +357,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     transform: translateY(0);
   }
 
+  /* Scene 1 - Shaky MEMS */
   .imu {
     width: 100px;
     height: 100px;
@@ -414,36 +387,59 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     50% { transform: translateY(-15px); }
   }
 
-  .shake {
-    animation: shake 0.3s infinite;
-    background-color: #e53935;
+  /* Scene 2 - Trampoline Board */
+  .board-container {
+    width: 300px;
+    height: 300px;
+    background: #ccc;
+    position: relative;
+    margin: 2rem auto;
+    border: 4px solid #999;
   }
 
-  @keyframes shake {
-    0% { transform: rotate(-4deg); }
-    50% { transform: rotate(4deg); }
-    100% { transform: rotate(-4deg); }
+  .board {
+    width: 200px;
+    height: 200px;
+    background: #8bc34a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    border: 2px solid #444;
+    animation: trampoline 1.5s infinite ease-in-out;
   }
 
-  .split-screen {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 1rem 0;
+  .board .mems {
+    width: 40px;
+    height: 40px;
+    background: #1e88e5;
+    border-radius: 8px;
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    animation: mems-bounce 1.5s infinite ease-in-out;
   }
 
-  .box {
-    padding: 1rem;
-    border: 2px dashed #888;
-    width: 150px;
-    color: black;
-    background-color: #f8f8f8;
+  @keyframes trampoline {
+    0%, 100% {
+      transform: translate(-50%, -50%) scaleY(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scaleY(0.95) scaleX(1.03);
+    }
   }
 
-  .good { border-color: #00c853; }
-  .bad { border-color: #d32f2f; }
+  @keyframes mems-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
 
+  /* Nav Buttons */
   .nav-buttons {
     margin-top: 1rem;
     display: flex;
@@ -466,7 +462,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </style>
 
-<!-- JS to Navigate Between Scenes -->
+<!-- JS -->
 <script>
   document.querySelectorAll('.next-modal-btn').forEach(btn => {
     btn.addEventListener('click', () => {
