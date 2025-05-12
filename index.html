@@ -299,37 +299,49 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </script>
 
-<!-- Modal Animation Section -->
 <style>
-  .modal-section {
+  .animation-section {
     background-color: #0e1116;
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
     padding: 2rem;
-    margin-top: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
   }
 
-  .modal-grid {
+  .animation-container {
     display: flex;
-    flex-wrap: wrap;
     gap: 2rem;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
   }
 
-  .modal-left {
+  .text-column {
     flex: 1;
-    min-width: 250px;
+    min-width: 280px;
   }
 
-  .modal-left h3 {
+  .text-column h2 {
     color: #00e5ff;
-    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 
-  .modal-right {
+  .text-column p {
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+
+  .animation-column {
     flex: 1;
-    min-width: 250px;
+    min-width: 280px;
     text-align: center;
+  }
+
+  .animation-column h3 {
+    color: #00e5ff;
+    margin-bottom: 1rem;
   }
 
   .scene {
@@ -337,39 +349,45 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadein 0.5s ease-in-out;
   }
 
   .scene.active {
     display: flex;
   }
 
-  @keyframes fadeIn {
+  @keyframes fadein {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   .imu {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     background: #1e88e5;
-    border-radius: 15px;
+    border-radius: 20px;
     position: relative;
-    margin: 1rem auto;
+    margin: 1rem 0;
+    animation: bounce 2s infinite;
   }
 
   .imu::before, .imu::after {
     content: '';
     position: absolute;
-    top: 12px;
-    width: 10px;
-    height: 10px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
     background: white;
     border-radius: 50%;
   }
 
-  .imu::before { left: 12px; }
-  .imu::after { right: 12px; }
+  .imu::before { left: 20px; }
+  .imu::after { right: 20px; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
 
   .shake {
     animation: shake 0.3s infinite;
@@ -382,56 +400,35 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     100% { transform: rotate(-4deg); }
   }
 
-  .board-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 150px;
-    position: relative;
+  .imu .board {
+    width: 120px;
+    height: 10px;
+    background: #555;
+    position: absolute;
+    bottom: -15px;
+    left: -10px;
+    border-radius: 5px;
+    animation: board-bounce 0.3s infinite;
   }
 
-  .board {
-    width: 140px;
-    height: 15px;
-    background-color: #2e7d32;
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .shake-board {
-    animation: boardShake 0.5s infinite ease-in-out;
-  }
-
-  @keyframes boardShake {
+  @keyframes board-bounce {
     0%   { transform: translateY(0); }
-    25%  { transform: translateY(-6px); }
+    25%  { transform: translateY(4px); }
     50%  { transform: translateY(0); }
-    75%  { transform: translateY(6px); }
+    75%  { transform: translateY(-4px); }
     100% { transform: translateY(0); }
-  }
-
-  .modal-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #00e5ff;
-    margin-bottom: 1rem;
   }
 
   .nav-buttons {
     margin-top: 1rem;
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
   }
 
   .nav-buttons button {
     background-color: #00e5ff;
     border: none;
-    padding: 0.5rem 1rem;
     color: #000;
+    padding: 0.4rem 1rem;
+    margin: 0 0.5rem;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
@@ -442,16 +439,20 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </style>
 
-<div class="modal-section">
-  <div class="modal-grid">
-    <div class="modal-left">
-      <h3>Add Notes Here</h3>
+<div class="animation-section">
+  <div class="animation-container">
+    
+    <!-- Left Column -->
+    <div class="text-column">
+      <h2>Add Notes Here</h2>
       <p>You can describe modal issues, mounting techniques, or add simulation insights here.</p>
     </div>
-    <div class="modal-right">
-      <div class="modal-title">IMU Packaging Modal Issue</div>
 
-      <!-- Scene 1 -->
+    <!-- Right Column -->
+    <div class="animation-column">
+      <h3>IMU Packaging Modal Issue</h3>
+
+      <!-- Animation Scenes -->
       <div class="scene active" id="modal-scene1">
         <div class="imu"></div>
         <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
@@ -460,12 +461,9 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
         </div>
       </div>
 
-      <!-- Scene 2 -->
       <div class="scene" id="modal-scene2">
-        <div class="board-container">
-          <div class="board shake-board">
-            <div class="imu shake"></div>
-          </div>
+        <div class="imu shake">
+          <div class="board"></div>
         </div>
         <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
         <div class="nav-buttons">
@@ -474,10 +472,9 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
         </div>
       </div>
 
-      <!-- Scene 3 -->
       <div class="scene" id="modal-scene3">
-        <p>You design a smart package that isolates the IMU from vibration.</p>
         <div class="imu"></div>
+        <p>You design a smart package that isolates the IMU from vibration.</p>
         <div class="nav-buttons">
           <button class="back-modal-btn" data-back="modal-scene2">Back</button>
         </div>
@@ -488,28 +485,23 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 </div>
 
 <script>
-  const nextButtons = document.querySelectorAll(".next-modal-btn");
-  const backButtons = document.querySelectorAll(".back-modal-btn");
+  const nextButtons = document.querySelectorAll('.next-modal-btn');
+  const backButtons = document.querySelectorAll('.back-modal-btn');
+  const scenes = document.querySelectorAll('.scene');
 
   nextButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const current = btn.closest(".scene");
-      const next = document.getElementById(btn.dataset.next);
-      if (current && next) {
-        current.classList.remove("active");
-        next.classList.add("active");
-      }
+    btn.addEventListener('click', () => {
+      const nextId = btn.dataset.next;
+      scenes.forEach(scene => scene.classList.remove('active'));
+      document.getElementById(nextId).classList.add('active');
     });
   });
 
   backButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const current = btn.closest(".scene");
-      const back = document.getElementById(btn.dataset.back);
-      if (current && back) {
-        current.classList.remove("active");
-        back.classList.add("active");
-      }
+    btn.addEventListener('click', () => {
+      const backId = btn.dataset.back;
+      scenes.forEach(scene => scene.classList.remove('active'));
+      document.getElementById(backId).classList.add('active');
     });
   });
 </script>
