@@ -299,66 +299,90 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </script>
 
+<!-- IMU Modal Animation Section (Matches Main Page Style) -->
+<section style="padding: 2rem 1rem; display: flex; flex-wrap: wrap; gap: 2rem; background-color: white; color: black;">
+
+  <!-- Left Column: Add Notes -->
+  <div style="flex: 1; min-width: 280px;">
+    <h2 style="color: black;">Add Notes Here</h2>
+    <p>You can describe modal issues, mounting techniques, or add simulation insights here.</p>
+  </div>
+
+  <!-- Right Column: Animation -->
+  <div style="flex: 1; min-width: 300px;">
+    <h2 style="color: black; text-align: center;">IMU Packaging Modal Issue</h2>
+
+    <!-- Scenes -->
+    <div class="scene visible" id="modal-scene1">
+      <div class="imu"></div>
+      <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
+      <div class="nav-buttons">
+        <button class="next-modal-btn" data-next="modal-scene2">Next</button>
+      </div>
+    </div>
+
+    <div class="scene" id="modal-scene2">
+      <div class="imu shake"></div>
+      <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
+      <div class="nav-buttons">
+        <button class="back-modal-btn" data-back="modal-scene1">Back</button>
+        <button class="next-modal-btn" data-next="modal-scene3">Next</button>
+      </div>
+    </div>
+
+    <div class="scene" id="modal-scene3">
+      <p>You design a smart package that isolates the IMU from vibration.</p>
+      <div class="imu"></div>
+      <div class="nav-buttons">
+        <button class="back-modal-btn" data-back="modal-scene2">Back</button>
+        <button class="next-modal-btn" data-next="modal-scene4">Next</button>
+      </div>
+    </div>
+
+    <div class="scene" id="modal-scene4">
+      <div class="split-screen">
+        <div class="box bad">
+          <strong>Rigid Mount</strong><br>
+          ❌ More vibration, unstable output
+        </div>
+        <div class="box good">
+          <strong>Suspended Design</strong><br>
+          ✅ Isolated IMU, stable results
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="back-modal-btn" data-back="modal-scene3">Back</button>
+        <button class="next-modal-btn" data-next="modal-scene5">Next</button>
+      </div>
+    </div>
+
+    <div class="scene" id="modal-scene5">
+      <p>FEA helps avoid resonance overlap. You simulate, test, and validate!</p>
+      <div class="nav-buttons">
+        <button class="back-modal-btn" data-back="modal-scene4">Back</button>
+        <button class="next-modal-btn" disabled>Done</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Styles for Animation (Match Main Design) -->
 <style>
-  .animation-section {
-    background-color: #fff;
-    padding: 2rem;
-    font-family: 'Segoe UI', sans-serif;
-    color: #000;
-  }
-
-  .animation-container {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1000px;
-    margin: auto;
-  }
-
-  .text-column {
-    flex: 1;
-    min-width: 280px;
-  }
-
-  .text-column h2 {
-    color: #0077cc;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-
-  .text-column p {
-    font-size: 0.95rem;
-    color: #333;
-  }
-
-  .animation-column {
-    flex: 1;
-    min-width: 280px;
-    text-align: center;
-  }
-
-  .animation-column h3 {
-    color: #0077cc;
-    margin-bottom: 1rem;
-  }
-
   .scene {
     display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    animation: fadein 0.5s ease-in-out;
+    text-align: center;
+    padding: 1rem 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
   }
 
-  .scene.active {
+  .scene.visible {
     display: flex;
-  }
-
-  @keyframes fadein {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .imu {
@@ -367,11 +391,12 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     background: #1e88e5;
     border-radius: 20px;
     position: relative;
-    margin: 1rem 0;
     animation: bounce 2s infinite;
+    margin: 1rem 0;
   }
 
-  .imu::before, .imu::after {
+  .imu::before,
+  .imu::after {
     content: '';
     position: absolute;
     top: 20px;
@@ -400,108 +425,70 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     100% { transform: rotate(-4deg); }
   }
 
-  .imu .board {
-    width: 120px;
-    height: 10px;
-    background: #555;
-    position: absolute;
-    bottom: -15px;
-    left: -10px;
-    border-radius: 5px;
-    animation: board-bounce 0.3s infinite;
+  .split-screen {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
   }
 
-  @keyframes board-bounce {
-    0%   { transform: translateY(0); }
-    25%  { transform: translateY(4px); }
-    50%  { transform: translateY(0); }
-    75%  { transform: translateY(-4px); }
-    100% { transform: translateY(0); }
+  .box {
+    padding: 1rem;
+    border: 2px dashed #888;
+    width: 150px;
+    color: black;
+    background-color: #f8f8f8;
   }
+
+  .good { border-color: #00c853; }
+  .bad { border-color: #d32f2f; }
 
   .nav-buttons {
     margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
   }
 
-  .nav-buttons button {
-    background-color: #0077cc;
-    border: none;
-    color: #fff;
-    padding: 0.4rem 1rem;
-    margin: 0 0.5rem;
+  .next-modal-btn, .back-modal-btn {
+    padding: 0.6rem 1.2rem;
+    background: #00e5ff;
+    color: black;
     font-weight: bold;
-    border-radius: 5px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
   }
 
-  .nav-buttons button:hover {
-    background-color: #005fa3;
+  .next-modal-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
   }
 </style>
 
-<div class="animation-section">
-  <div class="animation-container">
-    
-    <!-- Left Column -->
-    <div class="text-column">
-      <h2>Add Notes Here</h2>
-      <p>You can describe modal issues, mounting techniques, or add simulation insights here.</p>
-    </div>
-
-    <!-- Right Column -->
-    <div class="animation-column">
-      <h3>IMU Packaging Modal Issue</h3>
-
-      <!-- Animation Scenes -->
-      <div class="scene active" id="modal-scene1">
-        <div class="imu"></div>
-        <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
-        <div class="nav-buttons">
-          <button class="next-modal-btn" data-next="modal-scene2">Next</button>
-        </div>
-      </div>
-
-      <div class="scene" id="modal-scene2">
-        <div class="imu shake">
-          <div class="board"></div>
-        </div>
-        <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
-        <div class="nav-buttons">
-          <button class="back-modal-btn" data-back="modal-scene1">Back</button>
-          <button class="next-modal-btn" data-next="modal-scene3">Next</button>
-        </div>
-      </div>
-
-      <div class="scene" id="modal-scene3">
-        <div class="imu"></div>
-        <p>You design a smart package that isolates the IMU from vibration.</p>
-        <div class="nav-buttons">
-          <button class="back-modal-btn" data-back="modal-scene2">Back</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
+<!-- JS to Navigate Between Scenes -->
 <script>
-  const nextButtons = document.querySelectorAll('.next-modal-btn');
-  const backButtons = document.querySelectorAll('.back-modal-btn');
-  const scenes = document.querySelectorAll('.scene');
-
-  nextButtons.forEach(btn => {
+  document.querySelectorAll('.next-modal-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const nextId = btn.dataset.next;
-      scenes.forEach(scene => scene.classList.remove('active'));
-      document.getElementById(nextId).classList.add('active');
+      const current = btn.closest('.scene');
+      const next = btn.dataset.next;
+      if (next) {
+        current.classList.remove('visible');
+        document.getElementById(next).classList.add('visible');
+        document.getElementById(next).scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
-  backButtons.forEach(btn => {
+  document.querySelectorAll('.back-modal-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const backId = btn.dataset.back;
-      scenes.forEach(scene => scene.classList.remove('active'));
-      document.getElementById(backId).classList.add('active');
+      const current = btn.closest('.scene');
+      const prev = btn.dataset.back;
+      if (prev) {
+        current.classList.remove('visible');
+        document.getElementById(prev).classList.add('visible');
+        document.getElementById(prev).scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 </script>
