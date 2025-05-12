@@ -323,26 +323,14 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       display: flex;
     }
 
-    .label {
-      font-size: 12px;
-      background: #fff;
-      border: 1px solid #aaa;
-      padding: 2px 4px;
-      border-radius: 4px;
-      position: absolute;
-      font-weight: bold;
-      z-index: 10;
-    }
-
     .mems-package, .imu-package, .mems-mass, .board {
       position: relative;
     }
 
-    /* Shapes */
     .mems-package {
       width: 100px;
       height: 100px;
-      background: #a0522d;
+      background: #a0522d; /* brown */
       border-radius: 12px;
       margin: 1rem auto;
     }
@@ -350,7 +338,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     .mems-mass {
       width: 30px;
       height: 30px;
-      background: #1e88e5;
+      background: #1e88e5; /* blue */
       position: absolute;
       top: 35px;
       left: 35px;
@@ -364,36 +352,21 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     }
 
     .imu-package {
-      width: 120px;
-      height: 120px;
-      background: #888;
-      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      background: #888; /* grey */
       border-radius: 16px;
+      margin: 1rem auto;
       position: relative;
-    }
-
-    .board-container {
-      position: relative;
-      width: 300px;
-      height: 250px;
-      background: #eee;
-      margin: 0 auto;
-      overflow: hidden;
     }
 
     .board {
-      width: 250px;
-      height: 30px;
-      background: #4caf50;
-      margin: 0 auto;
-      animation: bounce-board 2s infinite;
+      width: 150px;
+      height: 20px;
+      background: #4caf50; /* green */
       position: relative;
-      top: 100px;
-      border-radius: 6px;
-    }
-
-    .fixed-board {
-      animation: none;
+      margin: 1rem auto;
+      animation: bounce-board 2s infinite;
     }
 
     @keyframes bounce-board {
@@ -401,117 +374,41 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       50% { transform: translateY(-15px); }
     }
 
-    .imu-on-board {
-      position: absolute;
-      top: -70px;
-      left: 65px;
-    }
-
-    .nav-buttons {
+    .description {
+      font-size: 14px;
+      color: #333;
       margin-top: 1rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .nav-buttons button {
-      margin: 0 10px;
-      padding: 0.6rem 1rem;
-      font-weight: bold;
-      background: #00e5ff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .label-board { top: 5px; left: 10px; }
-    .label-imu { top: -20px; left: 30px; }
-    .label-mems { top: -20px; left: 10px; }
-    .label-mass { top: 30px; left: 30px; }
-    .label-fixed { top: 0; right: 10px; color: green; }
   </style>
 </head>
 <body>
 
-<!-- Scene 1 -->
-<div id="scene1" class="scene visible">
-  <h2>Scene 1: MEMS Package with Moving Mass</h2>
-  <div class="mems-package">
-    <div class="mems-mass"></div>
-    <div class="label label-mems">MEMS Package</div>
-    <div class="label label-mass">MEMS Mass</div>
-  </div>
-  <div class="nav-buttons">
-    <button class="next-modal-btn" data-next="scene2">Next</button>
-  </div>
-</div>
-
-<!-- Scene 2 -->
-<div id="scene2" class="scene">
-  <h2>Scene 2: Vibrating Board with IMU, MEMS, and Mass</h2>
-  <div class="board-container">
-    <div class="board">
-      <div class="imu-package imu-on-board">
+  <!-- Scene 2: IMU fixed, board bounces, MEMS + mass inside -->
+  <div class="scene visible" id="scene2">
+    <div class="imu-package">
+      <div class="board">
         <div class="mems-package">
           <div class="mems-mass"></div>
-          <div class="label label-mems">MEMS Package</div>
-          <div class="label label-mass">MEMS Mass</div>
         </div>
-        <div class="label label-imu">IMU Package</div>
       </div>
-      <div class="label label-board">PCB Board (Moving)</div>
+    </div>
+    <div class="description">
+      <strong>Scene 2:</strong> Grey block is the fixed IMU package. Green block is the bouncing PCB (trampoline effect). Brown block is the MEMS package mounted on the board, and inside it the blue square represents the moving MEMS mass.
     </div>
   </div>
-  <div class="nav-buttons">
-    <button class="back-modal-btn" data-back="scene1">Back</button>
-    <button class="next-modal-btn" data-next="scene3">Next</button>
-  </div>
-</div>
 
-<!-- Scene 3 -->
-<div id="scene3" class="scene">
-  <h2>Scene 3: Fixed Board, Only MEMS Mass Moves</h2>
-  <div class="board-container">
-    <div class="board fixed-board">
-      <div class="imu-package imu-on-board">
-        <div class="mems-package">
-          <div class="mems-mass"></div>
-          <div class="label label-mems">MEMS Package</div>
-          <div class="label label-mass">MEMS Mass</div>
-        </div>
-        <div class="label label-imu">IMU Package</div>
-      </div>
-      <div class="label label-board">PCB Board (Fixed)</div>
-      <div class="label label-fixed">Board Fixed</div>
+  <!-- Scene 3: Only MEMS mass moving -->
+  <div class="scene" id="scene3">
+    <div class="mems-package" style="margin-top: 100px;">
+      <div class="mems-mass"></div>
+    </div>
+    <div class="description">
+      <strong>Scene 3:</strong> Only the blue MEMS mass moves within the brown MEMS package. External housing and PCB are considered rigid or still.
     </div>
   </div>
-  <div class="nav-buttons">
-    <button class="back-modal-btn" data-back="scene2">Back</button>
-  </div>
-</div>
-
-<script>
-  document.querySelectorAll('.next-modal-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const current = btn.closest('.scene');
-      const next = btn.dataset.next;
-      if (next) {
-        current.classList.remove('visible');
-        document.getElementById(next).classList.add('visible');
-        document.getElementById(next).scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  document.querySelectorAll('.back-modal-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const current = btn.closest('.scene');
-      const prev = btn.dataset.back;
-      if (prev) {
-        current.classList.remove('visible');
-        document.getElementById(prev).classList.add('visible');
-        document.getElementById(prev).scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-</script>
 
 </body>
 </html>
