@@ -299,28 +299,164 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </script>
 
-<!-- Scene 1: Shaky MEMS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MEMS Gyro Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    .scene {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      min-height: 300px;
+    }
+
+    .scene.visible {
+      display: flex;
+    }
+
+    .label {
+      font-size: 12px;
+      background: #fff;
+      border: 1px solid #aaa;
+      padding: 2px 4px;
+      border-radius: 4px;
+      position: absolute;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    .mems-package, .imu-package, .mems-mass, .board {
+      position: relative;
+    }
+
+    /* Shapes */
+    .mems-package {
+      width: 100px;
+      height: 100px;
+      background: #a0522d;
+      border-radius: 12px;
+      margin: 1rem auto;
+    }
+
+    .mems-mass {
+      width: 30px;
+      height: 30px;
+      background: #1e88e5;
+      position: absolute;
+      top: 35px;
+      left: 35px;
+      border-radius: 5px;
+      animation: mass-move 1s infinite ease-in-out;
+    }
+
+    @keyframes mass-move {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .imu-package {
+      width: 120px;
+      height: 120px;
+      background: #888;
+      margin: 0 auto;
+      border-radius: 16px;
+      position: relative;
+    }
+
+    .board-container {
+      position: relative;
+      width: 300px;
+      height: 250px;
+      background: #eee;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .board {
+      width: 250px;
+      height: 30px;
+      background: #4caf50;
+      margin: 0 auto;
+      animation: bounce-board 2s infinite;
+      position: relative;
+      top: 100px;
+      border-radius: 6px;
+    }
+
+    .fixed-board {
+      animation: none;
+    }
+
+    @keyframes bounce-board {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .imu-on-board {
+      position: absolute;
+      top: -70px;
+      left: 65px;
+    }
+
+    .nav-buttons {
+      margin-top: 1rem;
+    }
+
+    .nav-buttons button {
+      margin: 0 10px;
+      padding: 0.6rem 1rem;
+      font-weight: bold;
+      background: #00e5ff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .label-board { top: 5px; left: 10px; }
+    .label-imu { top: -20px; left: 30px; }
+    .label-mems { top: -20px; left: 10px; }
+    .label-mass { top: 30px; left: 30px; }
+    .label-fixed { top: 0; right: 10px; color: green; }
+  </style>
+</head>
+<body>
+
+<!-- Scene 1 -->
 <div id="scene1" class="scene visible">
-  <h2>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</h2>
-  <div class="imu labeled">
-    <span class="label mems-label">MEMS Mass</span>
-    <span class="label imu-label">IMU Package</span>
+  <h2>Scene 1: MEMS Package with Moving Mass</h2>
+  <div class="mems-package">
+    <div class="mems-mass"></div>
+    <div class="label label-mems">MEMS Package</div>
+    <div class="label label-mass">MEMS Mass</div>
   </div>
   <div class="nav-buttons">
     <button class="next-modal-btn" data-next="scene2">Next</button>
   </div>
 </div>
 
-<!-- Scene 2: Vibrating Green Board with MEMS -->
+<!-- Scene 2 -->
 <div id="scene2" class="scene">
-  <h2>Board Trampolining with MEMS</h2>
+  <h2>Scene 2: Vibrating Board with IMU, MEMS, and Mass</h2>
   <div class="board-container">
-    <div class="label board-label">PCB Board</div>
     <div class="board">
-      <div class="label imu-label-board">IMU Package</div>
-      <div class="mems">
-        <span class="label mems-label-board">MEMS Mass</span>
+      <div class="imu-package imu-on-board">
+        <div class="mems-package">
+          <div class="mems-mass"></div>
+          <div class="label label-mems">MEMS Package</div>
+          <div class="label label-mass">MEMS Mass</div>
+        </div>
+        <div class="label label-imu">IMU Package</div>
       </div>
+      <div class="label label-board">PCB Board (Moving)</div>
     </div>
   </div>
   <div class="nav-buttons">
@@ -329,221 +465,28 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   </div>
 </div>
 
-<!-- Scene 3: Fixed Board, Isolated MEMS -->
+<!-- Scene 3 -->
 <div id="scene3" class="scene">
-  <h2>Board is Fixed, MEMS is Isolated and Stable</h2>
+  <h2>Scene 3: Fixed Board, Only MEMS Mass Moves</h2>
   <div class="board-container">
-    <div class="label board-label">PCB Board</div>
-    <div class="label fixed-label">Board Fixed</div>
     <div class="board fixed-board">
-      <div class="label imu-label-board">IMU Package</div>
-      <div class="mems isolated-mems">
-        <span class="label mems-label-board">MEMS Mass</span>
+      <div class="imu-package imu-on-board">
+        <div class="mems-package">
+          <div class="mems-mass"></div>
+          <div class="label label-mems">MEMS Package</div>
+          <div class="label label-mass">MEMS Mass</div>
+        </div>
+        <div class="label label-imu">IMU Package</div>
       </div>
+      <div class="label label-board">PCB Board (Fixed)</div>
+      <div class="label label-fixed">Board Fixed</div>
     </div>
   </div>
   <div class="nav-buttons">
     <button class="back-modal-btn" data-back="scene2">Back</button>
-    <button class="next-modal-btn" data-next="scene4">Next</button>
   </div>
 </div>
 
-<!-- Optional Scene 4 -->
-<div id="scene4" class="scene">
-  <h2>Scene 4 (Placeholder)</h2>
-  <p>Add more content here...</p>
-  <div class="nav-buttons">
-    <button class="back-modal-btn" data-back="scene3">Back</button>
-  </div>
-</div>
-
-<!-- Styles -->
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f8f8f8;
-    color: black;
-    padding: 1rem;
-  }
-
-  .scene {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1rem 0;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
-
-  .scene.visible {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .imu {
-    width: 100px;
-    height: 100px;
-    background: #ccc;
-    border-radius: 20px;
-    position: relative;
-    animation: bounce 2s infinite;
-    margin: 1rem 0;
-  }
-
-  .imu::before,
-  .imu::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    width: 20px;
-    height: 20px;
-    background: #1e88e5;
-    border-radius: 50%;
-  }
-
-  .imu::before { left: 20px; }
-  .imu::after { right: 20px; }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-  }
-
-  .board-container {
-    width: 300px;
-    height: 300px;
-    background: #ccc;
-    position: relative;
-    margin: 2rem auto;
-    border: 4px solid #999;
-  }
-
-  .board {
-    width: 200px;
-    height: 200px;
-    background: #8bc34a;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transform-origin: center;
-    border: 2px solid #444;
-  }
-
-  .board:not(.fixed-board) {
-    animation: trampoline 1.5s infinite ease-in-out;
-  }
-
-  .mems {
-    width: 40px;
-    height: 40px;
-    background: #1e88e5;
-    border-radius: 8px;
-    position: absolute;
-    top: 80px;
-    left: 80px;
-  }
-
-  .board:not(.fixed-board) .mems {
-    animation: mems-bounce 1.5s infinite ease-in-out;
-  }
-
-  .fixed-board .isolated-mems {
-    animation: isolated-mems-bounce 1.5s infinite ease-in-out;
-  }
-
-  @keyframes trampoline {
-    0%, 100% {
-      transform: translate(-50%, -50%) scaleY(1);
-    }
-    50% {
-      transform: translate(-50%, -50%) scaleY(0.95) scaleX(1.03);
-    }
-  }
-
-  @keyframes mems-bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
-
-  @keyframes isolated-mems-bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  /* Labels */
-  .label {
-    position: absolute;
-    font-size: 12px;
-    background: rgba(255,255,255,0.8);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: bold;
-    color: #000;
-    pointer-events: none;
-  }
-
-  .mems-label {
-    top: -10px;
-    left: 10px;
-  }
-
-  .imu-label {
-    bottom: -20px;
-    left: 10px;
-  }
-
-  .board-label {
-    top: 0;
-    left: 10px;
-  }
-
-  .fixed-label {
-    top: 0;
-    right: 10px;
-    color: green;
-  }
-
-  .mems-label-board {
-    top: -15px;
-    left: 0;
-  }
-
-  .imu-label-board {
-    top: -15px;
-    left: 60px;
-  }
-
-  /* Nav Buttons */
-  .nav-buttons {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
-  }
-
-  .next-modal-btn, .back-modal-btn {
-    padding: 0.6rem 1.2rem;
-    background: #00e5ff;
-    color: black;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-</style>
-
-<!-- JS -->
 <script>
   document.querySelectorAll('.next-modal-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -569,6 +512,9 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     });
   });
 </script>
+
+</body>
+</html>
 
 
 </body>
