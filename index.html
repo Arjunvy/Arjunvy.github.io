@@ -299,75 +299,68 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 </script>
 
-<!-- Toggle Button -->
-<button id="toggleIMU" style="margin: 2rem auto; display: block; padding: 0.8rem 1.5rem; font-size: 1rem; background: #1e88e5; color: white; border: none; border-radius: 8px; cursor: pointer;">
-  View IMU Packaging Story
-</button>
+<!-- IMU Modal Animation Section (Same Page Setup) -->
+<section style="padding: 4rem 2rem; display: flex; flex-wrap: wrap; gap: 2rem; background-color: #12161e; color: #fff;">
 
-<!-- 2-Column Layout -->
-<div id="imuSection" style="display: none;">
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem;">
-
-    <!-- Left Column -->
-    <div style="flex: 1; min-width: 280px;">
-      <h2 style="color: #00e5ff;">Your Notes / Description</h2>
-      <p style="color: #ccc;">You can add explanatory text, technical notes, or diagrams here later. This section is for supporting content related to the animation.</p>
-    </div>
-
-    <!-- Right Column -->
-    <div style="flex: 1; min-width: 320px;">
-      <h2 style="color: #00e5ff; text-align: center;">IMU Packaging Modal Issue</h2>
-
-      <!-- Scenes -->
-      <div class="scene visible" id="scene1">
-        <div class="imu"></div>
-        <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
-        <button class="next-btn" data-next="scene2">Next</button>
-      </div>
-
-      <div class="scene" id="scene2">
-        <div class="imu shake"></div>
-        <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
-        <button class="next-btn" data-next="scene3">Next</button>
-      </div>
-
-      <div class="scene" id="scene3">
-        <p>You design a smart package that isolates the IMU from vibration.</p>
-        <div class="imu"></div>
-        <button class="next-btn" data-next="scene4">Next</button>
-      </div>
-
-      <div class="scene" id="scene4">
-        <div class="split-screen">
-          <div class="box bad">
-            <strong>Rigid Mount</strong><br>
-            ❌ More vibration, unstable output
-          </div>
-          <div class="box good">
-            <strong>Suspended Design</strong><br>
-            ✅ Isolated IMU, stable results
-          </div>
-        </div>
-        <button class="next-btn" data-next="scene5">Next</button>
-      </div>
-
-      <div class="scene" id="scene5">
-        <p>FEA helps avoid resonance overlap. You simulate, test, and validate!</p>
-        <button class="next-btn" disabled>Done</button>
-      </div>
-    </div>
-
+  <!-- Left Column: Content Placeholder -->
+  <div style="flex: 1; min-width: 280px;">
+    <h2 style="color: #00e5ff;">Add Notes Here</h2>
+    <p>You can describe modal issues, mounting techniques, or add simulation insights here.</p>
   </div>
-</div>
 
-<!-- Styles -->
+  <!-- Right Column: Animation -->
+  <div style="flex: 1; min-width: 300px;">
+    <h2 style="color: #00e5ff; text-align: center;">IMU Packaging Modal Issue</h2>
+
+    <!-- Scenes -->
+    <div class="scene visible" id="modal-scene1">
+      <div class="imu"></div>
+      <p>This tiny box senses motion, but it's super sensitive to vibrations!</p>
+      <button class="next-modal-btn" data-next="modal-scene2">Next</button>
+    </div>
+
+    <div class="scene" id="modal-scene2">
+      <div class="imu shake"></div>
+      <p>Mounted on a shaky PCB, it gets confused — leading to wrong outputs!</p>
+      <button class="next-modal-btn" data-next="modal-scene3">Next</button>
+    </div>
+
+    <div class="scene" id="modal-scene3">
+      <p>You design a smart package that isolates the IMU from vibration.</p>
+      <div class="imu"></div>
+      <button class="next-modal-btn" data-next="modal-scene4">Next</button>
+    </div>
+
+    <div class="scene" id="modal-scene4">
+      <div class="split-screen">
+        <div class="box bad">
+          <strong>Rigid Mount</strong><br>
+          ❌ More vibration, unstable output
+        </div>
+        <div class="box good">
+          <strong>Suspended Design</strong><br>
+          ✅ Isolated IMU, stable results
+        </div>
+      </div>
+      <button class="next-modal-btn" data-next="modal-scene5">Next</button>
+    </div>
+
+    <div class="scene" id="modal-scene5">
+      <p>FEA helps avoid resonance overlap. You simulate, test, and validate!</p>
+      <button class="next-modal-btn" disabled>Done</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- Keep these styles consistent with your main code -->
 <style>
   .scene {
     display: none;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s ease, transform 1s ease;
@@ -409,13 +402,8 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 
   @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-15px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
   }
 
   .shake {
@@ -424,17 +412,9 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   }
 
   @keyframes shake {
-    0% {
-      transform: rotate(-4deg);
-    }
-
-    50% {
-      transform: rotate(4deg);
-    }
-
-    100% {
-      transform: rotate(-4deg);
-    }
+    0% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+    100% { transform: rotate(-4deg); }
   }
 
   .split-screen {
@@ -452,15 +432,10 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     color: white;
   }
 
-  .good {
-    border-color: #00e676;
-  }
+  .good { border-color: #00e676; }
+  .bad { border-color: #ff1744; }
 
-  .bad {
-    border-color: #ff1744;
-  }
-
-  .next-btn {
+  .next-modal-btn {
     margin-top: 1rem;
     padding: 0.6rem 1.2rem;
     background: #00e5ff;
@@ -471,27 +446,17 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     cursor: pointer;
   }
 
-  .next-btn:disabled {
+  .next-modal-btn:disabled {
     background: #888;
     cursor: not-allowed;
   }
 </style>
 
-<!-- Script -->
+<!-- JS Script for Scene Navigation -->
 <script>
-  const toggleBtn = document.getElementById('toggleIMU');
-  const imuSection = document.getElementById('imuSection');
+  const modalNextButtons = document.querySelectorAll('.next-modal-btn');
 
-  toggleBtn.addEventListener('click', () => {
-    imuSection.style.display = imuSection.style.display === 'block' ? 'none' : 'block';
-    toggleBtn.textContent = imuSection.style.display === 'block'
-      ? 'Hide IMU Packaging Story'
-      : 'View IMU Packaging Story';
-    window.scrollTo({ top: toggleBtn.offsetTop, behavior: 'smooth' });
-  });
-
-  const nextButtons = document.querySelectorAll('.next-btn');
-  nextButtons.forEach(btn => {
+  modalNextButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const currentScene = btn.closest('.scene');
       const nextSceneId = btn.dataset.next;
