@@ -288,200 +288,6 @@ Prototype Validation: We validate FEA results by building CNC-machined modules a
 Legacy Module Improvement: For legacy modules experiencing modal issues, we’ve successfully diagnosed the root causes through in-house test setups and FEA, and implemented package design changes to eliminate the modal coupling—validated by physical testing.
 
 Modal design is a critical aspect of IMU packaging and is often a gatekeeper for product qualification. A robust modal design strategy ensures consistent sensor output across environmental conditions and directly contributes to field reliability.
-    </div>
-  </div>
-</section>
-
-<script>
-  function toggleDetails(id) {
-    const el = document.getElementById(id);
-    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-  }
-</script>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>MEMS on Trampolining Board</title>
-  <style>
-    body {
-      background: #f0f0f0;
-      font-family: sans-serif;
-      text-align: center;
-    }
-
-    .container {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      margin: 40px auto;
-      border-radius: 10px;
-    }
-
-    .green-board {
-      position: absolute;
-      top: 180px;
-      left: 40px;
-      width: 220px;
-      height: 20px;
-      background-color: green;
-      animation: trampoline 1s ease-in-out infinite alternate;
-      transform-origin: center;
-      z-index: 1;
-    }
-
-    @keyframes trampoline {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(5px); }
-    }
-
-    .green-board.static {
-      animation: none;
-    }
-
-    .fixed-end {
-      position: absolute;
-      top: 180px;
-      width: 20px;
-      height: 20px;
-      background-color: green;
-      z-index: 2;
-    }
-
-    .fixed-left {
-      left: 20px;
-    }
-
-    .fixed-right {
-      right: 20px;
-    }
-
-    .mems-package {
-      position: absolute;
-      top: 100px;
-      left: 90px;
-      width: 120px;
-      height: 80px;
-      background-color: sienna;
-      z-index: 3;
-    }
-
-    .mems-package.bouncing {
-      animation: trampoline 1s ease-in-out infinite alternate;
-    }
-
-    .blue-mass {
-      position: absolute;
-      top: 20px;
-      left: 40px;
-      width: 40px;
-      height: 40px;
-      background-color: deepskyblue;
-      animation: mass-oppose 1s ease-in-out infinite alternate;
-    }
-
-    .blue-mass.fast {
-      animation: mass-oppose-fast 0.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes mass-oppose {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
-    }
-
-    @keyframes mass-oppose-fast {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
-    }
-
-    .labels {
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .btn-container {
-      margin-top: 20px;
-    }
-
-    .button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-
-    .scene-hidden {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <h2>MEMS Animation Scenes</h2>
-
-  <!-- Scene Container -->
-  <div class="container">
-
-    <!-- Scene 1 -->
-    <div id="scene1">
-      <div class="mems-package">
-        <div class="blue-mass"></div>
-      </div>
-    </div>
-
-    <!-- Scene 2 -->
-    <div id="scene2" class="scene-hidden">
-      <div class="fixed-end fixed-left"></div>
-      <div class="fixed-end fixed-right"></div>
-      <div class="green-board"></div>
-      <div class="mems-package bouncing">
-        <div class="blue-mass fast"></div>
-      </div>
-    </div>
-
-    <!-- Scene 3 -->
-    <div id="scene3" class="scene-hidden">
-      <div class="fixed-end fixed-left"></div>
-      <div class="fixed-end fixed-right"></div>
-      <div class="green-board static"></div>
-      <div class="mems-package">
-        <div class="blue-mass"></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Labels -->
-  <div class="labels">
-    <p><strong>Green:</strong> PCB board</p>
-    <p><strong>Brown:</strong> MEMS package (fixed in Scene 1 & 3)</p>
-    <p><strong>Blue:</strong> MEMS proof mass (moves)</p>
-  </div>
-
-  <!-- Buttons -->
-  <div class="btn-container">
-    <button class="button" onclick="changeScene(-1)">Back</button>
-    <button class="button" onclick="changeScene(1)">Next</button>
-  </div>
-
-  <script>
-    let currentScene = 1;
-
-    function changeScene(direction) {
-      document.getElementById(`scene${currentScene}`).classList.add('scene-hidden');
-
-      currentScene += direction;
-      if (currentScene < 1) currentScene = 3;
-      if (currentScene > 3) currentScene = 1;
-
-      document.getElementById(`scene${currentScene}`).classList.remove('scene-hidden');
-    }
-  </script>
-</body>
-</html>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -703,6 +509,202 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
 </body>
 </html>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleDetails(id) {
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MEMS on Trampolining Board</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 40px auto;
+      border-radius: 10px;
+    }
+
+    .green-board {
+      position: absolute;
+      top: 180px;
+      left: 40px;
+      width: 220px;
+      height: 20px;
+      background-color: green;
+      animation: trampoline 1s ease-in-out infinite alternate;
+      transform-origin: center;
+      z-index: 1;
+    }
+
+    @keyframes trampoline {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(5px); }
+    }
+
+    .green-board.static {
+      animation: none;
+    }
+
+    .fixed-end {
+      position: absolute;
+      top: 180px;
+      width: 20px;
+      height: 20px;
+      background-color: green;
+      z-index: 2;
+    }
+
+    .fixed-left {
+      left: 20px;
+    }
+
+    .fixed-right {
+      right: 20px;
+    }
+
+    .mems-package {
+      position: absolute;
+      top: 100px;
+      left: 90px;
+      width: 120px;
+      height: 80px;
+      background-color: sienna;
+      z-index: 3;
+    }
+
+    .mems-package.bouncing {
+      animation: trampoline 1s ease-in-out infinite alternate;
+    }
+
+    .blue-mass {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      width: 40px;
+      height: 40px;
+      background-color: deepskyblue;
+      animation: mass-oppose 1s ease-in-out infinite alternate;
+    }
+
+    .blue-mass.fast {
+      animation: mass-oppose-fast 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes mass-oppose {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    @keyframes mass-oppose-fast {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .labels {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .scene-hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>MEMS Animation Scenes</h2>
+
+  <!-- Scene Container -->
+  <div class="container">
+
+    <!-- Scene 1 -->
+    <div id="scene1">
+      <div class="mems-package">
+        <div class="blue-mass"></div>
+      </div>
+    </div>
+
+    <!-- Scene 2 -->
+    <div id="scene2" class="scene-hidden">
+      <div class="fixed-end fixed-left"></div>
+      <div class="fixed-end fixed-right"></div>
+      <div class="green-board"></div>
+      <div class="mems-package bouncing">
+        <div class="blue-mass fast"></div>
+      </div>
+    </div>
+
+    <!-- Scene 3 -->
+    <div id="scene3" class="scene-hidden">
+      <div class="fixed-end fixed-left"></div>
+      <div class="fixed-end fixed-right"></div>
+      <div class="green-board static"></div>
+      <div class="mems-package">
+        <div class="blue-mass"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Labels -->
+  <div class="labels">
+    <p><strong>Green:</strong> PCB board</p>
+    <p><strong>Brown:</strong> MEMS package (fixed in Scene 1 & 3)</p>
+    <p><strong>Blue:</strong> MEMS proof mass (moves)</p>
+  </div>
+
+  <!-- Buttons -->
+  <div class="btn-container">
+    <button class="button" onclick="changeScene(-1)">Back</button>
+    <button class="button" onclick="changeScene(1)">Next</button>
+  </div>
+
+  <script>
+    let currentScene = 1;
+
+    function changeScene(direction) {
+      document.getElementById(`scene${currentScene}`).classList.add('scene-hidden');
+
+      currentScene += direction;
+      if (currentScene < 1) currentScene = 3;
+      if (currentScene > 3) currentScene = 1;
+
+      document.getElementById(`scene${currentScene}`).classList.remove('scene-hidden');
+    }
+  </script>
+</body>
+</html>
+
 
 
 </body>
