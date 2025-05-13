@@ -316,9 +316,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       width: 300px;
       height: 300px;
       margin: 40px auto;
-      background-color: #999; /* Grey IMU package */
       border-radius: 10px;
-      transition: opacity 0.5s ease;
     }
 
     .green-board {
@@ -336,6 +334,10 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
     @keyframes trampoline {
       0% { transform: translateY(0); }
       100% { transform: translateY(5px); }
+    }
+
+    .green-board.static {
+      animation: none;
     }
 
     .fixed-end {
@@ -363,6 +365,9 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       height: 80px;
       background-color: sienna;
       z-index: 3;
+    }
+
+    .mems-package.bouncing {
       animation: trampoline 1s ease-in-out infinite alternate;
     }
 
@@ -376,8 +381,16 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       animation: mass-oppose 1s ease-in-out infinite alternate;
     }
 
-    /* Blue mass moves in opposite direction of trampoline */
+    .blue-mass.fast {
+      animation: mass-oppose-fast 0.5s ease-in-out infinite alternate;
+    }
+
     @keyframes mass-oppose {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    @keyframes mass-oppose-fast {
       0% { transform: translateY(0); }
       100% { transform: translateY(-10px); }
     }
@@ -401,69 +414,71 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       border-radius: 5px;
     }
 
-    .button:disabled {
-      background-color: #cccccc;
+    .scene-hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h2>MEMS on Trampolining Board</h2>
-  <div class="container" id="scene">
-    <!-- Scene 1 (Brown MEMS Box with Blue Mass Inside) -->
-    <div class="mems-package scene1">
-      <div class="blue-mass"></div>
-    </div>
-    
-    <!-- Scene 2 (Green Trampolining Board with MEMS Package) -->
-    <div class="fixed-end fixed-left scene2"></div>
-    <div class="fixed-end fixed-right scene2"></div>
-    <div class="green-board scene2"></div>
-    <div class="mems-package scene2">
-      <div class="blue-mass"></div>
+  <h2>MEMS Animation Scenes</h2>
+
+  <!-- Scene Container -->
+  <div class="container">
+
+    <!-- Scene 1 -->
+    <div id="scene1">
+      <div class="mems-package">
+        <div class="blue-mass"></div>
+      </div>
     </div>
 
-    <!-- Scene 3 (Blue Mass Only Moving) -->
-    <div class="blue-mass scene3"></div>
+    <!-- Scene 2 -->
+    <div id="scene2" class="scene-hidden">
+      <div class="fixed-end fixed-left"></div>
+      <div class="fixed-end fixed-right"></div>
+      <div class="green-board"></div>
+      <div class="mems-package bouncing">
+        <div class="blue-mass fast"></div>
+      </div>
+    </div>
+
+    <!-- Scene 3 -->
+    <div id="scene3" class="scene-hidden">
+      <div class="fixed-end fixed-left"></div>
+      <div class="fixed-end fixed-right"></div>
+      <div class="green-board static"></div>
+      <div class="mems-package">
+        <div class="blue-mass"></div>
+      </div>
+    </div>
+
   </div>
 
+  <!-- Labels -->
   <div class="labels">
-    <p><strong>Grey:</strong> IMU package (fixed)</p>
-    <p><strong>Green:</strong> PCB board (fixed at corners, trampolining in center)</p>
-    <p><strong>Brown:</strong> MEMS package (mounted on PCB, always in contact)</p>
-    <p><strong>Blue:</strong> MEMS proof mass (vibrates opposite to board motion)</p>
+    <p><strong>Green:</strong> PCB board</p>
+    <p><strong>Brown:</strong> MEMS package (fixed in Scene 1 & 3)</p>
+    <p><strong>Blue:</strong> MEMS proof mass (moves)</p>
   </div>
 
+  <!-- Buttons -->
   <div class="btn-container">
-    <button class="button" id="prevButton" onclick="changeScene(-1)">Back</button>
-    <button class="button" id="nextButton" onclick="changeScene(1)">Next</button>
+    <button class="button" onclick="changeScene(-1)">Back</button>
+    <button class="button" onclick="changeScene(1)">Next</button>
   </div>
 
   <script>
-    let currentScene = 2; // Start with Scene 2
-
-    function showScene(sceneNumber) {
-      const scenes = document.querySelectorAll('.container > div');
-      scenes.forEach(scene => scene.style.display = 'none');
-      
-      // Show the appropriate scene
-      const activeScene = document.querySelectorAll(`.scene${sceneNumber}`);
-      activeScene.forEach(element => element.style.display = 'block');
-    }
+    let currentScene = 1;
 
     function changeScene(direction) {
+      document.getElementById(`scene${currentScene}`).classList.add('scene-hidden');
+
       currentScene += direction;
-      if (currentScene < 1) currentScene = 3; // Loop back to Scene 3
-      if (currentScene > 3) currentScene = 1; // Loop back to Scene 1
-      
-      showScene(currentScene);
+      if (currentScene < 1) currentScene = 3;
+      if (currentScene > 3) currentScene = 1;
 
-      // Disable buttons for looping
-      document.getElementById('prevButton').disabled = currentScene === 1;
-      document.getElementById('nextButton').disabled = currentScene === 3;
+      document.getElementById(`scene${currentScene}`).classList.remove('scene-hidden');
     }
-
-    // Initialize the view
-    showScene(currentScene);
   </script>
 </body>
 </html>
