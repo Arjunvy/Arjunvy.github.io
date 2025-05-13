@@ -483,5 +483,227 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MEMS Animation with Theory</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .layout {
+      display: flex;
+      max-width: 1000px;
+      margin: 0 auto;
+      gap: 30px;
+    }
+
+    .theory {
+      flex: 1;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .animation-column {
+      flex: 1;
+      text-align: center;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 20px auto;
+    }
+
+    .green-board {
+      position: absolute;
+      top: 180px;
+      left: 40px;
+      width: 220px;
+      height: 20px;
+      background-color: green;
+      animation: trampoline 1s ease-in-out infinite alternate;
+      transform-origin: center;
+      z-index: 1;
+    }
+
+    @keyframes trampoline {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(5px); }
+    }
+
+    .green-board.static {
+      animation: none;
+    }
+
+    .fixed-end {
+      position: absolute;
+      top: 180px;
+      width: 20px;
+      height: 20px;
+      background-color: green;
+      z-index: 2;
+    }
+
+    .fixed-left { left: 20px; }
+    .fixed-right { right: 20px; }
+
+    .mems-package {
+      position: absolute;
+      top: 100px;
+      left: 90px;
+      width: 120px;
+      height: 80px;
+      background-color: sienna;
+      z-index: 3;
+    }
+
+    .mems-package.bouncing {
+      animation: trampoline 1s ease-in-out infinite alternate;
+    }
+
+    .blue-mass {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      width: 40px;
+      height: 40px;
+      background-color: deepskyblue;
+      animation: mass-oppose 1s ease-in-out infinite alternate;
+    }
+
+    .blue-mass.fast {
+      animation: mass-oppose-fast 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes mass-oppose {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    @keyframes mass-oppose-fast {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .labels {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      margin: 0 5px;
+    }
+
+    .scene-hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align: center;">MEMS Animation and Explanation</h2>
+
+  <div class="layout">
+    <!-- Left Column: Theory -->
+    <div class="theory">
+      <h3>Scene Description</h3>
+      <p><strong>Scene 1:</strong> MEMS package is fixed. The proof mass moves up and down inside it.</p>
+      <p><strong>Scene 2:</strong> PCB board bounces like a trampoline. MEMS package moves with it. Proof mass vibrates in opposite direction quickly.</p>
+      <p><strong>Scene 3:</strong> PCB board and MEMS package are fixed. Proof mass continues to vibrate independently.</p>
+
+      <h3>Working Principle</h3>
+      <p>
+        MEMS gyroscopes and accelerometers are based on vibration of an internal proof mass. 
+        The motion of the mass is measured relative to the MEMS frame, which itself may be vibrating due to PCB flexing. 
+        Understanding these dynamics is critical for accurate inertial measurements.
+      </p>
+    </div>
+
+    <!-- Right Column: Animation -->
+    <div class="animation-column">
+      <div class="container">
+
+        <!-- Scene 1 -->
+        <div id="scene1">
+          <div class="mems-package">
+            <div class="blue-mass"></div>
+          </div>
+        </div>
+
+        <!-- Scene 2 -->
+        <div id="scene2" class="scene-hidden">
+          <div class="fixed-end fixed-left"></div>
+          <div class="fixed-end fixed-right"></div>
+          <div class="green-board"></div>
+          <div class="mems-package bouncing">
+            <div class="blue-mass fast"></div>
+          </div>
+        </div>
+
+        <!-- Scene 3 -->
+        <div id="scene3" class="scene-hidden">
+          <div class="fixed-end fixed-left"></div>
+          <div class="fixed-end fixed-right"></div>
+          <div class="green-board static"></div>
+          <div class="mems-package">
+            <div class="blue-mass"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Labels -->
+      <div class="labels">
+        <p><strong>Green:</strong> PCB board</p>
+        <p><strong>Brown:</strong> MEMS package</p>
+        <p><strong>Blue:</strong> Proof mass (vibrates)</p>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="btn-container">
+        <button class="button" onclick="changeScene(-1)">Back</button>
+        <button class="button" onclick="changeScene(1)">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentScene = 1;
+
+    function changeScene(direction) {
+      document.getElementById(`scene${currentScene}`).classList.add('scene-hidden');
+
+      currentScene += direction;
+      if (currentScene < 1) currentScene = 3;
+      if (currentScene > 3) currentScene = 1;
+
+      document.getElementById(`scene${currentScene}`).classList.remove('scene-hidden');
+    }
+  </script>
+
+</body>
+</html>
+
+
 </body>
 </html>
