@@ -270,24 +270,46 @@ The solution brought junction temperatures of all critical parts well below thei
   <div class="exp-entry" onclick="toggleDetails('exp2')">
     <strong>📐 MECHANICAL LEAD: IMU Development (Aerospace and Defense) </strong>
     <div class="exp-details" id="exp2">
-      Modal Performance & FEA-Based Design Strategy
-MEMS sensors are inherently sensitive to vibration due to the presence of an internal moving mass. When the resonant frequency of this moving mass overlaps with the natural frequencies (modal modes) of the sensor package or the PCB, it can result in undesirable interactions—leading to degraded sensor performance or erroneous outputs.
+      <div style="font-family: Arial, sans-serif; max-width: 1200px; margin: auto; padding: 20px;">
 
-To mitigate this, we adopt a frequency-aware design approach early in the development cycle:
+  <!-- Section Title -->
+  <h3 style="margin-top: 0;">System Architecture & Mechanical Integration</h3>
 
-Frequency Planning During Architecture Phase: Modal analysis is performed during the concept stage using FEA to identify a design architecture that minimizes coupling between the MEMS resonances and the package or board modes. This includes optimizing the sensor placement, package geometry, and mounting method.
+  <!-- First Image (Full Width) -->
+  <div>
+    <img src="Reagan.png" alt="Final Assembly" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
+      Final mechanical assembly showing thermal integration with component zones.
+    </p>
+  </div>
 
-Suspended Edge-Mounting: While suspending the PCB along its edges helps isolate the MEMS from package-level vibration modes, it introduces multiple PCB modes of its own. Therefore, we carefully evaluate how these board modes interact with the MEMS.
+  <!-- Two Column Layout -->
+  <div style="display: flex; align-items: flex-start; gap: 40px; margin-top: 20px;">
 
-Parameterization and Optimization: Key design parameters—such as PCB thickness, footprint, and mounting stiffness—are iteratively adjusted in simulation until we establish a “safe frequency band” that avoids any overlaps with the MEMS frequency range.
+    <!-- Text Column (Left) -->
+    <div style="flex: 1 1 50%;">
+      <p style="line-height: 1.6;">
+        The design involved a densely populated PCB, presenting challenges in establishing effective thermal paths. I collaborated extensively with layout and firmware engineers to finalize component placement based on thermal dissipation characteristics.
+      </p>
+      <p style="line-height: 1.6;">
+        Components with a primary <strong>junction–case–ambient</strong> thermal path were positioned on the top side of the board to enable direct contact with the heatspreader plate. Conversely, components with a <strong>junction–board</strong> thermal path were placed on the bottom side in thermally active zones.
+      </p>
+      <p style="line-height: 1.6;">
+        These hotspot regions were <strong>strategically arranged</strong> to facilitate efficient insertion of direct thermal touchdowns from the heatspreader plate to the PCB. Placement strategy was validated through thermal simulations to ensure all component junction temperatures remained below their maximum rated thresholds.
+      </p>
+    </div>
 
-Robustness Across Variations: Since MEMS resonant frequency can vary due to manufacturing tolerances, assembly stresses, and temperature changes, we ensure the modal isolation holds over the full expected variation range.
+    <!-- Second Image (Right) -->
+    <div style="flex: 1 1 50%;">
+      <img src="Osprey.png" alt="Exploded View" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <p style="text-align: center; font-size: 0.9em; margin-top: 8px; color: #555;">
+        Exploded view highlighting stacked assembly.
+      </p>
+    </div>
 
-Prototype Validation: We validate FEA results by building CNC-machined modules and conducting modal tests across temperature ranges to correlate simulations with empirical data.
+  </div>
+</div>
 
-Legacy Module Improvement: For legacy modules experiencing modal issues, we’ve successfully diagnosed the root causes through in-house test setups and FEA, and implemented package design changes to eliminate the modal coupling—validated by physical testing.
-
-Modal design is a critical aspect of IMU packaging and is often a gatekeeper for product qualification. A robust modal design strategy ensures consistent sensor output across environmental conditions and directly contributes to field reliability.
 
 <!DOCTYPE html>
 <html lang="en">
@@ -424,7 +446,6 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   <div class="layout">
     <!-- Theory Column -->
     <div class="theory">
-      <h3>Scene Descriptions</h3>
       <p>MEMS sensors are inherently sensitive to vibration due to the presence of an internal moving mass. When the resonant frequency of this moving mass overlaps with the natural frequencies (modal modes) of the sensor package or the PCB, it can result in undesirable interactions—leading to degraded sensor performance or erroneous outputs.</p>
       <p>To mitigate this, we adopt a frequency-aware design approach early in the development cycle:</p>
       <p><strong>Frequency Planning During Architecture Phase:</strong>Modal analysis is performed during the concept stage using FEA to identify a design architecture that minimizes      coupling between the MEMS resonances and the package or board modes. This includes optimizing the sensor placement, package geometry, and mounting method.</p>
