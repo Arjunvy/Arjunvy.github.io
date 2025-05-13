@@ -419,21 +419,22 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 </head>
 <body>
 
-  <h2 style="text-align: center;">MEMS Animation and Explanation</h2>
+  <h2 style="text-align: center;">Modal Performance & FEA-Based Design Strategy</h2>
 
   <div class="layout">
     <!-- Theory Column -->
     <div class="theory">
       <h3>Scene Descriptions</h3>
-      <p><strong>Scene 1:</strong> MEMS package is fixed. The proof mass moves up and down inside it.</p>
-      <p><strong>Scene 2:</strong> PCB board moves like a trampoline. MEMS package moves with it. Proof mass vibrates fast in opposite direction.</p>
-      <p><strong>Scene 3:</strong> PCB board and MEMS package are fixed. Only the proof mass vibrates.</p>
+      <p>MEMS sensors are inherently sensitive to vibration due to the presence of an internal moving mass. When the resonant frequency of this moving mass overlaps with the natural frequencies (modal modes) of the sensor package or the PCB, it can result in undesirable interactions—leading to degraded sensor performance or erroneous outputs.</p>
+      <p>To mitigate this, we adopt a frequency-aware design approach early in the development cycle:</p>
+      <p><strong>Frequency Planning During Architecture Phase:</strong>Modal analysis is performed during the concept stage using FEA to identify a design architecture that minimizes      coupling between the MEMS resonances and the package or board modes. This includes optimizing the sensor placement, package geometry, and mounting method.</p>
+      <p><strong>Suspended Edge-Mounting:</strong>While suspending the PCB along its edges helps isolate the MEMS from package-level vibration modes, it introduces multiple PCB modes of its own. Therefore, we carefully evaluate how these board modes interact with the MEMS.</p>
+      <p><strong>Parameterization and Optimization:</strong>Key design parameters—such as PCB thickness, footprint, and mounting stiffness—are iteratively adjusted in simulation until we establish a “safe frequency band” that avoids any overlaps with the MEMS frequency range.</p>
+      <p><strong>Robustness Across Variations:</strong> Since MEMS resonant frequency can vary due to manufacturing tolerances, assembly stresses, and temperature changes, we ensure the modal isolation holds over the full expected variation range.</p>
+      <p><strong>Prototype Validation:</strong> We validate FEA results by building CNC-machined modules and conducting modal tests across temperature ranges to correlate simulations with empirical data.</p>
+      <p><strong>Legacy Module Improvement:</strong> For legacy modules experiencing modal issues, we’ve successfully diagnosed the root causes through in-house test setups and FEA, and implemented package design changes to eliminate the modal coupling—validated by physical testing.</p>
+      <p><strong>Modal design is a critical aspect of IMU packaging and is often a gatekeeper for product qualification. A robust modal design strategy ensures consistent sensor output across environmental conditions and directly contributes to field reliability.</strong></p>
 
-      <h3>Explanation</h3>
-      <p>
-        MEMS sensors rely on movement of a proof mass within a package. Vibrations from the PCB or surrounding structure can interfere with measurements. 
-        The three scenes illustrate how the proof mass behaves in different dynamic environments — isolated, coupled with board motion, or stationary board.
-      </p>
     </div>
 
     <!-- Animation Column -->
