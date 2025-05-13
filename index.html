@@ -293,7 +293,7 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MEMS Animation with Theory</title>
+  <title>MEMS Animation and Theory</title>
   <style>
     body {
       background: #f0f0f0;
@@ -304,14 +304,14 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
 
     .layout {
       display: flex;
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 1100px;
+      margin: auto;
       gap: 30px;
     }
 
     .theory {
       flex: 1;
-      background-color: white;
+      background: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -322,11 +322,19 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       text-align: center;
     }
 
+    .scene {
+      margin-bottom: 40px;
+    }
+
+    .scene h3 {
+      margin-bottom: 10px;
+    }
+
     .container {
       position: relative;
       width: 300px;
       height: 300px;
-      margin: 20px auto;
+      margin: 0 auto;
     }
 
     .green-board {
@@ -336,18 +344,21 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       width: 220px;
       height: 20px;
       background-color: green;
-      animation: trampoline 1s ease-in-out infinite alternate;
       transform-origin: center;
       z-index: 1;
+    }
+
+    .green-board.bouncing {
+      animation: trampoline 1s ease-in-out infinite alternate;
+    }
+
+    .green-board.static {
+      animation: none;
     }
 
     @keyframes trampoline {
       0% { transform: translateY(0); }
       100% { transform: translateY(5px); }
-    }
-
-    .green-board.static {
-      animation: none;
     }
 
     .fixed-end {
@@ -404,25 +415,6 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
       font-size: 14px;
       margin-top: 10px;
     }
-
-    .btn-container {
-      margin-top: 20px;
-    }
-
-    .button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 5px;
-      margin: 0 5px;
-    }
-
-    .scene-hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -430,44 +422,50 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
   <h2 style="text-align: center;">MEMS Animation and Explanation</h2>
 
   <div class="layout">
-    <!-- Left Column: Theory -->
+    <!-- Theory Column -->
     <div class="theory">
-      <h3>Scene Description</h3>
+      <h3>Scene Descriptions</h3>
       <p><strong>Scene 1:</strong> MEMS package is fixed. The proof mass moves up and down inside it.</p>
-      <p><strong>Scene 2:</strong> PCB board bounces like a trampoline. MEMS package moves with it. Proof mass vibrates in opposite direction quickly.</p>
-      <p><strong>Scene 3:</strong> PCB board and MEMS package are fixed. Proof mass continues to vibrate independently.</p>
+      <p><strong>Scene 2:</strong> PCB board moves like a trampoline. MEMS package moves with it. Proof mass vibrates fast in opposite direction.</p>
+      <p><strong>Scene 3:</strong> PCB board and MEMS package are fixed. Only the proof mass vibrates.</p>
 
-      <h3>Working Principle</h3>
+      <h3>Explanation</h3>
       <p>
-        MEMS gyroscopes and accelerometers are based on vibration of an internal proof mass. 
-        The motion of the mass is measured relative to the MEMS frame, which itself may be vibrating due to PCB flexing. 
-        Understanding these dynamics is critical for accurate inertial measurements.
+        MEMS sensors rely on movement of a proof mass within a package. Vibrations from the PCB or surrounding structure can interfere with measurements. 
+        The three scenes illustrate how the proof mass behaves in different dynamic environments — isolated, coupled with board motion, or stationary board.
       </p>
     </div>
 
-    <!-- Right Column: Animation -->
+    <!-- Animation Column -->
     <div class="animation-column">
-      <div class="container">
 
-        <!-- Scene 1 -->
-        <div id="scene1">
+      <!-- Scene 1 -->
+      <div class="scene">
+        <h3>Scene 1: Fixed MEMS, Moving Mass</h3>
+        <div class="container">
           <div class="mems-package">
             <div class="blue-mass"></div>
           </div>
         </div>
+      </div>
 
-        <!-- Scene 2 -->
-        <div id="scene2" class="scene-hidden">
+      <!-- Scene 2 -->
+      <div class="scene">
+        <h3>Scene 2: Trampolining Board, MEMS Moving, Mass Opposes</h3>
+        <div class="container">
           <div class="fixed-end fixed-left"></div>
           <div class="fixed-end fixed-right"></div>
-          <div class="green-board"></div>
+          <div class="green-board bouncing"></div>
           <div class="mems-package bouncing">
             <div class="blue-mass fast"></div>
           </div>
         </div>
+      </div>
 
-        <!-- Scene 3 -->
-        <div id="scene3" class="scene-hidden">
+      <!-- Scene 3 -->
+      <div class="scene">
+        <h3>Scene 3: Fixed Board and MEMS, Only Mass Moves</h3>
+        <div class="container">
           <div class="fixed-end fixed-left"></div>
           <div class="fixed-end fixed-right"></div>
           <div class="green-board static"></div>
@@ -475,7 +473,6 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
             <div class="blue-mass"></div>
           </div>
         </div>
-
       </div>
 
       <!-- Labels -->
@@ -484,28 +481,8 @@ Modal design is a critical aspect of IMU packaging and is often a gatekeeper for
         <p><strong>Brown:</strong> MEMS package</p>
         <p><strong>Blue:</strong> Proof mass (vibrates)</p>
       </div>
-
-      <!-- Navigation Buttons -->
-      <div class="btn-container">
-        <button class="button" onclick="changeScene(-1)">Back</button>
-        <button class="button" onclick="changeScene(1)">Next</button>
-      </div>
     </div>
   </div>
-
-  <script>
-    let currentScene = 1;
-
-    function changeScene(direction) {
-      document.getElementById(`scene${currentScene}`).classList.add('scene-hidden');
-
-      currentScene += direction;
-      if (currentScene < 1) currentScene = 3;
-      if (currentScene > 3) currentScene = 1;
-
-      document.getElementById(`scene${currentScene}`).classList.remove('scene-hidden');
-    }
-  </script>
 
 </body>
 </html>
