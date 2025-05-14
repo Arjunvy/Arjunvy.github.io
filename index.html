@@ -526,12 +526,12 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Thermal Stack with Heat Flow</title>
+  <meta charset="UTF-8">
+  <title>Thermal Stack Animation</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      background: #f4f4f4;
       padding: 40px;
     }
 
@@ -542,7 +542,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     h2 {
       text-align: center;
-      color: #333;
+      color: #222;
     }
 
     .stack {
@@ -556,7 +556,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       width: 100%;
       height: 40px;
       border: 1px solid #ccc;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .fan        { background: #e67e22; }
@@ -568,28 +568,28 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .label {
       position: absolute;
-      left: 520px;
+      left: 510px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 14px;
-      color: #333;
+      font-size: 12px;
+      white-space: nowrap;
     }
 
-    /* Animated Heat Arrows */
+    /* Heat Arrows */
     .arrow {
       position: absolute;
-      left: 245px;
+      top: 100%;
       width: 10px;
       height: 30px;
       background: red;
       border-radius: 5px;
-      opacity: 0.8;
-      animation: moveUp 2s linear infinite;
+      opacity: 0.9;
+      animation: moveUp 2.5s linear infinite;
     }
 
     @keyframes moveUp {
       0%   { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-220px); opacity: 0; }
+      100% { transform: translateY(-260px); opacity: 0; }
     }
 
     .caption {
@@ -597,29 +597,36 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       margin-top: 20px;
       line-height: 1.5;
     }
-
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Thermal Stack and Heat Flow Path</h2>
-
+    <h2>Thermal Stack and Heat Flow</h2>
     <div class="stack">
+      <!-- Fan Sink -->
       <div class="layer fan"><div class="label">Fan Sink</div></div>
+      <!-- Thermal Grease -->
       <div class="layer grease"><div class="label">Thermal Grease</div></div>
+      <!-- Heat Sink Plate -->
       <div class="layer plate"><div class="label">Heat Sink Plate</div></div>
+      <!-- TIM -->
       <div class="layer tim"><div class="label">Thermal Interface Material (TIM)</div></div>
+      <!-- Junction -->
       <div class="layer junction"><div class="label">Junction (IC)</div></div>
+      <!-- PCB -->
       <div class="layer pcb"><div class="label">PCB</div></div>
 
-      <!-- Heat Flow Arrows -->
-      <div class="arrow" style="animation-delay: 0s;"></div>
-      <div class="arrow" style="left: 265px; animation-delay: 0.6s;"></div>
+      <!-- Heat Arrows Across Width -->
+      <div class="arrow" style="left: 40px; animation-delay: 0s;"></div>
+      <div class="arrow" style="left: 110px; animation-delay: 0.4s;"></div>
+      <div class="arrow" style="left: 180px; animation-delay: 0.8s;"></div>
+      <div class="arrow" style="left: 250px; animation-delay: 1.2s;"></div>
+      <div class="arrow" style="left: 320px; animation-delay: 1.6s;"></div>
+      <div class="arrow" style="left: 390px; animation-delay: 2s;"></div>
     </div>
 
     <div class="caption">
-      🔺 Heat flows from the <strong>junction</strong> upward through:<br />
-      <strong>Thermal Interface Material → Heat Sink Plate → Thermal Grease → Fan Sink → Ambient Air</strong>
+      🔺 Heat flows upward from the <strong>Junction</strong> through the <strong>Thermal Interface Material → Heat Sink Plate → Thermal Grease → Fan Sink → Ambient Air</strong>.
     </div>
   </div>
 </body>
