@@ -526,90 +526,116 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Thermal Heat Flow Animation</title>
+  <meta charset="UTF-8" />
+  <title>Thermal Stack with Heat Flow</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
-      margin: 0;
+      background: #f9f9f9;
       padding: 40px;
     }
 
     .container {
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
     }
 
     h2 {
       color: #333;
     }
 
-    p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .image-container {
+    .stack {
       position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin-top: 40px;
+      width: 300px;
+      margin: 40px auto;
     }
 
-    .image-container img {
+    .layer {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 40px;
+      line-height: 40px;
+      color: white;
+      font-weight: bold;
+      border: 1px solid #ccc;
     }
 
+    .fan     { background: #e67e22; }
+    .grease  { background: #3498db; height: 10px; font-size: 10px; }
+    .plate   { background: #95a5a6; }
+    .tim     { background: #bdc3c7; height: 20px; color: #333; }
+    .junction { background: #e74c3c; height: 20px; }
+    .pcb     { background: #27ae60; }
+
+    .label {
+      position: absolute;
+      left: 310px;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: left;
+    }
+
+    /* Animated Heat Arrows */
     .arrow {
       position: absolute;
-      width: 8px;
+      left: 145px;
+      width: 10px;
       height: 30px;
       background: red;
-      border-radius: 4px;
-      opacity: 0.8;
+      border-radius: 5px;
+      opacity: 0.9;
       animation: moveUp 2s linear infinite;
     }
 
-    @keyframes moveUp {
-      0% {
-        transform: translateY(0px);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-80px);
-        opacity: 0;
-      }
+    .arrow.down {
+      top: 160px;
+      animation: moveDown 2s linear infinite;
     }
 
-    /* --- Heat Flow Arrows: Tune positions manually below --- */
+    .arrow.up {
+      top: 160px;
+    }
 
-    .jc1 { left: 370px; top: 350px; animation-delay: 0s; }   /* Junction to Case */
-    .jc2 { left: 385px; top: 350px; animation-delay: 0.5s; }
+    @keyframes moveUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100px); opacity: 0; }
+    }
 
-    .jb1 { left: 430px; top: 370px; animation-delay: 1s; }   /* Junction to Board */
-    .jb2 { left: 445px; top: 370px; animation-delay: 1.5s; }
+    @keyframes moveDown {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100px); opacity: 0; }
+    }
 
+    .caption {
+      text-align: left;
+      font-size: 14px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Heat Flow Visualization</h2>
-    <p>This animation illustrates two primary thermal dissipation paths from the IC junction:</p>
-    <ul>
-      <li><strong>Junction-to-Case (θ<sub>JC</sub>):</strong> Heat flows vertically up into the Heat Sink Plate via the TIM and is dissipated by the Fan Sink into the ambient environment.</li>
-      <li><strong>Junction-to-Board (θ<sub>JB</sub>):</strong> Heat flows down into the PCB and spreads through copper planes and standoffs.</li>
+    <h2>Heat Flow in Thermal Stack</h2>
+    <p>This diagram shows heat flowing from the junction in two directions:</p>
+    <ul class="caption">
+      <li><b>Upward</b> → Through TIM and into Heat Sink & Fan (θ<sub>JC</sub>)</li>
+      <li><b>Downward</b> → Into the PCB (θ<sub>JB</sub>)</li>
     </ul>
-    <p>The red arrows show the direction of heat flow from the IC junction to both the case and the board.</p>
 
-    <div class="image-container">
-      <img src="Cross section thermal resistance network.png" alt="Thermal Model with Heat Flow Paths">
-      <div class="arrow jc1"></div>
-      <div class="arrow jc2"></div>
-      <div class="arrow jb1"></div>
-      <div class="arrow jb2"></div>
+    <div class="stack">
+      <div class="layer fan">Fan Sink</div>
+      <div class="layer grease">Thermal Grease</div>
+      <div class="layer plate">Heat Sink Plate</div>
+      <div class="layer tim">TIM</div>
+      <div class="layer junction">Junction (IC)</div>
+      <div class="layer pcb">PCB</div>
+
+      <!-- Animated Heat Arrows -->
+      <div class="arrow up" style="animation-delay: 0s;"></div>
+      <div class="arrow up" style="left: 160px; animation-delay: 0.5s;"></div>
+
+      <div class="arrow down" style="animation-delay: 1s;"></div>
+      <div class="arrow down" style="left: 160px; animation-delay: 1.5s;"></div>
     </div>
   </div>
 </body>
