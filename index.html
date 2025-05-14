@@ -527,11 +527,11 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Thermal Stack Animation</title>
+  <title>Thermal Stack with Bi-directional Heat Flow</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #f7f7f7;
       padding: 40px;
     }
 
@@ -542,7 +542,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     h2 {
       text-align: center;
-      color: #222;
+      color: #333;
     }
 
     .stack {
@@ -556,15 +556,15 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       width: 100%;
       height: 40px;
       border: 1px solid #ccc;
-      margin-bottom: 5px;
+      margin: 0; /* all slabs touch */
     }
 
-    .fan        { background: #e67e22; }
-    .grease     { background: #3498db; height: 20px; }
-    .plate      { background: #95a5a6; }
-    .tim        { background: #bdc3c7; height: 25px; }
-    .junction   { background: #e74c3c; height: 30px; }
-    .pcb        { background: #27ae60; }
+    .fan     { background: #e67e22; }
+    .grease  { background: #3498db; height: 20px; }
+    .plate   { background: #95a5a6; }
+    .tim     { background: #bdc3c7; height: 25px; }
+    .junction{ background: #e74c3c; height: 30px; }
+    .pcb     { background: #27ae60; }
 
     .label {
       position: absolute;
@@ -576,20 +576,31 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     }
 
     /* Heat Arrows */
-    .arrow {
+    .arrow-up, .arrow-down {
       position: absolute;
-      top: 100%;
       width: 10px;
       height: 30px;
       background: red;
       border-radius: 5px;
       opacity: 0.9;
+    }
+
+    .arrow-up {
       animation: moveUp 2.5s linear infinite;
+    }
+
+    .arrow-down {
+      animation: moveDown 2.5s linear infinite;
     }
 
     @keyframes moveUp {
       0%   { transform: translateY(0); opacity: 1; }
       100% { transform: translateY(-260px); opacity: 0; }
+    }
+
+    @keyframes moveDown {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(130px); opacity: 0; }
     }
 
     .caption {
@@ -601,32 +612,33 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 </head>
 <body>
   <div class="container">
-    <h2>Thermal Stack and Heat Flow</h2>
+    <h2>Thermal Stack with Heat Flow Directions</h2>
     <div class="stack">
-      <!-- Fan Sink -->
+      <!-- Top-down structure -->
       <div class="layer fan"><div class="label">Fan Sink</div></div>
-      <!-- Thermal Grease -->
       <div class="layer grease"><div class="label">Thermal Grease</div></div>
-      <!-- Heat Sink Plate -->
       <div class="layer plate"><div class="label">Heat Sink Plate</div></div>
-      <!-- TIM -->
       <div class="layer tim"><div class="label">Thermal Interface Material (TIM)</div></div>
-      <!-- Junction -->
       <div class="layer junction"><div class="label">Junction (IC)</div></div>
-      <!-- PCB -->
       <div class="layer pcb"><div class="label">PCB</div></div>
 
-      <!-- Heat Arrows Across Width -->
-      <div class="arrow" style="left: 40px; animation-delay: 0s;"></div>
-      <div class="arrow" style="left: 110px; animation-delay: 0.4s;"></div>
-      <div class="arrow" style="left: 180px; animation-delay: 0.8s;"></div>
-      <div class="arrow" style="left: 250px; animation-delay: 1.2s;"></div>
-      <div class="arrow" style="left: 320px; animation-delay: 1.6s;"></div>
-      <div class="arrow" style="left: 390px; animation-delay: 2s;"></div>
+      <!-- Upward arrows from junction -->
+      <div class="arrow-up" style="left: 60px; top: 165px; animation-delay: 0s;"></div>
+      <div class="arrow-up" style="left: 140px; top: 165px; animation-delay: 0.5s;"></div>
+      <div class="arrow-up" style="left: 220px; top: 165px; animation-delay: 1s;"></div>
+      <div class="arrow-up" style="left: 300px; top: 165px; animation-delay: 1.5s;"></div>
+      <div class="arrow-up" style="left: 380px; top: 165px; animation-delay: 2s;"></div>
+
+      <!-- Downward arrows from junction -->
+      <div class="arrow-down" style="left: 100px; top: 195px; animation-delay: 0.3s;"></div>
+      <div class="arrow-down" style="left: 180px; top: 195px; animation-delay: 0.8s;"></div>
+      <div class="arrow-down" style="left: 260px; top: 195px; animation-delay: 1.3s;"></div>
+      <div class="arrow-down" style="left: 340px; top: 195px; animation-delay: 1.8s;"></div>
     </div>
 
     <div class="caption">
-      🔺 Heat flows upward from the <strong>Junction</strong> through the <strong>Thermal Interface Material → Heat Sink Plate → Thermal Grease → Fan Sink → Ambient Air</strong>.
+      🔺 Heat flows <strong>upward</strong> from the Junction (IC) through TIM → Heat Sink Plate → Grease → Fan Sink → Ambient Air<br>
+      🔻 Heat also flows <strong>downward</strong> from the Junction to the PCB.
     </div>
   </div>
 </body>
