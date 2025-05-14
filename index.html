@@ -527,96 +527,89 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Thermal Management Heat Flow Animation</title>
+  <title>Thermal Heat Flow Animation</title>
   <style>
     body {
-      background: #f5f5f5;
       font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
       margin: 0;
-      padding: 0;
-    }
-
-    .row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
       padding: 40px;
     }
 
-    .theory {
-      flex: 1;
-      padding-right: 30px;
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
       font-size: 16px;
+      line-height: 1.5;
     }
 
-    .animation-container {
-      flex: 1;
+    .image-container {
       position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 40px;
     }
 
-    .base-image {
+    .image-container img {
       width: 100%;
-      max-width: 600px;
+      height: auto;
+      display: block;
     }
 
     .arrow {
       position: absolute;
-      width: 10px;
-      height: 40px;
+      width: 8px;
+      height: 30px;
       background: red;
-      border-radius: 5px;
-      animation: moveUp 2s linear infinite;
+      border-radius: 4px;
       opacity: 0.8;
+      animation: moveUp 2s linear infinite;
     }
 
     @keyframes moveUp {
       0% {
-        transform: translateY(100px);
-        opacity: 0.8;
+        transform: translateY(0px);
+        opacity: 1;
       }
       100% {
-        transform: translateY(-300px);
+        transform: translateY(-80px);
         opacity: 0;
       }
     }
 
-    /* Position arrows based on the visible thermal paths */
-    .arrow.path1 {
-      left: 330px;
-      top: 420px;
-    }
+    /* --- Heat Flow Arrows: Tune positions manually below --- */
 
-    .arrow.path2 {
-      left: 400px;
-      top: 420px;
-    }
+    .jc1 { left: 370px; top: 350px; animation-delay: 0s; }   /* Junction to Case */
+    .jc2 { left: 385px; top: 350px; animation-delay: 0.5s; }
 
-    .arrow.path3 {
-      left: 475px;
-      top: 550px;
-    }
+    .jb1 { left: 430px; top: 370px; animation-delay: 1s; }   /* Junction to Board */
+    .jb2 { left: 445px; top: 370px; animation-delay: 1.5s; }
 
-    .arrow.path4 {
-      left: 545px;
-      top: 550px;
-    }
   </style>
 </head>
 <body>
-  <div class="row">
-    <div class="theory">
-      <h2>Heat Flow Paths in Thermal Management</h2>
-      <p><strong>Path 1:</strong> Junction → Case → TIM → Heat Sink Plate → Thermal Grease → Fan Sink → Ambient</p>
-      <p><strong>Path 2:</strong> Junction → PCB → Touchdowns → Heat Sink Plate → Thermal Grease → Fan Sink → Ambient</p>
-      <p>Arrows represent moving heat. As you can see, the heat is dissipated into the environment through both direct and indirect conduction paths.</p>
-    </div>
+  <div class="container">
+    <h2>Heat Flow Visualization</h2>
+    <p>This animation illustrates two primary thermal dissipation paths from the IC junction:</p>
+    <ul>
+      <li><strong>Junction-to-Case (θ<sub>JC</sub>):</strong> Heat flows vertically up into the Heat Sink Plate via the TIM and is dissipated by the Fan Sink into the ambient environment.</li>
+      <li><strong>Junction-to-Board (θ<sub>JB</sub>):</strong> Heat flows down into the PCB and spreads through copper planes and standoffs.</li>
+    </ul>
+    <p>The red arrows show the direction of heat flow from the IC junction to both the case and the board.</p>
 
-    <div class="animation-container">
-      <img src="Cross section thermal resistance network.png" class="base-image" alt="Thermal Diagram">
-      <div class="arrow path1"></div>
-      <div class="arrow path2" style="animation-delay: 0.5s;"></div>
-      <div class="arrow path3" style="animation-delay: 1s;"></div>
-      <div class="arrow path4" style="animation-delay: 1.5s;"></div>
+    <div class="image-container">
+      <img src="Cross section thermal resistance network.png" alt="Thermal Model with Heat Flow Paths">
+      <div class="arrow jc1"></div>
+      <div class="arrow jc2"></div>
+      <div class="arrow jb1"></div>
+      <div class="arrow jb2"></div>
     </div>
   </div>
 </body>
