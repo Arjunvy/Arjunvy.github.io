@@ -523,6 +523,104 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
   }
 </script>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thermal Management Heat Flow Animation</title>
+  <style>
+    body {
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .theory {
+      flex: 1;
+      padding-right: 30px;
+      font-size: 16px;
+    }
+
+    .animation-container {
+      flex: 1;
+      position: relative;
+    }
+
+    .base-image {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .arrow {
+      position: absolute;
+      width: 10px;
+      height: 40px;
+      background: red;
+      border-radius: 5px;
+      animation: moveUp 2s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes moveUp {
+      0% {
+        transform: translateY(100px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-300px);
+        opacity: 0;
+      }
+    }
+
+    /* Position arrows based on the visible thermal paths */
+    .arrow.path1 {
+      left: 330px;
+      top: 420px;
+    }
+
+    .arrow.path2 {
+      left: 400px;
+      top: 420px;
+    }
+
+    .arrow.path3 {
+      left: 475px;
+      top: 550px;
+    }
+
+    .arrow.path4 {
+      left: 545px;
+      top: 550px;
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="theory">
+      <h2>Heat Flow Paths in Thermal Management</h2>
+      <p><strong>Path 1:</strong> Junction → Case → TIM → Heat Sink Plate → Thermal Grease → Fan Sink → Ambient</p>
+      <p><strong>Path 2:</strong> Junction → PCB → Touchdowns → Heat Sink Plate → Thermal Grease → Fan Sink → Ambient</p>
+      <p>Arrows represent moving heat. As you can see, the heat is dissipated into the environment through both direct and indirect conduction paths.</p>
+    </div>
+
+    <div class="animation-container">
+      <img src="Cross section thermal resistance network.png" class="base-image" alt="Thermal Diagram">
+      <div class="arrow path1"></div>
+      <div class="arrow path2" style="animation-delay: 0.5s;"></div>
+      <div class="arrow path3" style="animation-delay: 1s;"></div>
+      <div class="arrow path4" style="animation-delay: 1.5s;"></div>
+    </div>
+  </div>
+</body>
+</html>
 
 
 </body>
