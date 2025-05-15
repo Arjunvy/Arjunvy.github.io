@@ -527,7 +527,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Thermal Stack with Touchdown and Heat Flow</title>
+  <title>Thermal Stack with Edge Touchdown Slabs</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -536,7 +536,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     }
 
     .container {
-      width: 1000px;
+      width: 900px;
       margin: auto;
     }
 
@@ -567,9 +567,9 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .grease {
       background: #3498db;
+      width: 50%;
+      margin: 0 auto;
       height: 20px;
-      width: 65%; /* Half of plate width */
-      margin-left: 17.5%;
       z-index: 5;
     }
 
@@ -582,9 +582,9 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .tim {
       background: #bdc3c7;
-      height: 20px;
-      width: 65%; /* Half of plate width */
-      margin-left: 17.5%;
+      width: 50%;
+      margin: 0 auto;
+      height: 15px;
       z-index: 3;
     }
 
@@ -611,80 +611,85 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       white-space: nowrap;
     }
 
-    .ambient {
-      position: absolute;
-      top: -30px;
-      left: 270px;
-      font-size: 14px;
-      font-weight: bold;
-      color: #2c3e50;
-    }
-
     .touchdown {
       position: absolute;
       width: 20px;
       background: #95a5a6;
-      height: 50px; /* TIM (20) + Junction (30) */
+      height: 45px; /* Adjusted for new TIM (15px) + junction (30px) */
       z-index: 10;
     }
 
     .touchdown.left {
-      top: 100px; /* plate bottom (80) + TIM (20) = PCB top = 100 */
+      top: 115px;
       left: -70px;
     }
 
     .touchdown.right {
-      top: 100px;
+      top: 115px;
       right: -70px;
     }
 
-    .arrow {
+    .arrow-path {
       position: absolute;
-      width: 8px;
-      height: 30px;
+      width: 2px;
       background: red;
-      border-radius: 4px;
-      opacity: 0.9;
-    }
-
-    .arrow-up {
-      animation: moveUp 2.5s linear infinite;
-    }
-
-    .arrow-down {
-      animation: moveDown 2.5s linear infinite;
-    }
-
-    @keyframes moveUp {
-      0%   { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-260px); opacity: 0; }
-    }
-
-    @keyframes moveDown {
-      0%   { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(130px); opacity: 0; }
-    }
-
-    .curve {
-      width: 80px;
-      height: 80px;
-      border: 3px solid red;
-      border-top: none;
-      border-left: none;
-      position: absolute;
-      border-radius: 0 0 80px 0;
-      transform: rotate(90deg);
+      animation: heatFlow 3s linear forwards;
       opacity: 0.8;
     }
 
-    .curve.left {
-      left: -60px;
-      top: 190px;
+    .arrow-head {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 10px solid red;
+      position: absolute;
+      opacity: 0;
+      animation: arrowAppear 3s forwards;
     }
 
-    .curve.right {
+    @keyframes heatFlow {
+      0% { height: 0; opacity: 0; }
+      10% { height: 30px; opacity: 1; }
+      30% { height: 70px; }
+      50% { height: 120px; }
+      70% { height: 180px; }
+      90% { height: 230px; }
+      100% { height: 280px; opacity: 1; }
+    }
+
+    @keyframes arrowAppear {
+      0% { opacity: 0; top: 0; }
+      100% { opacity: 1; top: 280px; }
+    }
+
+    .curved-arrow {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 2px solid red;
+      border-top: none;
+      border-left: none;
+      border-radius: 0 0 80px 0;
+      transform: rotate(45deg);
+      top: 225px;
+      opacity: 0.8;
+      animation: curveFlow 3s ease forwards;
+    }
+
+    .curved-arrow.left {
+      left: -60px;
+      transform: rotate(-135deg);
+    }
+
+    .curved-arrow.right {
       right: -60px;
-      top: 190px;
+      transform: rotate(45deg);
+    }
+
+    @keyframes curveFlow {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     .caption {
@@ -692,46 +697,48 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       margin-top: 20px;
       line-height: 1.5;
     }
+
+    .ambient-label {
+      position: absolute;
+      top: -30px;
+      left: 300px;
+      font-size: 12px;
+      color: #555;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Thermal Stack with Touchdown Slabs and Heat Flow</h2>
+    <h2>Thermal Stack with Outer-Edge Touchdown Slabs</h2>
     <div class="stack">
-      <div class="ambient">Ambient Air</div>
+      <!-- Ambient Label -->
+      <div class="ambient-label">Ambient Air 🌬️</div>
 
-      <!-- Touchdown slabs -->
+      <!-- Touchdown Slabs -->
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
-      <!-- Stack layers -->
+      <!-- Stack Layers -->
       <div class="layer fan"><div class="label">Fan Sink</div></div>
       <div class="layer grease"><div class="label">Thermal Grease</div></div>
-      <div class="layer plate"><div class="label">Heat Sink Plate</div></div>
+      <div class="layer plate"><div class="label">Heat Sink Plate (Spreader)</div></div>
       <div class="layer tim"><div class="label">TIM</div></div>
       <div class="layer junction"><div class="label">IC Junction</div></div>
       <div class="layer pcb"><div class="label">PCB</div></div>
 
-      <!-- Upward heat flow (from junction to fan) -->
-      <div class="arrow arrow-up" style="left: 150px; top: 165px; animation-delay: 0s;"></div>
-      <div class="arrow arrow-up" style="left: 250px; top: 165px; animation-delay: 0.4s;"></div>
-      <div class="arrow arrow-up" style="left: 350px; top: 165px; animation-delay: 0.8s;"></div>
-      <div class="arrow arrow-up" style="left: 450px; top: 165px; animation-delay: 1.2s;"></div>
+      <!-- Heat Flow Arrows (Top Path: Junction → Ambient) -->
+      <div class="arrow-path" style="left: 100px; top: 135px;"></div>
+      <div class="arrow-head" style="left: 94px;"></div>
 
-      <!-- Downward to PCB -->
-      <div class="arrow arrow-down" style="left: 200px; top: 195px; animation-delay: 0.3s;"></div>
-      <div class="arrow arrow-down" style="left: 300px; top: 195px; animation-delay: 0.6s;"></div>
-      <div class="arrow arrow-down" style="left: 400px; top: 195px; animation-delay: 0.9s;"></div>
-
-      <!-- Curved arrows from PCB to plate via touchdown -->
-      <div class="curve left"></div>
-      <div class="curve right"></div>
+      <!-- Curved Heat Flow Arrows (PCB → Touchdown → Plate) -->
+      <div class="curved-arrow left"></div>
+      <div class="curved-arrow right"></div>
     </div>
 
     <div class="caption">
-      🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink → <strong>Ambient Air</strong><br>
-      🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB → Touchdown Slabs → Heat Sink Plate → Fan Sink → <strong>Ambient Air</strong><br>
-      🔳 <strong>Touchdown vertical slabs</strong> placed at edge transfer heat from PCB to the plate effectively.
+      🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink → Ambient<br>
+      🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB → up through Touchdown Slabs → Plate → Fan Sink → Ambient<br>
+      🔳 Touchdown slabs now sit at the <strong>edge</strong> of the heat sink plate, channeling heat from PCB to top layers.
     </div>
   </div>
 </body>
