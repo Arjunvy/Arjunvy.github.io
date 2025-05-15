@@ -609,7 +609,220 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .touchdown {
       position: absolute;
+      width: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thermal Stack with Touchdown and Heat Flow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+
+    .container {
+      width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .stack {
+      position: relative;
+      width: 700px;
+      margin: 50px auto;
+    }
+
+    .layer {
+      position: relative;
+      height: 40px;
+      margin: 0;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .fan {
+      background: #e67e22;
+      width: 100%;
+      z-index: 6;
+    }
+
+    .grease {
+      background: #3498db;
+      height: 20px;
+      width: 65%; /* Half of plate width */
+      margin-left: 17.5%;
+      z-index: 5;
+    }
+
+    .plate {
+      background: #95a5a6;
+      width: 130%;
+      margin-left: -15%;
+      z-index: 4;
+    }
+
+    .tim {
+      background: #bdc3c7;
+      height: 20px;
+      width: 65%; /* Half of plate width */
+      margin-left: 17.5%;
+      z-index: 3;
+    }
+
+    .junction {
+      background: #e74c3c;
+      height: 30px;
+      z-index: 2;
+    }
+
+    .pcb {
+      background: #27ae60;
+      width: 140%;
+      margin-left: -20%;
+      height: 40px;
+      z-index: 1;
+    }
+
+    .label {
+      position: absolute;
+      left: 760px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .ambient {
+      position: absolute;
+      top: -30px;
+      left: 270px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .touchdown {
+      position: absolute;
       width: 20px;
+      background: #95a5a6;
+      height: 50px; /* TIM (20) + Junction (30) */
+      z-index: 10;
+    }
+
+    .touchdown.left {
+      top: 100px; /* plate bottom (80) + TIM (20) = PCB top = 100 */
+      left: -70px;
+    }
+
+    .touchdown.right {
+      top: 100px;
+      right: -70px;
+    }
+
+    .arrow {
+      position: absolute;
+      width: 8px;
+      height: 30px;
+      background: red;
+      border-radius: 4px;
+      opacity: 0.9;
+    }
+
+    .arrow-up {
+      animation: moveUp 2.5s linear infinite;
+    }
+
+    .arrow-down {
+      animation: moveDown 2.5s linear infinite;
+    }
+
+    @keyframes moveUp {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-260px); opacity: 0; }
+    }
+
+    @keyframes moveDown {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(130px); opacity: 0; }
+    }
+
+    .curve {
+      width: 80px;
+      height: 80px;
+      border: 3px solid red;
+      border-top: none;
+      border-left: none;
+      position: absolute;
+      border-radius: 0 0 80px 0;
+      transform: rotate(90deg);
+      opacity: 0.8;
+    }
+
+    .curve.left {
+      left: -60px;
+      top: 190px;
+    }
+
+    .curve.right {
+      right: -60px;
+      top: 190px;
+    }
+
+    .caption {
+      font-size: 14px;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Thermal Stack with Touchdown Slabs and Heat Flow</h2>
+    <div class="stack">
+      <div class="ambient">Ambient Air</div>
+
+      <!-- Touchdown slabs -->
+      <div class="touchdown left"></div>
+      <div class="touchdown right"></div>
+
+      <!-- Stack layers -->
+      <div class="layer fan"><div class="label">Fan Sink</div></div>
+      <div class="layer grease"><div class="label">Thermal Grease</div></div>
+      <div class="layer plate"><div class="label">Heat Sink Plate</div></div>
+      <div class="layer tim"><div class="label">TIM</div></div>
+      <div class="layer junction"><div class="label">IC Junction</div></div>
+      <div class="layer pcb"><div class="label">PCB</div></div>
+
+      <!-- Upward heat flow (from junction to fan) -->
+      <div class="arrow arrow-up" style="left: 150px; top: 165px; animation-delay: 0s;"></div>
+      <div class="arrow arrow-up" style="left: 250px; top: 165px; animation-delay: 0.4s;"></div>
+      <div class="arrow arrow-up" style="left: 350px; top: 165px; animation-delay: 0.8s;"></div>
+      <div class="arrow arrow-up" style="left: 450px; top: 165px; animation-delay: 1.2s;"></div>
+
+      <!-- Downward to PCB -->
+      <div class="arrow arrow-down" style="left: 200px; top: 195px; animation-delay: 0.3s;"></div>
+      <div class="arrow arrow-down" style="left: 300px; top: 195px; animation-delay: 0.6s;"></div>
+      <div class="arrow arrow-down" style="left: 400px; top: 195px; animation-delay: 0.9s;"></div>
+
+      <!-- Curved arrows from PCB to plate via touchdown -->
+      <div class="curve left"></div>
+      <div class="curve right"></div>
+    </div>
+
+    <div class="caption">
+      🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink → <strong>Ambient Air</strong><br>
+      🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB → Touchdown Slabs → Heat Sink Plate → Fan Sink → <strong>Ambient Air</strong><br>
+      🔳 <strong>Touchdown vertical slabs</strong> placed at edge transfer heat from PCB to the plate effectively.
+    </div>
+  </div>
+</body>
+</html>
+0px;
       background: #95a5a6;
       height: 55px; /* combined height of TIM + Junction */
       z-index: 10;
