@@ -527,7 +527,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Thermal Stack with Outer Touchdown Slabs</title>
+  <title>Thermal Stack with Edge Touchdown Slabs</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -615,14 +615,15 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       z-index: 10;
     }
 
+    /* Adjusted touchdown positions to sit just at the plate edges */
     .touchdown.left {
-      top: 120px; /* Bottom of Heat Sink Plate */
-      left: -20px;
+      top: 120px; /* bottom of plate */
+      left: -40px; /* further outward */
     }
 
     .touchdown.right {
       top: 120px;
-      right: -20px;
+      right: -40px;
     }
 
     .arrow-up, .arrow-down {
@@ -661,9 +662,9 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 </head>
 <body>
   <div class="container">
-    <h2>Thermal Stack with Edge Touchdown Slabs</h2>
+    <h2>Thermal Stack with Outer-Edge Touchdown Slabs</h2>
     <div class="stack">
-      <!-- Vertical Touchdown Slabs touching plate bottom & PCB top -->
+      <!-- Vertical Touchdown Slabs at outer plate edges -->
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
@@ -692,7 +693,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     <div class="caption">
       🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink<br>
       🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB<br>
-      🔳 Vertical slabs (touchdowns) are placed at the <strong>outer edges</strong> between the bottom of the Heat Sink Plate and the top of the PCB to facilitate edge thermal conduction.
+      🔳 Touchdown vertical slabs now sit at the <strong>very edge</strong> of the heat sink plate, transferring heat from its bottom surface to the top surface of the PCB.
     </div>
   </div>
 </body>
