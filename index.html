@@ -567,8 +567,6 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .grease {
       background: #3498db;
-      width: 50%;
-      margin: 0 auto;
       height: 20px;
       z-index: 5;
     }
@@ -582,9 +580,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .tim {
       background: #bdc3c7;
-      width: 50%;
-      margin: 0 auto;
-      height: 15px;
+      height: 25px;
       z-index: 3;
     }
 
@@ -604,7 +600,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .label {
       position: absolute;
-      left: 760px;
+      left: 740px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 12px;
@@ -613,83 +609,47 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .touchdown {
       position: absolute;
-      width: 20px;
+      width: 10px;
       background: #95a5a6;
-      height: 45px; /* Adjusted for new TIM (15px) + junction (30px) */
+      height: 55px; /* combined height of TIM + Junction */
       z-index: 10;
     }
 
     .touchdown.left {
-      top: 115px;
-      left: -70px;
+      top: 100px; /* calculated to touch bottom of plate and top of PCB */
+      left: -70px; /* outward */
     }
 
     .touchdown.right {
-      top: 115px;
+      top: 100px;
       right: -70px;
     }
 
-    .arrow-path {
+    .arrow-up, .arrow-down {
       position: absolute;
-      width: 2px;
+      width: 10px;
+      height: 30px;
       background: red;
-      animation: heatFlow 3s linear forwards;
-      opacity: 0.8;
+      border-radius: 5px;
+      opacity: 0.9;
     }
 
-    .arrow-head {
-      width: 0;
-      height: 0;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 10px solid red;
-      position: absolute;
-      opacity: 0;
-      animation: arrowAppear 3s forwards;
+    .arrow-up {
+      animation: moveUp 2.5s linear infinite;
     }
 
-    @keyframes heatFlow {
-      0% { height: 0; opacity: 0; }
-      10% { height: 30px; opacity: 1; }
-      30% { height: 70px; }
-      50% { height: 120px; }
-      70% { height: 180px; }
-      90% { height: 230px; }
-      100% { height: 280px; opacity: 1; }
+    .arrow-down {
+      animation: moveDown 2.5s linear infinite;
     }
 
-    @keyframes arrowAppear {
-      0% { opacity: 0; top: 0; }
-      100% { opacity: 1; top: 280px; }
+    @keyframes moveUp {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-260px); opacity: 0; }
     }
 
-    .curved-arrow {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      border: 2px solid red;
-      border-top: none;
-      border-left: none;
-      border-radius: 0 0 80px 0;
-      transform: rotate(45deg);
-      top: 225px;
-      opacity: 0.8;
-      animation: curveFlow 3s ease forwards;
-    }
-
-    .curved-arrow.left {
-      left: -60px;
-      transform: rotate(-135deg);
-    }
-
-    .curved-arrow.right {
-      right: -60px;
-      transform: rotate(45deg);
-    }
-
-    @keyframes curveFlow {
-      0% { opacity: 0; transform: scale(0.5); }
-      100% { opacity: 1; transform: scale(1); }
+    @keyframes moveDown {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(130px); opacity: 0; }
     }
 
     .caption {
@@ -697,24 +657,13 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       margin-top: 20px;
       line-height: 1.5;
     }
-
-    .ambient-label {
-      position: absolute;
-      top: -30px;
-      left: 300px;
-      font-size: 12px;
-      color: #555;
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Thermal Stack with Outer-Edge Touchdown Slabs</h2>
     <div class="stack">
-      <!-- Ambient Label -->
-      <div class="ambient-label">Ambient Air 🌬️</div>
-
-      <!-- Touchdown Slabs -->
+      <!-- Vertical Touchdown Slabs at outer plate edges -->
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
@@ -726,19 +675,24 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       <div class="layer junction"><div class="label">IC Junction</div></div>
       <div class="layer pcb"><div class="label">PCB</div></div>
 
-      <!-- Heat Flow Arrows (Top Path: Junction → Ambient) -->
-      <div class="arrow-path" style="left: 100px; top: 135px;"></div>
-      <div class="arrow-head" style="left: 94px;"></div>
+      <!-- Upward heat flow arrows -->
+      <div class="arrow-up" style="left: 100px; top: 165px; animation-delay: 0s;"></div>
+      <div class="arrow-up" style="left: 200px; top: 165px; animation-delay: 0.4s;"></div>
+      <div class="arrow-up" style="left: 300px; top: 165px; animation-delay: 0.8s;"></div>
+      <div class="arrow-up" style="left: 400px; top: 165px; animation-delay: 1.2s;"></div>
+      <div class="arrow-up" style="left: 500px; top: 165px; animation-delay: 1.6s;"></div>
 
-      <!-- Curved Heat Flow Arrows (PCB → Touchdown → Plate) -->
-      <div class="curved-arrow left"></div>
-      <div class="curved-arrow right"></div>
+      <!-- Downward heat flow arrows -->
+      <div class="arrow-down" style="left: 130px; top: 195px; animation-delay: 0.3s;"></div>
+      <div class="arrow-down" style="left: 230px; top: 195px; animation-delay: 0.7s;"></div>
+      <div class="arrow-down" style="left: 330px; top: 195px; animation-delay: 1.1s;"></div>
+      <div class="arrow-down" style="left: 430px; top: 195px; animation-delay: 1.5s;"></div>
     </div>
 
     <div class="caption">
-      🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink → Ambient<br>
-      🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB → up through Touchdown Slabs → Plate → Fan Sink → Ambient<br>
-      🔳 Touchdown slabs now sit at the <strong>edge</strong> of the heat sink plate, channeling heat from PCB to top layers.
+      🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink<br>
+      🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB<br>
+      🔳 Touchdown vertical slabs now sit at the <strong>very edge</strong> of the heat sink plate, transferring heat from its bottom surface to the top surface of the PCB.
     </div>
   </div>
 </body>
