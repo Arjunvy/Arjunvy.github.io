@@ -527,7 +527,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Thermal Stack with Touchdown Slabs</title>
+  <title>Thermal Stack with Touchdown Slabs (Side Contact)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -562,7 +562,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     .fan {
       background: #e67e22;
       width: 100%;
-      z-index: 5;
+      z-index: 6;
     }
 
     .grease {
@@ -611,16 +611,17 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       position: absolute;
       width: 10px;
       background: #2c3e50;
-      top: 160px; /* starts below plate */
-      height: 100px; /* spans from plate to pcb */
-      z-index: 0;
+      height: 30px; /* Touchdown slab height from heat spreader to PCB */
+      z-index: 10;
     }
 
     .touchdown.left {
+      top: 120px; /* aligns with bottom of plate */
       left: 20px;
     }
 
     .touchdown.right {
+      top: 120px;
       right: 20px;
     }
 
@@ -660,13 +661,13 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 </head>
 <body>
   <div class="container">
-    <h2>Thermal Stack with Edge Touchdowns</h2>
+    <h2>Thermal Stack with Touchdown Slabs (Between Spreader and PCB)</h2>
     <div class="stack">
-      <!-- Vertical Heat Touchdowns -->
+      <!-- Vertical Heat Touchdowns between plate and PCB -->
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
-      <!-- Layers -->
+      <!-- Stack Layers -->
       <div class="layer fan"><div class="label">Fan Sink</div></div>
       <div class="layer grease"><div class="label">Thermal Grease</div></div>
       <div class="layer plate"><div class="label">Heat Sink Plate (Spreader)</div></div>
@@ -691,7 +692,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     <div class="caption">
       🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink<br>
       🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB<br>
-      🔳 Vertical slabs at the edges are <strong>touchdowns</strong> transferring heat between Heat Sink Plate and PCB edges.
+      🔳 Vertical slabs (touchdowns) <strong>connect the bottom edge of the Heat Sink Plate to the top surface of the PCB</strong> to enable edge conduction.
     </div>
   </div>
 </body>
