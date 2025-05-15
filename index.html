@@ -703,7 +703,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Thermal Stack with Edge Touchdown Slabs</title>
+  <title>Thermal Stack with Complex Heat Flow Paths</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -737,7 +737,6 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 
     .fan {
       background: #e67e22;
-      width: 100%;
       z-index: 6;
     }
 
@@ -835,7 +834,6 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       line-height: 1.5;
     }
 
-    /* SVG styling */
     .heat-flow {
       position: absolute;
       top: 0;
@@ -847,9 +845,9 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
 </head>
 <body>
   <div class="container">
-    <h2>Thermal Stack with Outer-Edge Touchdown Slabs</h2>
+    <h2>Thermal Stack with Complex Side Heat Path</h2>
     <div class="stack">
-      <!-- Vertical Touchdown Slabs at outer plate edges -->
+      <!-- Vertical Touchdown Slabs -->
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
@@ -861,53 +859,49 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       <div class="layer junction"><div class="label">IC Junction</div></div>
       <div class="layer pcb"><div class="label">PCB</div></div>
 
-      <!-- Upward heat flow arrows -->
+      <!-- Vertical Arrows -->
       <div class="arrow-up" style="left: 100px; top: 125px; animation-delay: 0s;"></div>
       <div class="arrow-up" style="left: 200px; top: 125px; animation-delay: 0.4s;"></div>
       <div class="arrow-up" style="left: 300px; top: 125px; animation-delay: 0.8s;"></div>
       <div class="arrow-up" style="left: 400px; top: 125px; animation-delay: 1.2s;"></div>
-      <div class="arrow-up" style="left: 500px; top: 125px; animation-delay: 1.6s;"></div>
 
-      <!-- Downward heat flow arrows -->
-      <div class="arrow-down" style="left: 130px; top: 125px; animation-delay: 0.3s;"></div>
-      <div class="arrow-down" style="left: 230px; top: 125px; animation-delay: 0.7s;"></div>
-      <div class="arrow-down" style="left: 330px; top: 125px; animation-delay: 1.1s;"></div>
-      <div class="arrow-down" style="left: 430px; top: 125px; animation-delay: 1.5s;"></div>
-
-      <!-- Curved SVG Arrows for Side Heat Flow -->
+      <!-- Curved Heat Flow Paths -->
       <svg class="heat-flow" width="700" height="300">
-        <!-- Left curved path -->
+        <!-- LEFT path: Junction -> PCB -> Left slab -> Plate -->
         <path d="M350,125 
-                 C280,130 200,170 160,180 
-                 C120,190 120,230 160,240 
-                 C200,250 260,230 290,220 
-                 C320,210 320,190 330,180 
-                 C340,170 340,160 350,150" 
+                 C330,135 310,155 300,180 
+                 C290,200 250,200 200,200 
+                 C150,200 130,200 130,220 
+                 C130,240 130,240 130,260 
+                 C130,280 170,280 220,280 
+                 C270,280 310,270 330,260 
+                 C350,250 350,230 350,210"
               stroke="red" stroke-width="3" fill="none"
-              stroke-dasharray="12"
+              stroke-dasharray="10"
               stroke-dashoffset="0">
-          <animate attributeName="stroke-dashoffset" from="36" to="0" dur="1.5s" repeatCount="indefinite" />
+          <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.5s" repeatCount="indefinite" />
         </path>
 
-        <!-- Right curved path -->
+        <!-- RIGHT path: Junction -> PCB -> Right slab -> Plate -->
         <path d="M350,125 
-                 C420,130 500,170 540,180 
-                 C580,190 580,230 540,240 
-                 C500,250 440,230 410,220 
-                 C380,210 380,190 370,180 
-                 C360,170 360,160 350,150" 
+                 C370,135 390,155 400,180 
+                 C410,200 450,200 500,200 
+                 C550,200 570,200 570,220 
+                 C570,240 570,240 570,260 
+                 C570,280 530,280 480,280 
+                 C430,280 390,270 370,260 
+                 C350,250 350,230 350,210"
               stroke="red" stroke-width="3" fill="none"
-              stroke-dasharray="12"
+              stroke-dasharray="10"
               stroke-dashoffset="0">
-          <animate attributeName="stroke-dashoffset" from="36" to="0" dur="1.5s" repeatCount="indefinite" />
+          <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.5s" repeatCount="indefinite" />
         </path>
       </svg>
     </div>
 
     <div class="caption">
-      🔺 Heat flows <strong>upward</strong> from IC Junction → TIM → Heat Sink Plate → Grease → Fan Sink<br>
-      🔻 Heat also flows <strong>downward</strong> from IC Junction → PCB<br>
-      🔁 Heat additionally flows sideways from IC Junction → along PCB → up vertical slabs → back into the Heat Sink Plate.
+      🔺 Primary heat path: IC Junction → TIM → Heat Sink Plate → Fan Sink<br>
+      🔁 Secondary path: IC Junction → down into PCB → horizontally through PCB → up vertical touchdown slabs → horizontally into Heat Sink Plate → merges with top heat flow.
     </div>
   </div>
 </body>
