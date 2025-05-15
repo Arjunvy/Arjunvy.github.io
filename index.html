@@ -725,7 +725,6 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       position: relative;
       width: 700px;
       margin: 50px auto;
-      overflow: visible; /* Allow overflow for left-side arrows */
     }
 
     .layer {
@@ -788,7 +787,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       width: 20px;
       background: #95a5a6;
       height: 55px;
-      z-index: 5; /* Lowered to show SVG above it */
+      z-index: 5;
     }
 
     .touchdown.left {
@@ -838,7 +837,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     .heat-flow {
       position: absolute;
       top: 0;
-      left: -100px; /* Shift to show left arrow */
+      left: 0;
       pointer-events: none;
       z-index: 50;
     }
@@ -867,7 +866,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       <div class="arrow-up" style="left: 400px; top: 125px; animation-delay: 1.2s;"></div>
 
       <!-- Curved Heat Flow Paths -->
-      <svg class="heat-flow" width="900" height="300">
+      <svg class="heat-flow" width="700" height="300">
         <!-- LEFT path: Junction -> PCB -> Left slab -> Plate -->
         <path d="M350,130 
                  C330,135 310,155 300,165 
