@@ -611,18 +611,17 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       position: absolute;
       width: 10px;
       background: #2c3e50;
-      height: 45px;
+      height: 55px; /* combined height of TIM + Junction */
       z-index: 10;
     }
 
-    /* Adjusted touchdown positions to sit just at the plate edges */
     .touchdown.left {
-      top: 100px; /* bottom of plate */
-      left: -40px; /* further outward */
+      top: 105px; /* calculated to touch bottom of plate and top of PCB */
+      left: -40px; /* outward */
     }
 
     .touchdown.right {
-      top: 100px;
+      top: 105px;
       right: -40px;
     }
 
