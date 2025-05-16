@@ -709,12 +709,14 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       font-family: Arial, sans-serif;
       background: #f4f4f4;
       padding: 40px;
+      overflow-x: visible;
     }
 
     .container {
-      width: 1500px;
+      width: 1600px;
       margin: auto;
       overflow: visible;
+      position: relative;
     }
 
     h2 {
@@ -839,8 +841,10 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     .heat-flow {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 0px; /* Move SVG to the left */
       width: 1200px;
+      height: 400px;
+      overflow: visible;
       pointer-events: none;
       z-index: 50;
     }
@@ -869,7 +873,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       <div class="arrow-up" style="left: 400px; top: 125px; animation-delay: 1.2s;"></div>
 
       <!-- Curved Heat Flow Paths -->
-      <svg class="heat-flow" width="700" height="300">
+      <svg class="heat-flow">
         <!-- LEFT path: Junction -> PCB -> Left slab -> Plate -->
         <path d="M350,130 
                  C330,135 310,155 300,165 
@@ -897,6 +901,17 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
               stroke-dashoffset="0">
           <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.5s" repeatCount="indefinite" />
         </path>
+
+        <!-- NEW: Left slab upward return into plate -->
+        <path d="M-65,175 
+                 C-65,160 -65,145 -65,130 
+                 C-65,115 -45,100 0,95 
+                 C100,90 200,90 300,90"
+              stroke="red" stroke-width="3" fill="none"
+              stroke-dasharray="10"
+              stroke-dashoffset="0">
+          <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.5s" repeatCount="indefinite" />
+        </path>
       </svg>
     </div>
 
@@ -907,7 +922,6 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
   </div>
 </body>
 </html>
-
 
 
 </body>
