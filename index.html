@@ -602,14 +602,15 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       z-index: 1;
     }
 
-    .label {
-      position: absolute;
-      left: 860px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 12px;
+    .label-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 13px;
       white-space: nowrap;
+      padding-right: 5px;
     }
+
 
     .touchdown {
       position: absolute;
@@ -683,13 +684,15 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
-      <!-- Stack Layers -->
-      <div class="layer fan"><div class="label">Fan Sink</div></div>
-      <div class="layer grease"><div class="label">Thermal Grease</div></div>
-      <div class="layer plate"><div class="label">Heat Sink Plate (Spreader)</div></div>
-      <div class="layer tim"><div class="label">TIM</div></div>
-      <div class="layer junction"><div class="label">IC Junction</div></div>
-      <div class="layer pcb"><div class="label">PCB</div></div>
+      <div class="labels-left">
+      <div class="label-left" style="height:40px">Fan Sink</div>
+      <div class="label-left" style="height:8px">Thermal Grease</div>
+      <div class="label-left" style="height:25px">Heat Spreader</div>
+      <div class="label-left" style="height:5px">TIM</div>
+      <div class="label-left" style="height:20px">IC Junction</div>
+      <div class="label-left" style="height:30px">PCB</div>
+      </div>
+
 
       <!-- Vertical Arrows -->
       <div class="arrow-up" style="left: 50px; top: 125px; animation-delay: 0s;"></div>
