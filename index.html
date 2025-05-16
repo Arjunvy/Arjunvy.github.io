@@ -589,7 +589,7 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
     }
 
     .junction {
-      background: #e74c3c;
+      background: #f1c40f;
       height: 30px;
       z-index: 2;
     }
@@ -706,16 +706,18 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
       <div class="arrow-up" style="left: 600px; top: 125px; animation-delay: 2.2s;"></div>
       <div class="arrow-up" style="left: 650px; top: 125px; animation-delay: 2.4s;"></div>
 
-      <defs>
-       <marker id="arrowHead" markerWidth="8" markerHeight="8"
-            refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
-        <path d="M0,0 L0,6 L6,3 Z" fill="red"/>
-       </marker>
-      </defs>
 
       <!-- Curved Heat Flow Paths -->
       <svg class="heat-flow">
         <!-- LEFT path: Junction -> PCB -> Left slab -> Plate -->
+
+        <defs>
+         <marker id="arrowHead" markerWidth="8" markerHeight="8"
+            refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+         <path d="M0,0 L0,6 L6,3 Z" fill="red"/>
+         </marker>
+        </defs>        
+
         <path d="M300,130 
                  C300,135 275,155 250,165 
                  C225,175 50,175 -25,175 
