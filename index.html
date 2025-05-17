@@ -176,12 +176,18 @@ The solution brought junction temperatures of all critical parts well below thei
       overflow: visible;
     }
 
-    .layer {
-      position: relative;
-      height: 40px;
-      margin: 0;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
+   .layer{
+      position:relative;
+      height:40px;
+      margin:0;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+
+      /* NEW – make each layer flex so its contents
+         (the .label div) are perfectly centred */
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
     .fan {
@@ -222,18 +228,11 @@ The solution brought junction temperatures of all critical parts well below thei
       z-index: 1;
     }
 
- .label {
-  display: flex;
-  justify-content: center;   /* Center horizontally */
-  align-items: center;       /* Center vertically */
-  width: 100%;
-  height: 100%;
-  font-weight: bold;
-  text-align: center;
-  position: absolute;        /* Add this */
-  top: 0;
-  left: 0;
-}
+    .label{
+      font-weight:bold;
+      text-align:center;
+      /* it inherits the flex‑centring from .layer, no absolute positioning needed */
+    }
 
 
     .touchdown {
@@ -313,12 +312,13 @@ The solution brought junction temperatures of all critical parts well below thei
       <div class="touchdown right"></div>
 
       <!-- Stack Layers -->
-      <div class="layer fan"><div class="label">Fan Sink</div></div>
-      <div class="layer grease"><div class="label">Thermal Grease</div></div>
-      <div class="layer plate"><div class="label">Heat Sink Plate (Spreader)</div></div>
-      <div class="layer tim"><div class="label">TIM</div></div>
-      <div class="layer junction"><div class="label">IC Junction</div></div>
-      <div class="layer pcb"><div class="label">PCB</div></div>
+      <div class="layer fan"><div class="label">Fan&nbsp;Sink</div></div>
+        <div class="layer grease"><div class="label">Thermal&nbsp;Grease</div></div>
+        <div class="layer plate"><div class="label">Heat&nbsp;Sink&nbsp;Plate&nbsp;(Spreader)</div></div>
+        <div class="layer tim"><div class="label">TIM</div></div>
+        <div class="layer junction"><div class="label">IC&nbsp;Junction</div></div>
+        <div class="layer pcb"><div class="label">PCB</div></div>
+
 
       <!-- Vertical Arrows -->
       <div class="arrow-up" style="left: 50px; top: 125px; animation-delay: 0s;"></div>
