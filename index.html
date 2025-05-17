@@ -228,11 +228,36 @@ The solution brought junction temperatures of all critical parts well below thei
       z-index: 1;
     }
 
-    .label{
-      font-weight:bold;
-      text-align:center;
-      /* it inherits the flex‑centring from .layer, no absolute positioning needed */
-    }
+.legend {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-item .box {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border: 1px solid #999;
+}
+
+/* Reuse existing layer colors */
+.legend .fan { background: #e67e22; }
+.legend .grease { background: #3498db; }
+.legend .plate { background: #95a5a6; }
+.legend .tim { background: #bdc3c7; }
+.legend .junction { background: #f1c40f; }
+.legend .pcb { background: #27ae60; }
 
 
     .touchdown {
@@ -311,13 +336,24 @@ The solution brought junction temperatures of all critical parts well below thei
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
-      <!-- Stack Layers -->
-      <div class="layer fan"><div class="label">Fan&nbsp;Sink</div></div>
-        <div class="layer grease"><div class="label">Thermal&nbsp;Grease</div></div>
-        <div class="layer plate"><div class="label">Heat&nbsp;Sink&nbsp;Plate&nbsp;(Spreader)</div></div>
-        <div class="layer tim"><div class="label">TIM</div></div>
-        <div class="layer junction"><div class="label">IC&nbsp;Junction</div></div>
-        <div class="layer pcb"><div class="label">PCB</div></div>
+ <!-- Stack Layers (WITHOUT labels) -->
+<div class="layer fan"></div>
+<div class="layer grease"></div>
+<div class="layer plate"></div>
+<div class="layer tim"></div>
+<div class="layer junction"></div>
+<div class="layer pcb"></div>
+
+<!-- Legend Section -->
+<div class="legend">
+  <div class="legend-item"><span class="box fan"></span>Fan Sink</div>
+  <div class="legend-item"><span class="box grease"></span>Thermal Grease</div>
+  <div class="legend-item"><span class="box plate"></span>Heat Sink Plate (Spreader)</div>
+  <div class="legend-item"><span class="box tim"></span>TIM</div>
+  <div class="legend-item"><span class="box junction"></span>IC Junction</div>
+  <div class="legend-item"><span class="box pcb"></span>PCB</div>
+</div>
+
 
 
       <!-- Vertical Arrows -->
