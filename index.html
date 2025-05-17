@@ -177,19 +177,12 @@ The solution brought junction temperatures of all critical parts well below thei
     }
 
     .layer {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 30px;
-      border: 2px solid black;
-      text-align: center;
-      font-weight: bold;
-      display: flex;              /* Enables flex layout */
-      justify-content: center;    /* Horizontal centering */
-      align-items: center;        /* Vertical centering */
-     }
-
+      position: relative;
+      height: 40px;
+      margin: 0;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
 
     .fan {
       background: #e67e22;
@@ -314,13 +307,13 @@ The solution brought junction temperatures of all critical parts well below thei
       <div class="touchdown left"></div>
       <div class="touchdown right"></div>
 
-      <div class="layer fan">Fan Sink</div>
-      <div class="layer grease">Thermal Grease</div>
-      <div class="layer plate">Heat Sink Plate (Spreader)</div>
-      <div class="layer tim">TIM</div>
-      <div class="layer junction">IC Junction</div>
-      <div class="layer pcb">PCB</div>
-
+      <!-- Stack Layers -->
+      <div class="layer fan"><div class="label">Fan Sink</div></div>
+      <div class="layer grease"><div class="label">Thermal Grease</div></div>
+      <div class="layer plate"><div class="label">Heat Sink Plate (Spreader)</div></div>
+      <div class="layer tim"><div class="label">TIM</div></div>
+      <div class="layer junction"><div class="label">IC Junction</div></div>
+      <div class="layer pcb"><div class="label">PCB</div></div>
 
       <!-- Vertical Arrows -->
       <div class="arrow-up" style="left: 50px; top: 125px; animation-delay: 0s;"></div>
