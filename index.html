@@ -176,16 +176,13 @@ The solution brought junction temperatures of all critical parts well below thei
       overflow: visible;
     }
 
-    .label {
-  display: flex;
-  justify-content: center;   /* Center horizontally */
-  align-items: center;       /* Center vertically */
-  width: 100%;
-  height: 100%;
-  font-weight: bold;
-  text-align: center;
-}
-
+    .layer {
+      position: relative;
+      height: 40px;
+      margin: 0;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
 
     .fan {
       background: #e67e22;
@@ -227,7 +224,7 @@ The solution brought junction temperatures of all critical parts well below thei
 
     .label {
       position: absolute;
-      left: 350px;
+      left: 860px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 12px;
