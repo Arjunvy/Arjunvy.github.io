@@ -895,54 +895,6 @@ ensure a compact, electrically robust, and mechanically reliable IMU design.
   }
 </script>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CTE Mismatch Animation</title>
-  <style>
-    body { background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; }
-    .package { width: 300px; height: 200px; background: #ccc; border: 5px solid #888; position: relative; }
-    .pcb { width: 260px; height: 30px; background: green; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
-    .ic { width: 40px; height: 20px; background: black; position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); }
-    .underfill { width: 40px; height: 5px; background: orange; position: absolute; bottom: 55px; left: 50%; transform: translateX(-50%); }
-    .heat { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); color: red; font-size: 24px; opacity: 0; animation: heatPulse 2s infinite; }
-    @keyframes heatPulse {
-      0% { opacity: 0; transform: translateX(-50%) translateY(0); }
-      50% { opacity: 1; transform: translateX(-50%) translateY(10px); }
-      100% { opacity: 0; transform: translateX(-50%) translateY(0); }
-    }
-    .stress-lines {
-      position: absolute;
-      bottom: 70px;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 15px solid red;
-      transform: translateX(-50%);
-      opacity: 0;
-      animation: stressBlink 1s infinite;
-    }
-    @keyframes stressBlink {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
-  </style>
-</head>
-<body>
-  <div class="package">
-    <div class="heat">🔥</div>
-    <div class="pcb"></div>
-    <div class="underfill"></div>
-    <div class="ic"></div>
-    <div class="stress-lines"></div>
-  </div>
-</body>
-</html>
-
 
 </body>
 </html>
